@@ -1,0 +1,31 @@
+table Metrics
+	lineageTag: abf2c8cb-f276-4ca0-b0c6-8cfdfc12cb09
+
+	measure 'Median Guests' = MEDIAN(Listings[Guest Count])
+		lineageTag: 4605badf-a21a-4b44-a917-6780c3f73599
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Mean Guests' = AVERAGE(Listings[Guest Count])
+		formatString: 0
+		lineageTag: b1da00c5-8de8-4af2-8506-379533376c68
+
+	measure 'Total Cleaning Fee' = SUM(Listings[CLeaning Fees]) * [Selected Rate]
+		lineageTag: a439fa39-4d73-4dc9-9b3b-8fb3c25a8262
+
+		formatStringDefinition = "0 " &[Selected Currency]
+
+	column _
+		lineageTag: 2d03df6c-89da-45ac-8164-6dd7640a87fe
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [_]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Metrics = calculated
+		mode: import
+		source = DATATABLE("_", TEXT, {{""}})
+
+	annotation PBI_Id = b7543e0248ec45df9a2123942c07980f
+

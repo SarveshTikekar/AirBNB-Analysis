@@ -1,0 +1,32 @@
+table 'Cancellation Policies'
+	lineageTag: 49d88916-3738-4724-95fd-0f0ddcacb89d
+
+	column 'Cancel Policy Code'
+		dataType: string
+		lineageTag: 41a791b6-d702-457e-9b0b-d0433b9b9811
+		summarizeBy: none
+		sourceColumn: Cancel Policy Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cancellation Policy'
+		dataType: string
+		lineageTag: af80b65e-eaeb-426c-9e1c-403de75a7894
+		summarizeBy: none
+		sourceColumn: Cancellation Policy
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Cancellation Policies' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wcg5wNlTSUXLLLMpVitUB842AfN/8lNSixJJUmJgxUCy4pCgzuQQmYgIU8cnMzSxJTYEJmYIMykmtyEzKgWs0A2ksLUgtUoBoVzAzUHBJrCyGyZujyxvD5GMB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Cancel Policy Code" = _t, #"Cancellation Policy" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Cancel Policy Code", type text}, {"Cancellation Policy", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

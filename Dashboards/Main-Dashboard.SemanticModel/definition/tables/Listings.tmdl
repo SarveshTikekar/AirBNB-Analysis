@@ -1,0 +1,661 @@
+table Listings
+	lineageTag: 9c10487d-111c-4859-b025-78eee1c47ad6
+
+	column 'Listing ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 71766064-2f20-42f0-a525-acd0c1044fd8
+		summarizeBy: none
+		sourceColumn: Listing ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Listing Name'
+		dataType: string
+		lineageTag: e5914c85-80c2-4534-853b-654e223e43e9
+		summarizeBy: none
+		sourceColumn: Listing Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 141739ae-f93a-44fd-92d9-327402afd85f
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cover Photo'
+		dataType: string
+		lineageTag: c747340b-fb23-4d54-96f8-947bd5ad3f84
+		summarizeBy: none
+		sourceColumn: Cover Photo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Photos
+		dataType: string
+		lineageTag: 13909dbc-0a58-4081-909a-33563861d888
+		summarizeBy: none
+		sourceColumn: Photos
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Host ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b5c7c07-0baa-405b-8025-ee5f81397bdf
+		summarizeBy: count
+		sourceColumn: Host ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Host Name'
+		dataType: string
+		lineageTag: a6638846-c5e2-4093-b969-9c981b830ad4
+		summarizeBy: none
+		sourceColumn: Host Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cohost Names'
+		dataType: string
+		lineageTag: ce9c8e0c-b31c-4a7f-bd7e-3ff3adbfc8ca
+		summarizeBy: none
+		sourceColumn: Cohost Names
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is SuperHost'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 88f00589-18d8-45cb-a11f-5b605ce4695e
+		summarizeBy: none
+		sourceColumn: Is SuperHost
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: double
+		lineageTag: 17cb067d-b88c-4848-8a65-72dd1b97dca9
+		summarizeBy: sum
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Longitude
+		dataType: double
+		lineageTag: 44bc5dcd-2a9a-4ba5-ada7-68efbd978ccc
+		summarizeBy: sum
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Guest Count'
+		dataType: int64
+		formatString: 0
+		lineageTag: c301de11-3864-4bf4-a3ed-5f171ea9e5c0
+		summarizeBy: none
+		sourceColumn: Guest Count
+
+		annotation SummarizationSetBy = User
+
+	column 'No of Bedrooms'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0897b598-0cce-4e23-9fcc-4b49eec01579
+		summarizeBy: sum
+		sourceColumn: No of Bedrooms
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'No of Beds'
+		dataType: int64
+		formatString: 0
+		lineageTag: a5642597-ddaf-45fa-94e5-54eff6164d72
+		summarizeBy: sum
+		sourceColumn: No of Beds
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'No of Baths'
+		dataType: double
+		lineageTag: 86b349d0-9da7-4449-af80-ee4eb19ec05d
+		summarizeBy: sum
+		sourceColumn: No of Baths
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Is Registered'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 30ead303-50a7-4213-8078-d3024ccdee15
+		summarizeBy: none
+		sourceColumn: Is Registered
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Instantly Booked'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f758dc92-0333-4573-9353-6e51407fe8fd
+		summarizeBy: none
+		sourceColumn: Instantly Booked
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prof Management'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 270e9905-95d2-494f-8d50-a776b7dd09d5
+		summarizeBy: none
+		sourceColumn: Prof Management
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Min Nights to Stay'
+		dataType: int64
+		formatString: 0
+		lineageTag: 530e60d6-a45a-4c7b-a93f-b60f9eb7f688
+		summarizeBy: sum
+		sourceColumn: Min Nights to Stay
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Checkin Time'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 45ba097b-f107-4bdd-9cfe-fc3e16cdb1f2
+		summarizeBy: none
+		sourceColumn: Checkin Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Checkout Time'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: f2c6e897-c9b2-4606-8b08-47d085c36f89
+		summarizeBy: none
+		sourceColumn: Checkout Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Is Guest Favourite'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d7b36bab-d171-41d7-8b7d-d2769e0ad308
+		summarizeBy: none
+		sourceColumn: Is Guest Favourite
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Exact Location Available'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e3d37fc7-367e-4e2b-923a-1e86eed47310
+		summarizeBy: none
+		sourceColumn: Exact Location Available
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CLeaning Fees'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b9190ab-acce-41da-a963-d6825069d3e0
+		summarizeBy: none
+		sourceColumn: CLeaning Fees
+
+		annotation SummarizationSetBy = User
+
+	column 'Extra Guest Fees'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d4b8a92-76ce-4222-abc8-37327bfed943
+		summarizeBy: sum
+		sourceColumn: Extra Guest Fees
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Single Fee Structure'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d7717029-9436-4b8f-b265-1fbcc34fa05d
+		summarizeBy: none
+		sourceColumn: Single Fee Structure
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Overall Rating'
+		dataType: double
+		lineageTag: c601af25-ba1e-4811-acf8-22ace23c62cc
+		summarizeBy: sum
+		sourceColumn: Overall Rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Rating Accuracy'
+		dataType: double
+		lineageTag: 7bfec0a3-9a85-4f29-93c9-ce8b6d6a2074
+		summarizeBy: sum
+		sourceColumn: Rating Accuracy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Checkin Rating'
+		dataType: double
+		lineageTag: 33523bad-7189-486c-b877-4dd3d2f2be40
+		summarizeBy: sum
+		sourceColumn: Checkin Rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cleanliness Rating'
+		dataType: double
+		lineageTag: ea37f28b-68c4-4493-9589-8754641f743e
+		summarizeBy: sum
+		sourceColumn: Cleanliness Rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Commn Rating'
+		dataType: double
+		lineageTag: 0bb83fea-49d4-4efb-8197-2cfab0aeaed5
+		summarizeBy: sum
+		sourceColumn: Commn Rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Location Rating'
+		dataType: double
+		lineageTag: 7aa83e72-c839-486c-82cf-7cbf2a5b4fe0
+		summarizeBy: sum
+		sourceColumn: Location Rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Value Rating'
+		dataType: double
+		lineageTag: af1ffeca-5854-4c45-ba28-7648d58a790e
+		summarizeBy: sum
+		sourceColumn: Value Rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'TTM Revenue'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0dd49f5f-d825-4e65-9f34-bf0cf7fd34c6
+		summarizeBy: sum
+		sourceColumn: TTM Revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TTM Avg Rate'
+		dataType: double
+		lineageTag: 95047ea7-bebb-4111-aba1-c94fdf12e25b
+		summarizeBy: sum
+		sourceColumn: TTM Avg Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'TTM Occupancy Rate'
+		dataType: double
+		lineageTag: 0ae03c10-92a7-4f39-a6c8-569e5c17cbe8
+		summarizeBy: sum
+		sourceColumn: TTM Occupancy Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'TTM Adjusted Occupancy Rate'
+		dataType: double
+		lineageTag: cb8b6b25-ca53-4309-a955-4aec60bf1dcf
+		summarizeBy: sum
+		sourceColumn: TTM Adjusted Occupancy Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'TTM Revpar'
+		dataType: double
+		lineageTag: d0393526-f7a2-4d66-9804-4b41b69a11ac
+		summarizeBy: sum
+		sourceColumn: TTM Revpar
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'TTM Adjusted Revpar'
+		dataType: double
+		lineageTag: ca17dd98-66a1-4704-a275-957fdf6d6ac8
+		summarizeBy: sum
+		sourceColumn: TTM Adjusted Revpar
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'TTM Avg Min Nights'
+		dataType: double
+		lineageTag: 30a2479c-ab95-449a-90fc-1822381f2af1
+		summarizeBy: sum
+		sourceColumn: TTM Avg Min Nights
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'TTM Avg Length of Stay'
+		dataType: double
+		lineageTag: 2891126b-0f74-44e8-a924-8a01599cd0c8
+		summarizeBy: sum
+		sourceColumn: TTM Avg Length of Stay
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'TTM Reserved Days'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5846efe9-58f9-49db-8f5c-aab568af5556
+		summarizeBy: sum
+		sourceColumn: TTM Reserved Days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TTM Blocked Days'
+		dataType: int64
+		formatString: 0
+		lineageTag: 85f9467d-5803-4e92-a92f-5583a3d7732b
+		summarizeBy: sum
+		sourceColumn: TTM Blocked Days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TTM Available Days'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ea91a98-bbdd-43a6-80ec-c6a9e423582e
+		summarizeBy: sum
+		sourceColumn: TTM Available Days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Revenue in L90D'
+		dataType: int64
+		formatString: 0
+		lineageTag: 89c5ecdd-bbf9-44e3-91de-e3b8bc3ffa7d
+		summarizeBy: sum
+		sourceColumn: Revenue in L90D
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avg Rate in L90D'
+		dataType: double
+		lineageTag: 26ed3147-9089-42ae-a5f7-ab7e3a511233
+		summarizeBy: sum
+		sourceColumn: Avg Rate in L90D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Occupancy in L90D'
+		dataType: double
+		lineageTag: a4cc7ff6-2a60-4b54-b7e6-9965cb7014e9
+		summarizeBy: sum
+		sourceColumn: Occupancy in L90D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Adjusted Occupancy in L90D'
+		dataType: double
+		lineageTag: ed1c986f-02fc-4c68-985e-3f24175ccc03
+		summarizeBy: sum
+		sourceColumn: Adjusted Occupancy in L90D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Revpar in L90D'
+		dataType: double
+		lineageTag: 95c1abfa-fdea-411b-8f0e-4fd27154b53a
+		summarizeBy: sum
+		sourceColumn: Revpar in L90D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Adjusted Revpar in L90D'
+		dataType: double
+		lineageTag: bbf41510-7ffc-4897-8569-b765917f916b
+		summarizeBy: sum
+		sourceColumn: Adjusted Revpar in L90D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Avg Min Nights in L90D'
+		dataType: double
+		lineageTag: 5c25be4e-683b-4fd3-aac3-23b2c16bc4b3
+		summarizeBy: sum
+		sourceColumn: Avg Min Nights in L90D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Avg Length Of Stay in L90D'
+		dataType: double
+		lineageTag: a59fc25b-72f1-42a2-821a-5e0e21b6d362
+		summarizeBy: sum
+		sourceColumn: Avg Length Of Stay in L90D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Reserved Days in L90D'
+		dataType: int64
+		formatString: 0
+		lineageTag: ce74edf7-019a-4975-8aef-348d597f6e75
+		summarizeBy: sum
+		sourceColumn: Reserved Days in L90D
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Blocked Days in L90D'
+		dataType: int64
+		formatString: 0
+		lineageTag: 58ec31db-9a86-4362-b11f-307544cf33fa
+		summarizeBy: sum
+		sourceColumn: Blocked Days in L90D
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Available Days in L90D'
+		dataType: int64
+		formatString: 0
+		lineageTag: 215684f8-f365-4f32-9575-ea561986aed6
+		summarizeBy: sum
+		sourceColumn: Available Days in L90D
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 3f5d4ed3-bffa-430c-b74e-2a08eabdfab6
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cancel Policy Code'
+		dataType: string
+		lineageTag: abb38f97-4337-4522-8f95-e6cf8e5f1f5c
+		summarizeBy: none
+		sourceColumn: Cancel Policy Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cancellation Policy'
+		dataType: string
+		lineageTag: 2711b548-fd6b-4ffb-9b0e-d078bbf883c6
+		summarizeBy: none
+		sourceColumn: Cancellation Policy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Listing Type'
+		dataType: string
+		lineageTag: ba8ae300-e4c9-4f14-b09a-80a9d192d6c9
+		summarizeBy: none
+		sourceColumn: Listing Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amenities
+		dataType: string
+		isHidden
+		lineageTag: fddabdf9-88ad-4697-8d5c-d5095ddb809b
+		summarizeBy: none
+		sourceColumn: Amenities
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Listings = m
+		mode: import
+		source = ```
+				let
+				    Source = Folder.Files("C:\Users\Administrator\home\sarvesh\AirBNB Analysis\Datasets\listings"),
+				    #"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
+				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"listing_id", Int64.Type}, {"listing_name", type text}, {"description", type text}, {"listing_type", type text}, {"room_type", type text}, {"cover_photo_url", type text}, {"photos_count", Int64.Type}, {"photo_urls", type text}, {"host_id", Int64.Type}, {"host_name", type text}, {"cohost_ids", type text}, {"cohost_names", type text}, {"superhost", type logical}, {"latitude", type number}, {"longitude", type number}, {"guests", Int64.Type}, {"bedrooms", Int64.Type}, {"beds", Int64.Type}, {"baths", type number}, {"registration", type logical}, {"amenities", type text}, {"instant_book", type logical}, {"professional_management", type logical}, {"min_nights", Int64.Type}, {"cancellation_policy", type text}, {"checkin_time", type time}, {"checkout_time", type time}, {"guest_favorite", type logical}, {"exact_location", type logical}, {"currency", type text}, {"cleaning_fee", Int64.Type}, {"extra_guest_fee", Int64.Type}, {"single_fee_structure", type logical}, {"num_reviews", Int64.Type}, {"rating_overall", type number}, {"rating_accuracy", type number}, {"rating_checkin", type number}, {"rating_cleanliness", type number}, {"rating_communication", type number}, {"rating_location", type number}, {"rating_value", type number}, {"ttm_revenue", Int64.Type}, {"ttm_revenue_native", Int64.Type}, {"ttm_avg_rate", type number}, {"ttm_avg_rate_native", type number}, {"ttm_occupancy", type number}, {"ttm_adjusted_occupancy", type number}, {"ttm_revpar", type number}, {"ttm_revpar_native", type number}, {"ttm_adjusted_revpar", type number}, {"ttm_adjusted_revpar_native", type number}, {"ttm_avg_min_nights", type number}, {"ttm_avg_length_of_stay", type number}, {"ttm_reserved_days", Int64.Type}, {"ttm_blocked_days", Int64.Type}, {"ttm_available_days", Int64.Type}, {"ttm_total_days", Int64.Type}, {"l90d_revenue", Int64.Type}, {"l90d_revenue_native", Int64.Type}, {"l90d_avg_rate", type number}, {"l90d_avg_rate_native", type number}, {"l90d_occupancy", type number}, {"l90d_adjusted_occupancy", type number}, {"l90d_revpar", type number}, {"l90d_revpar_native", type number}, {"l90d_adjusted_revpar", type number}, {"l90d_adjusted_revpar_native", type number}, {"l90d_avg_min_nights", type number}, {"l90d_avg_length_of_stay", type number}, {"l90d_reserved_days", Int64.Type}, {"l90d_blocked_days", Int64.Type}, {"l90d_available_days", Int64.Type}, {"l90d_total_days", Int64.Type}}),
+				
+				    #"Extract Cities from Source Name" = Table.AddColumn(
+				    #"Changed Type",
+				    "City",
+				    each Text.BeforeDelimiter([Source.Name], "_"),
+				    type text
+				    ),
+				    
+				    #"Removed Columns" = Table.RemoveColumns(#"Extract Cities from Source Name",{"Source.Name"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"City"}, Cities, {"City"}, "Cities", JoinKind.LeftOuter),
+				    #"Expanded Cities" = Table.ExpandTableColumn(#"Merged Queries", "Cities", {"City"}, {"City.1"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Expanded Cities",{"City"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"City.1", "City"}}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Renamed Columns", {"listing_type"}, #"Listing Types", {"Listing Type"}, "Listing Types", JoinKind.LeftOuter),
+				    #"Expanded Listing Types1" = Table.ExpandTableColumn(#"Merged Queries1", "Listing Types", {"Listing Type", "Listing Type Group"}, {"Listing Type", "Listing Type Group"}),
+				    #"Time Columns as Text" =
+				    Table.TransformColumns(
+				        #"Expanded Listing Types1",
+				        {
+				            {
+				                "checkin_time",
+				                each if _ = null then null else Time.ToText(_, "HH:mm:ss"),
+				                type text
+				            },
+				            {
+				                "checkout_time",
+				                each if _ = null then null else Time.ToText(_, "HH:mm:ss"),
+				                type text
+				            }
+				        }
+				    ),
+				    #"Run Python script" = Python.Execute("# 'dataset' holds the input data for this script#(lf)#(lf)import datetime#(lf)import pandas as pd#(lf)#(lf)dataset[""guests""] = dataset[""guests""].fillna(#(lf)    dataset.groupby([""Listing Type Group"", ""City""])[""guests""].transform(""median"")#(lf))#(lf)#(lf)def format_time(x):#(lf)    if pd.isna(x):#(lf)        return None#(lf)#(lf)    if isinstance(x, datetime.time):#(lf)        return x.strftime(""%H:%M:%S"")#(lf)#(lf)    return str(x)#(lf)#(lf)dataset[""checkin_time""] = dataset[""checkin_time""].apply(format_time)#(lf)dataset[""checkout_time""] = dataset[""checkout_time""].apply(format_time)",[dataset=#"Time Columns as Text"]),
+				    dataset = #"Run Python script"{[Name="dataset"]}[Value],
+				    #"Filled NAN for guests using List Type group and City" = Table.TransformColumnTypes(dataset,{{"listing_id", Int64.Type}, {"listing_name", type text}, {"description", type text}, {"listing_type", type text}, {"room_type", type text}, {"cover_photo_url", type text}, {"photos_count", Int64.Type}, {"photo_urls", type text}, {"host_id", Int64.Type}, {"host_name", type text}, {"cohost_ids", type text}, {"cohost_names", type text}, {"superhost", type logical}, {"latitude", type number}, {"longitude", type number}, {"guests", Int64.Type}, {"bedrooms", Int64.Type}, {"beds", Int64.Type}, {"baths", type number}, {"registration", type logical}, {"amenities", type text}, {"instant_book", type logical}, {"professional_management", type logical}, {"min_nights", Int64.Type}, {"cancellation_policy", type text}, {"checkin_time", type text}, {"checkout_time", type text}, {"guest_favorite", type logical}, {"exact_location", type logical}, {"currency", type text}, {"cleaning_fee", Int64.Type}, {"extra_guest_fee", Int64.Type}, {"single_fee_structure", type logical}, {"num_reviews", Int64.Type}, {"rating_overall", type number}, {"rating_accuracy", type number}, {"rating_checkin", type number}, {"rating_cleanliness", type number}, {"rating_communication", type number}, {"rating_location", type number}, {"rating_value", type number}, {"ttm_revenue", Int64.Type}, {"ttm_revenue_native", Int64.Type}, {"ttm_avg_rate", type number}, {"ttm_avg_rate_native", type number}, {"ttm_occupancy", type number}, {"ttm_adjusted_occupancy", type number}, {"ttm_revpar", type number}, {"ttm_revpar_native", type number}, {"ttm_adjusted_revpar", type number}, {"ttm_adjusted_revpar_native", type number}, {"ttm_avg_min_nights", type number}, {"ttm_avg_length_of_stay", type number}, {"ttm_reserved_days", Int64.Type}, {"ttm_blocked_days", Int64.Type}, {"ttm_available_days", Int64.Type}, {"ttm_total_days", Int64.Type}, {"l90d_revenue", Int64.Type}, {"l90d_revenue_native", Int64.Type}, {"l90d_avg_rate", type number}, {"l90d_avg_rate_native", type number}, {"l90d_occupancy", type number}, {"l90d_adjusted_occupancy", type number}, {"l90d_revpar", type number}, {"l90d_revpar_native", type number}, {"l90d_adjusted_revpar", type number}, {"l90d_adjusted_revpar_native", type number}, {"l90d_avg_min_nights", type number}, {"l90d_avg_length_of_stay", type number}, {"l90d_reserved_days", Int64.Type}, {"l90d_blocked_days", Int64.Type}, {"l90d_available_days", Int64.Type}, {"l90d_total_days", Int64.Type}, {"City", type text}, {"Listing Type", type text}, {"Listing Type Group", type text}}),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Filled NAN for guests using List Type group and City",{"Listing Type Group"}),
+				    #"Merged Queries2" = Table.NestedJoin(#"Removed Columns2", {"currency"}, #"Currency Converter", {"Currency"}, "Currency Convertor", JoinKind.LeftOuter),
+				    #"Expanded Currency Convertor" = Table.ExpandTableColumn(#"Merged Queries2", "Currency Convertor", {"Value Wrt Usd"}, {"Value Wrt Usd"}),
+				    #"Removed Columns3" = Table.RemoveColumns(#"Expanded Currency Convertor",{"Value Wrt Usd", "listing_type", "room_type", "currency"}),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Removed Columns3",{{"listing_id", "Listing ID"}, {"listing_name", "Listing Name"}, {"description", "Description"}, {"cover_photo_url", "Cover Photo"}, {"photos_count", "Photo Count"}, {"photo_urls", "Photos"}, {"host_id", "Host ID"}, {"host_name", "Host Name"}, {"cohost_ids", "Cohost IDs"}, {"cohost_names", "Cohost Names"}, {"superhost", "Is SuperHost"}, {"latitude", "Latitude"}, {"longitude", "Longitude"}, {"guests", "Guest Count"}, {"bedrooms", "No of Bedrooms"}, {"beds", "No of Beds"}, {"baths", "No of Baths"}, {"instant_book", "Instantly Booked"}, {"professional_management", "Prof Management"}, {"min_nights", "Min Nights to Stay"}, {"cancellation_policy", "Cancellation Policy"}, {"guest_favorite", "Is Guest Favourite"}, {"exact_location", "Exact Location Available"}, {"cleaning_fee", "CLeaning Fees"}, {"extra_guest_fee", "Extra Guest Fees"}, {"single_fee_structure", "Single Fee Structure"}, {"num_reviews", "Number of Reviews"}}),
+				    #"Removed Columns4" = Table.RemoveColumns(#"Renamed Columns2",{"Number of Reviews"}),
+				    #"Renamed Columns3" = Table.RenameColumns(#"Removed Columns4",{{"rating_overall", "Overall Rating"}, {"rating_accuracy", "Rating Accuracy"}}),
+				    #"Merged Queries3" = Table.NestedJoin(#"Renamed Columns3", {"Cancellation Policy"}, #"Cancellation Policies", {"Cancellation Policy"}, "Cancellation Policies", JoinKind.LeftOuter),
+				    #"Expanded Cancellation Policies" = Table.ExpandTableColumn(#"Merged Queries3", "Cancellation Policies", {"Cancel Policy Code"}, {"Cancel Policy Code"}),
+				    #"Merged Queries4" = Table.NestedJoin(#"Expanded Cancellation Policies", {"Listing Type"}, #"Listing Types", {"Listing Type"}, "Listing Types", JoinKind.LeftOuter),
+				    #"Expanded Listing Types" = Table.ExpandTableColumn(#"Merged Queries4", "Listing Types", {"Listing Type"}, {"Listing Type.1"}),
+				    #"Removed Columns5" = Table.RemoveColumns(#"Expanded Listing Types",{"Listing Type"}),
+				    #"Renamed Columns4" = Table.RenameColumns(#"Removed Columns5",{{"Listing Type.1", "Listing Type"}}),
+				    #"Removed Columns6" = Table.RemoveColumns(#"Renamed Columns4",{"Cohost IDs"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Removed Columns6","","No Cohosts for the AirBNB",Replacer.ReplaceValue,{"Cohost Names"}),
+				    #"Parsed Description" =
+				    Table.TransformColumns(
+				        #"Replaced Value",
+				        {
+				            {
+				                "Description",
+				                each
+				                    let
+				                        Parsed = Html.Table(
+				                            _,
+				                            {{"Text", ":root"}}
+				                        )
+				                    in
+				                        if Table.IsEmpty(Parsed)
+				                        then null
+				                        else Parsed{0}[Text],
+				                type text
+				            }
+				        }
+				    ),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Parsed Description","","No Description Available",Replacer.ReplaceValue,{"Description"}),
+				    #"Renamed Columns5" = Table.RenameColumns(#"Replaced Value1",{{"registration", "Is Registered"}, {"amenities", "Amenities"}, {"checkin_time", "Checkin Time"}, {"checkout_time", "Checkout Time"}, {"rating_checkin", "Checkin Rating"}, {"rating_cleanliness", "Cleanliness Rating"}, {"rating_communication", "Commn Rating"}, {"rating_location", "Location Rating"}, {"rating_value", "Value Rating"}}),
+				    #"Removed Columns7" = Table.RemoveColumns(#"Renamed Columns5",{"ttm_revenue_native", "ttm_avg_rate_native", "ttm_revpar_native", "ttm_adjusted_revpar_native", "l90d_revenue_native", "l90d_avg_rate_native", "l90d_revpar_native", "l90d_adjusted_revpar_native"}),
+				    #"Renamed Columns6" = Table.RenameColumns(#"Removed Columns7",{{"ttm_revenue", "TTM Revenue"}, {"ttm_avg_rate", "TTM Avg Rate"}, {"ttm_occupancy", "TTM Occupancy Rate"}, {"ttm_adjusted_occupancy", "TTM Adjusted Occupancy Rate"}, {"ttm_revpar", "TTM Revpar"}, {"ttm_adjusted_revpar", "TTM Adjusted Revpar"}, {"ttm_avg_min_nights", "TTM Avg Min Nights"}, {"ttm_avg_length_of_stay", "TTM Avg Length of Stay"}, {"ttm_reserved_days", "TTM Reserved Days"}, {"ttm_blocked_days", "TTM Blocked Days"}, {"ttm_available_days", "TTM Available Days"}, {"ttm_total_days", "TTM Total Days"}, {"l90d_revenue", "Revenue L90D"}, {"l90d_avg_rate", "Avg Rate L90D"}, {"l90d_occupancy", "Occupancy L90D"}, {"l90d_adjusted_occupancy", "Adjusted Occupancy L90D"}, {"l90d_revpar", "Revpar L90D"}, {"l90d_adjusted_revpar", "Adjusted Revpar L90D"}, {"l90d_avg_min_nights", "Avg Min Nights L90D"}, {"l90d_avg_length_of_stay", "Avg Length Of Stay L90D"}, {"l90d_reserved_days", "Reserved Days in L90D"}, {"l90d_blocked_days", "Blocked Days in L90D"}, {"l90d_available_days", "Available Days in L90D"}}),
+				    #"Removed Columns8" = Table.RemoveColumns(#"Renamed Columns6",{"l90d_total_days", "TTM Total Days"}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Removed Columns8",{{"Amenities", Text.Proper, type text}}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Capitalized Each Word","","No Photos Available",Replacer.ReplaceValue,{"Photos"}),
+				    #"Removed Columns9" = Table.RemoveColumns(#"Replaced Value2",{"Photo Count"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns9",{{"Checkin Time", type time}, {"Checkout Time", type time}, {"TTM Occupancy Rate", Percentage.Type}, {"TTM Adjusted Occupancy Rate", Percentage.Type}, {"Occupancy L90D", Percentage.Type}, {"Adjusted Occupancy L90D", Percentage.Type}}),
+				    #"Renamed Columns7" = Table.RenameColumns(#"Changed Type1",{{"Revenue L90D", "Revenue in L90D"}, {"Avg Rate L90D", "Avg Rate in L90D"}, {"Occupancy L90D", "Occupancy in L90D"}, {"Adjusted Occupancy L90D", "Adjusted Occupancy in L90D"}, {"Revpar L90D", "Revpar in L90D"}, {"Adjusted Revpar L90D", "Adjusted Revpar in L90D"}, {"Avg Min Nights L90D", "Avg Min Nights in L90D"}, {"Avg Length Of Stay L90D", "Avg Length Of Stay in L90D"}})
+				in
+				    #"Renamed Columns7"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

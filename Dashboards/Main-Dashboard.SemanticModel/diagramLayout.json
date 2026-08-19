@@ -1,0 +1,165 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 388.43504499014392,
+            "y": 345.05465294534207
+          },
+          "nodeIndex": "Calendar Rates",
+          "nodeLineageTag": "9b97b9c3-f2a4-44dc-b871-e1b1cced1d05",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 966.94966550539016,
+            "y": 670.03866522757517
+          },
+          "nodeIndex": "Cities",
+          "nodeLineageTag": "8a98aa61-df83-491c-9d19-14ce804ef975",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 320.25355616863538,
+            "y": 858.55267121191116
+          },
+          "nodeIndex": "Dates",
+          "nodeLineageTag": "39f07fe5-478d-455e-b6a3-50b0ddf21c06",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 632.05458980966387,
+            "y": 685.279719062277
+          },
+          "nodeIndex": "Ratings",
+          "nodeLineageTag": "b9248cfe-1f1e-43e7-b7ec-1ef67a570f89",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 736.84970737663855,
+            "y": 340.47700192526531
+          },
+          "nodeIndex": "Listings",
+          "nodeLineageTag": "9c10487d-111c-4859-b025-78eee1c47ad6",
+          "size": {
+            "height": 191,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1537.1736331249574,
+            "y": 660.54901644063136
+          },
+          "nodeIndex": "Listing Types",
+          "nodeLineageTag": "3d57ecdd-eeb2-49c2-bc02-a2736884ab3b",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1452.6643418489675,
+            "y": 28.421882147068516
+          },
+          "nodeIndex": "Metrics",
+          "nodeLineageTag": "abf2c8cb-f276-4ca0-b0c6-8cfdfc12cb09",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1256.6226422882951,
+            "y": 663.31051954161217
+          },
+          "nodeIndex": "Cancellation Policies",
+          "nodeLineageTag": "49d88916-3738-4724-95fd-0f0ddcacb89d",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1114.8137001189552,
+            "y": 55.674700399423848
+          },
+          "nodeIndex": "Currency Converter",
+          "nodeLineageTag": "909cbadb-a4c6-42f4-a09e-5b97c37877cf",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1825.1173983796114,
+            "y": 646.24825386370992
+          },
+          "nodeIndex": "Listing Amenities",
+          "nodeLineageTag": "7792d9ec-7d8c-4a05-8cb6-bfff46d22c45",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 1823.7080652323727,
+            "y": 878.54665880048583
+          },
+          "nodeIndex": "Amenities",
+          "nodeLineageTag": "a3c23c04-15ca-4922-912e-7ea559fc3333",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 1
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 70.95554390096882,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

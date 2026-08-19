@@ -1,0 +1,66 @@
+table Ratings
+	lineageTag: b9248cfe-1f1e-43e7-b7ec-1ef67a570f89
+
+	column 'Listing ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: a2b5bd8d-6611-4e87-9803-022eee89b5f4
+		summarizeBy: none
+		sourceColumn: Listing ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reviewer ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: bb057e0f-e60d-4df1-a94f-4f51a36b42f5
+		summarizeBy: count
+		sourceColumn: Reviewer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 7b117274-c92c-4825-b789-d381c90e8a4f
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: b46c41df-d304-4a9e-aff2-3553a10a281a
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Ratings = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\Administrator\home\sarvesh\AirBNB Analysis\Datasets\ratings"),
+				    #"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File (3)", each #"Transform File (3)"([Content])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File (3)"}),
+				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File (3)", Table.ColumnNames(#"Transform File (3)"(#"Sample File (3)"))),
+				    #"Removed Columns" = Table.RemoveColumns(#"Expanded Table Column1",{"num_reviews"}),
+				    #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(#"Removed Columns", {{"reviewers", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "reviewers"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"reviewers", Int64.Type}}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type",{"Source.Name"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns1",{{"date", type date}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Changed Type1", {"date"}, Dates, {"Date"}, "Dates", JoinKind.LeftOuter),
+				    #"Expanded Dates" = Table.ExpandTableColumn(#"Merged Queries", "Dates", {"Month", "Year"}, {"Month", "Year"}),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Expanded Dates",{"date"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns2",{{"listing_id", "Listing ID"}, {"reviewers", "Reviewer ID"}}),
+				    #"Sorted Rows" = Table.Sort(#"Renamed Columns",{{"Listing ID", Order.Ascending}}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Sorted Rows",{{"Listing ID", Int64.Type}})
+				in
+				    #"Changed Type2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

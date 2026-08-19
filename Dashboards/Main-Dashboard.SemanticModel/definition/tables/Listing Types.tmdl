@@ -1,0 +1,32 @@
+table 'Listing Types'
+	lineageTag: 3d57ecdd-eeb2-49c2-bc02-a2736884ab3b
+
+	column 'Listing Type'
+		dataType: string
+		lineageTag: 6252e78b-b89a-4e95-b4df-9942dfdfcf0a
+		summarizeBy: none
+		sourceColumn: Listing Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Listing Type Group'
+		dataType: string
+		lineageTag: 4640707d-30d9-42a5-8492-260c7e8bca5c
+		summarizeBy: none
+		sourceColumn: Listing Type Group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Listing Types' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("lZTPbsMgDMZfBeVcaQ8xTeqx6rZT1YOTuAkawR2YVH37QZZkyl/YKTL+fWCbj1wu2ZtmaVDkTleg6JEdhpUjNZhdDyNRkC5pL80MFW4DlUPLwjrJMagmZ3eYOsSbWUU33s7eFRQ7YoOaQQmn5c4eFk0rCywF3MFw4yXbLNNDR9ppoQCWpCN9tVIpWEkfw+45QSjiU8tvh+Jk6I6Gn13+ZGQL7FsjajwyhOcQzvNCapGHxnQpcoPwdQPLSaI/90TZwUdRcGqYNHyYdZTuh53AWUaVRiYe3Ts0yk3NmIBbWXqJ9JrU7latHFV5U6NJBHXyWAaDL8BzD3Q11vR7HcfwFS/ilZoGTRGaXgjWrJykI8fdQ/rPYaNRUuDVue8J32swHp+/oX55CxtrinBTp83hD6mfg6MWf5jrDw==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Listing Type" = _t, #"Listing Type Group" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Listing Type", type text}, {"Listing Type Group", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

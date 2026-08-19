@@ -1,0 +1,139 @@
+expression Parameter2 = #"Sample File (2)" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File (2)", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 0d155423-79fe-4fc3-b104-57567e6c3594
+	queryGroup: 'Transform File from calendar_rates\Helper Queries'
+
+	annotation PBI_ResultType = Binary
+
+expression Parameter3 = #"Sample File (3)" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File (3)", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 7114ef68-6fe3-44af-b7a7-adba87380f27
+	queryGroup: 'Transform File from ratings\Helper Queries'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Sample File (2)' =
+		let
+		    Source = Folder.Files("C:\Users\Administrator\home\sarvesh\AirBNB Analysis\Datasets\calendar_rates"),
+		    Navigation1 = Source{0}[Content]
+		in
+		    Navigation1
+	lineageTag: 65e9ad44-0c1c-4b9d-b754-4033d0ca16c4
+	queryGroup: 'Transform File from calendar_rates\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample File (2)' =
+		let
+		    Source = Csv.Document(Parameter2,[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+		in
+		    #"Promoted Headers"
+	lineageTag: d5088439-0661-46ff-8965-9124bf2e8fe1
+	queryGroup: 'Transform File from calendar_rates'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Transform File (2)' =
+		let
+		    Source = (Parameter2 as binary) => let
+		    Source = Csv.Document(Parameter2,[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+		in
+		    #"Promoted Headers"
+		in
+		    Source
+	mAttributes: [ FunctionQueryBinding = "{""exemplarFormulaName"":""Transform Sample File (2)""}" ]
+	lineageTag: 0dd5be12-be9c-4357-b1d8-2649d728ccb1
+	queryGroup: 'Transform File from calendar_rates\Helper Queries'
+
+	annotation PBI_ResultType = Function
+
+expression 'Sample File (3)' =
+		let
+		    Source = Folder.Files("C:\Users\Administrator\home\sarvesh\AirBNB Analysis\Datasets\ratings"),
+		    Navigation1 = Source{0}[Content]
+		in
+		    Navigation1
+	lineageTag: 547835bf-7523-4d7a-9b93-2b8d0ac54d91
+	queryGroup: 'Transform File from ratings\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample File (3)' =
+		let
+		    Source = Csv.Document(Parameter3,[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+		in
+		    #"Promoted Headers"
+	lineageTag: 92004343-f52d-493f-b327-28c2135f3202
+	queryGroup: 'Transform File from ratings'
+
+	annotation PBI_ResultType = Table
+
+expression 'Transform File (3)' =
+		let
+		    Source = (Parameter3 as binary) => let
+		    Source = Csv.Document(Parameter3,[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+		in
+		    #"Promoted Headers"
+		in
+		    Source
+	mAttributes: [ FunctionQueryBinding = "{""exemplarFormulaName"":""Transform Sample File (3)""}" ]
+	lineageTag: af97fbc7-9e6e-47be-ab41-8f215087d2ed
+	queryGroup: 'Transform File from ratings\Helper Queries'
+
+	annotation PBI_ResultType = Function
+
+expression Parameter1 = #"Sample File" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 3abfeafc-2148-4181-85fe-ac96d07b660e
+	queryGroup: 'Transform File from listings\Helper Queries'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Sample File' =
+		let
+		    Source = Folder.Files("C:\Users\Administrator\home\sarvesh\AirBNB Analysis\Datasets\listings"),
+		    Navigation1 = Source{0}[Content]
+		in
+		    Navigation1
+	lineageTag: a9eec7c0-4b5b-4d7b-825e-69e03593c795
+	queryGroup: 'Transform File from listings\Helper Queries'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample File' =
+		let
+		    Source = Table.FromColumns({Lines.FromBinary(Parameter1, null, null)}),
+		    #"Transformed Column" = Table.TransformColumns(Source, {"Column1", Json.Document}),
+		    #"Expanded Column1" = Table.ExpandRecordColumn(#"Transformed Column", "Column1", {"listing_id", "listing_name", "description", "listing_type", "room_type", "cover_photo_url", "photos_count", "photo_urls", "host_id", "host_name", "cohost_ids", "cohost_names", "superhost", "latitude", "longitude", "guests", "bedrooms", "beds", "baths", "registration", "amenities", "instant_book", "professional_management", "min_nights", "cancellation_policy", "checkin_time", "checkout_time", "guest_favorite", "exact_location", "currency", "cleaning_fee", "extra_guest_fee", "single_fee_structure", "num_reviews", "rating_overall", "rating_accuracy", "rating_checkin", "rating_cleanliness", "rating_communication", "rating_location", "rating_value", "ttm_revenue", "ttm_revenue_native", "ttm_avg_rate", "ttm_avg_rate_native", "ttm_occupancy", "ttm_adjusted_occupancy", "ttm_revpar", "ttm_revpar_native", "ttm_adjusted_revpar", "ttm_adjusted_revpar_native", "ttm_avg_min_nights", "ttm_avg_length_of_stay", "ttm_reserved_days", "ttm_blocked_days", "ttm_available_days", "ttm_total_days", "l90d_revenue", "l90d_revenue_native", "l90d_avg_rate", "l90d_avg_rate_native", "l90d_occupancy", "l90d_adjusted_occupancy", "l90d_revpar", "l90d_revpar_native", "l90d_adjusted_revpar", "l90d_adjusted_revpar_native", "l90d_avg_min_nights", "l90d_avg_length_of_stay", "l90d_reserved_days", "l90d_blocked_days", "l90d_available_days", "l90d_total_days"}, {"listing_id", "listing_name", "description", "listing_type", "room_type", "cover_photo_url", "photos_count", "photo_urls", "host_id", "host_name", "cohost_ids", "cohost_names", "superhost", "latitude", "longitude", "guests", "bedrooms", "beds", "baths", "registration", "amenities", "instant_book", "professional_management", "min_nights", "cancellation_policy", "checkin_time", "checkout_time", "guest_favorite", "exact_location", "currency", "cleaning_fee", "extra_guest_fee", "single_fee_structure", "num_reviews", "rating_overall", "rating_accuracy", "rating_checkin", "rating_cleanliness", "rating_communication", "rating_location", "rating_value", "ttm_revenue", "ttm_revenue_native", "ttm_avg_rate", "ttm_avg_rate_native", "ttm_occupancy", "ttm_adjusted_occupancy", "ttm_revpar", "ttm_revpar_native", "ttm_adjusted_revpar", "ttm_adjusted_revpar_native", "ttm_avg_min_nights", "ttm_avg_length_of_stay", "ttm_reserved_days", "ttm_blocked_days", "ttm_available_days", "ttm_total_days", "l90d_revenue", "l90d_revenue_native", "l90d_avg_rate", "l90d_avg_rate_native", "l90d_occupancy", "l90d_adjusted_occupancy", "l90d_revpar", "l90d_revpar_native", "l90d_adjusted_revpar", "l90d_adjusted_revpar_native", "l90d_avg_min_nights", "l90d_avg_length_of_stay", "l90d_reserved_days", "l90d_blocked_days", "l90d_available_days", "l90d_total_days"}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Column1",{{"listing_id", Int64.Type}, {"listing_name", type text}, {"description", type text}, {"listing_type", type text}, {"room_type", type text}, {"cover_photo_url", type text}, {"photos_count", Int64.Type}, {"photo_urls", type text}, {"host_id", Int64.Type}, {"host_name", type text}, {"cohost_ids", type number}, {"cohost_names", type text}, {"superhost", type logical}, {"latitude", type number}, {"longitude", type number}, {"guests", Int64.Type}, {"bedrooms", Int64.Type}, {"beds", Int64.Type}, {"baths", type number}, {"registration", type logical}, {"amenities", type text}, {"instant_book", type logical}, {"professional_management", type logical}, {"min_nights", Int64.Type}, {"cancellation_policy", type text}, {"checkin_time", type time}, {"checkout_time", type time}, {"guest_favorite", type logical}, {"exact_location", type logical}, {"currency", type text}, {"cleaning_fee", Int64.Type}, {"extra_guest_fee", Int64.Type}, {"single_fee_structure", type logical}, {"num_reviews", Int64.Type}, {"rating_overall", type number}, {"rating_accuracy", type number}, {"rating_checkin", type number}, {"rating_cleanliness", type number}, {"rating_communication", type number}, {"rating_location", type number}, {"rating_value", type number}, {"ttm_revenue", Int64.Type}, {"ttm_revenue_native", Int64.Type}, {"ttm_avg_rate", type number}, {"ttm_avg_rate_native", type number}, {"ttm_occupancy", type number}, {"ttm_adjusted_occupancy", type number}, {"ttm_revpar", type number}, {"ttm_revpar_native", type number}, {"ttm_adjusted_revpar", type number}, {"ttm_adjusted_revpar_native", type number}, {"ttm_avg_min_nights", type number}, {"ttm_avg_length_of_stay", type number}, {"ttm_reserved_days", Int64.Type}, {"ttm_blocked_days", Int64.Type}, {"ttm_available_days", Int64.Type}, {"ttm_total_days", Int64.Type}, {"l90d_revenue", Int64.Type}, {"l90d_revenue_native", Int64.Type}, {"l90d_avg_rate", type number}, {"l90d_avg_rate_native", type number}, {"l90d_occupancy", type number}, {"l90d_adjusted_occupancy", type number}, {"l90d_revpar", type number}, {"l90d_revpar_native", type number}, {"l90d_adjusted_revpar", type number}, {"l90d_adjusted_revpar_native", type number}, {"l90d_avg_min_nights", type number}, {"l90d_avg_length_of_stay", type number}, {"l90d_reserved_days", Int64.Type}, {"l90d_blocked_days", Int64.Type}, {"l90d_available_days", Int64.Type}, {"l90d_total_days", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: cc17de23-4199-4f6d-bbc2-9f8d413485c6
+	queryGroup: 'Transform File from listings'
+
+	annotation PBI_ResultType = Exception
+
+expression 'Transform File' =
+		let
+		    Source = (Parameter1 as binary) => let
+		    Source = Table.FromColumns({Lines.FromBinary(Parameter1, null, null)}),
+		    #"Transformed Column" = Table.TransformColumns(Source, {"Column1", Json.Document}),
+		    #"Expanded Column1" = Table.ExpandRecordColumn(#"Transformed Column", "Column1", {"listing_id", "listing_name", "description", "listing_type", "room_type", "cover_photo_url", "photos_count", "photo_urls", "host_id", "host_name", "cohost_ids", "cohost_names", "superhost", "latitude", "longitude", "guests", "bedrooms", "beds", "baths", "registration", "amenities", "instant_book", "professional_management", "min_nights", "cancellation_policy", "checkin_time", "checkout_time", "guest_favorite", "exact_location", "currency", "cleaning_fee", "extra_guest_fee", "single_fee_structure", "num_reviews", "rating_overall", "rating_accuracy", "rating_checkin", "rating_cleanliness", "rating_communication", "rating_location", "rating_value", "ttm_revenue", "ttm_revenue_native", "ttm_avg_rate", "ttm_avg_rate_native", "ttm_occupancy", "ttm_adjusted_occupancy", "ttm_revpar", "ttm_revpar_native", "ttm_adjusted_revpar", "ttm_adjusted_revpar_native", "ttm_avg_min_nights", "ttm_avg_length_of_stay", "ttm_reserved_days", "ttm_blocked_days", "ttm_available_days", "ttm_total_days", "l90d_revenue", "l90d_revenue_native", "l90d_avg_rate", "l90d_avg_rate_native", "l90d_occupancy", "l90d_adjusted_occupancy", "l90d_revpar", "l90d_revpar_native", "l90d_adjusted_revpar", "l90d_adjusted_revpar_native", "l90d_avg_min_nights", "l90d_avg_length_of_stay", "l90d_reserved_days", "l90d_blocked_days", "l90d_available_days", "l90d_total_days"}, {"listing_id", "listing_name", "description", "listing_type", "room_type", "cover_photo_url", "photos_count", "photo_urls", "host_id", "host_name", "cohost_ids", "cohost_names", "superhost", "latitude", "longitude", "guests", "bedrooms", "beds", "baths", "registration", "amenities", "instant_book", "professional_management", "min_nights", "cancellation_policy", "checkin_time", "checkout_time", "guest_favorite", "exact_location", "currency", "cleaning_fee", "extra_guest_fee", "single_fee_structure", "num_reviews", "rating_overall", "rating_accuracy", "rating_checkin", "rating_cleanliness", "rating_communication", "rating_location", "rating_value", "ttm_revenue", "ttm_revenue_native", "ttm_avg_rate", "ttm_avg_rate_native", "ttm_occupancy", "ttm_adjusted_occupancy", "ttm_revpar", "ttm_revpar_native", "ttm_adjusted_revpar", "ttm_adjusted_revpar_native", "ttm_avg_min_nights", "ttm_avg_length_of_stay", "ttm_reserved_days", "ttm_blocked_days", "ttm_available_days", "ttm_total_days", "l90d_revenue", "l90d_revenue_native", "l90d_avg_rate", "l90d_avg_rate_native", "l90d_occupancy", "l90d_adjusted_occupancy", "l90d_revpar", "l90d_revpar_native", "l90d_adjusted_revpar", "l90d_adjusted_revpar_native", "l90d_avg_min_nights", "l90d_avg_length_of_stay", "l90d_reserved_days", "l90d_blocked_days", "l90d_available_days", "l90d_total_days"}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Column1",{{"listing_id", Int64.Type}, {"listing_name", type text}, {"description", type text}, {"listing_type", type text}, {"room_type", type text}, {"cover_photo_url", type text}, {"photos_count", Int64.Type}, {"photo_urls", type text}, {"host_id", Int64.Type}, {"host_name", type text}, {"cohost_ids", type number}, {"cohost_names", type text}, {"superhost", type logical}, {"latitude", type number}, {"longitude", type number}, {"guests", Int64.Type}, {"bedrooms", Int64.Type}, {"beds", Int64.Type}, {"baths", type number}, {"registration", type logical}, {"amenities", type text}, {"instant_book", type logical}, {"professional_management", type logical}, {"min_nights", Int64.Type}, {"cancellation_policy", type text}, {"checkin_time", type time}, {"checkout_time", type time}, {"guest_favorite", type logical}, {"exact_location", type logical}, {"currency", type text}, {"cleaning_fee", Int64.Type}, {"extra_guest_fee", Int64.Type}, {"single_fee_structure", type logical}, {"num_reviews", Int64.Type}, {"rating_overall", type number}, {"rating_accuracy", type number}, {"rating_checkin", type number}, {"rating_cleanliness", type number}, {"rating_communication", type number}, {"rating_location", type number}, {"rating_value", type number}, {"ttm_revenue", Int64.Type}, {"ttm_revenue_native", Int64.Type}, {"ttm_avg_rate", type number}, {"ttm_avg_rate_native", type number}, {"ttm_occupancy", type number}, {"ttm_adjusted_occupancy", type number}, {"ttm_revpar", type number}, {"ttm_revpar_native", type number}, {"ttm_adjusted_revpar", type number}, {"ttm_adjusted_revpar_native", type number}, {"ttm_avg_min_nights", type number}, {"ttm_avg_length_of_stay", type number}, {"ttm_reserved_days", Int64.Type}, {"ttm_blocked_days", Int64.Type}, {"ttm_available_days", Int64.Type}, {"ttm_total_days", Int64.Type}, {"l90d_revenue", Int64.Type}, {"l90d_revenue_native", Int64.Type}, {"l90d_avg_rate", type number}, {"l90d_avg_rate_native", type number}, {"l90d_occupancy", type number}, {"l90d_adjusted_occupancy", type number}, {"l90d_revpar", type number}, {"l90d_revpar_native", type number}, {"l90d_adjusted_revpar", type number}, {"l90d_adjusted_revpar_native", type number}, {"l90d_avg_min_nights", type number}, {"l90d_avg_length_of_stay", type number}, {"l90d_reserved_days", Int64.Type}, {"l90d_blocked_days", Int64.Type}, {"l90d_available_days", Int64.Type}, {"l90d_total_days", Int64.Type}})
+		in
+		    #"Changed Type"
+		in
+		    Source
+	mAttributes: [ FunctionQueryBinding = "{""exemplarFormulaName"":""Transform Sample File""}" ]
+	lineageTag: 34e5b568-1cf5-4e06-a9f3-ad11c45ec45f
+	queryGroup: 'Transform File from listings\Helper Queries'
+
+	annotation PBI_ResultType = Function
+

@@ -1,0 +1,72 @@
+table Cities
+	lineageTag: 8a98aa61-df83-491c-9d19-14ce804ef975
+
+	measure 'Selected City' = SELECTEDVALUE(Cities[City])
+		lineageTag: 4ce0d9a7-0a2a-45f5-897b-06a568eed426
+
+	measure 'Selected Country' = SELECTEDVALUE(Cities[Country])
+		lineageTag: 7cfce829-eaa2-4bc5-85fc-a4b5a6122c23
+
+	column City
+		dataType: string
+		lineageTag: 8885d5e3-4eff-4e25-97ce-947d99d9492d
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 690fb0c3-480d-481d-bbeb-bc333580398d
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Cities = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WckrMS0/MyS9KVdJR8sxLyUxUitWJVnJJzcnIRBHxyS9WcMxLT81JLQaKhwY7gkV9S3OTElEVBiQWZYKUuBUl5iWngoVC8rMr84FCXokFiXlKsbEA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [City = _t, Country = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"City", type text}, {"Country", type text}}),
+				    #"Add Cities" = Table.InsertRows(#"Changed Type", Table.RowCount(#"Changed Type"), {
+				        [
+				            City = "London",
+				            Country = "UK"
+				        ],
+				        [
+				            City = "Edinburgh",
+				            Country = "UK"
+				        ],
+				        [
+				            City = "Birmingham",
+				            Country = "UK"
+				        ],
+				        [
+				            City = "Lyon",
+				            Country = "France"
+				        ],
+				        [
+				            City = "Marseille",
+				            Country = "France"
+				        ],
+				        [
+				            City = "Osaka",
+				            Country = "Japan"
+				        ],
+				        [City = "Kyoto", Country = "Japan"], [City = "New York", Country = "USA"],
+				        [City = "Miami", Country = "USA"]
+				    }),
+				    #"Added Custom" = Table.AddColumn(#"Add Cities", "Currency", each if [Country] = "India" then "INR" else if [Country] = "USA" then "USD" else if [Country] = "UK" then "GBP" else if [Country] = "France" then "EUR" else "JPY"),
+				    #"Merged Queries" = Table.NestedJoin(#"Added Custom", {"Currency"}, #"Currency Converter", {"Currency"}, "Currency Convertor", JoinKind.LeftOuter),
+				    #"Expanded Currency Convertor" = Table.ExpandTableColumn(#"Merged Queries", "Currency Convertor", {"Currency"}, {"Currency.1"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Expanded Currency Convertor",{"Currency"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"Currency.1", "Currency"}}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Renamed Columns",{"Currency"})
+				in
+				    #"Removed Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

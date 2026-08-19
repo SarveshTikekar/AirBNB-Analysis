@@ -1,0 +1,51 @@
+table 'Currency Converter'
+	lineageTag: 909cbadb-a4c6-42f4-a09e-5b97c37877cf
+
+	measure 'Selected Rate' = ```
+			
+			Var Curr = [Selected Currency] 
+			RETURN 
+			    LOOKUPVALUE('Currency Converter'[Value Wrt Usd], 'Currency Converter'[Currency], Curr)
+			```
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 7c8ef91b-156b-444b-b85b-87fef9788939
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Selected Currency' = IF(HASONEVALUE('Currency Converter'[Currency]), SELECTEDVALUE('Currency Converter'[Currency]), "USD")
+		lineageTag: 43384983-db83-412d-bb5f-6c62139a9dfa
+
+	column Currency
+		dataType: string
+		lineageTag: f4c701c4-21a3-41b5-bfab-713b1a5d85c0
+		summarizeBy: none
+		sourceColumn: Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Value Wrt Usd'
+		dataType: decimal
+		formatString: 0.00
+		lineageTag: 3fa11fd9-6d72-4985-864f-9ca9737ac544
+		summarizeBy: none
+		sourceColumn: Value Wrt Usd
+
+		annotation SummarizationSetBy = User
+
+	partition 'Currency Converter' = m
+		mode: import
+		source =
+				let
+				    Source = Web.Contents("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json"),
+				    JsonData = Json.Document(Source)[usd],
+				    #"Currency Converter" = Record.ToTable(JsonData),
+				    #"Renamed Columns" = Table.RenameColumns(#"Currency Converter",{{"Name", "Currency"}, {"Value", "Value Wrt Usd"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Value Wrt Usd", Currency.Type}}),
+				    #"Uppercased Text" = Table.TransformColumns(#"Changed Type",{{"Currency", Text.Upper, type text}})
+				in
+				    #"Uppercased Text"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

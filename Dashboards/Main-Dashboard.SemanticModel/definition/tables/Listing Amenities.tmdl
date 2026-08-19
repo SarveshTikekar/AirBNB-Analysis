@@ -1,0 +1,35 @@
+table 'Listing Amenities'
+	lineageTag: 7792d9ec-7d8c-4a05-8cb6-bfff46d22c45
+
+	column 'Listing ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 193920a0-11e3-4a55-8979-199e0c8df7ac
+		summarizeBy: none
+		sourceColumn: Listing ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amenities
+		dataType: string
+		lineageTag: f98d0092-e1ca-4fc4-94d4-04aa66d7721d
+		summarizeBy: none
+		sourceColumn: Amenities
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Listing Amenities' = m
+		mode: import
+		source =
+				let
+				    Source = Listings,
+				    #"Select Listing ID and Amenities" = Table.SelectColumns(Source, {"Listing ID", "Amenities"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Select Listing ID and Amenities",{{"Listing ID", Int64.Type}, {"Amenities", type text}}),
+				    #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(#"Changed Type", {{"Amenities", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "Amenities")
+				in
+				    #"Split Column by Delimiter"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

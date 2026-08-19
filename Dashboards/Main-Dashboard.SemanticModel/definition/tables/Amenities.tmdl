@@ -1,0 +1,24 @@
+table Amenities
+	lineageTag: 681c78a4-7d18-415e-b1a8-497e6ffbb571
+
+	column Amenities
+		dataType: string
+		lineageTag: 05a103e3-c181-4bd0-bcaf-0b64b29ee8c5
+		summarizeBy: none
+		sourceColumn: Amenities
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Amenities = m
+		mode: import
+		source =
+				let
+				    Source = #"Listing Amenities",
+				    Distinct = Table.SelectColumns(Table.Distinct(Source, {"Amenities"}), {"Amenities"})
+				in
+				    Distinct
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

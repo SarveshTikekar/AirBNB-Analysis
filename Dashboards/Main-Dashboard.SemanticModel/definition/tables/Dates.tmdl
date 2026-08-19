@@ -1,0 +1,52 @@
+table Dates
+	lineageTag: 39f07fe5-478d-455e-b6a3-50b0ddf21c06
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2290e2b4-95c4-43a0-a59d-68c351ec129d
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 49afab4a-8601-4783-a2ce-5aa3e7ed6bcd
+			defaultHierarchy: LocalDateTable_068a8ee2-b722-49f4-81e1-e037a810cbff.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Month
+		dataType: string
+		lineageTag: 0bb34754-d0cf-403d-afaa-61aa77cd86b5
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 2128d881-75e2-4e39-bb59-b9b157f50b10
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dates = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("VcvLCQAgDMDQXTwrtNX6mUXcfw1BRcjxETJnEE3Skol5WPGykwNUIZU0vqfWTyMzWUgn6+Pa", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Date = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Date", type date}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Month", each Date.MonthName([Date])),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "Year", each Date.Year([Date])),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"Year", Int64.Type}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,147 @@
+table 'Calendar Rates'
+	lineageTag: 9b97b9c3-f2a4-44dc-b871-e1b1cced1d05
+
+	column 'Listing ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: a7fb8ae8-70ab-4d47-a5cd-6867f680bc9e
+		summarizeBy: none
+		sourceColumn: Listing ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vacant Days'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c3457e2-2a56-4261-b3d8-6155552d1c1e
+		summarizeBy: sum
+		sourceColumn: Vacant Days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reserved Days'
+		dataType: int64
+		formatString: 0
+		lineageTag: b167a352-5aeb-47be-b39c-c3737648ea89
+		summarizeBy: sum
+		sourceColumn: Reserved Days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Occupancy Percentage'
+		dataType: double
+		lineageTag: ef4633ba-a53d-4c9f-b6ee-99de4072ccd3
+		summarizeBy: sum
+		sourceColumn: Occupancy Percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Revenue
+		dataType: int64
+		formatString: 0
+		lineageTag: e4edb2eb-faa2-40ff-a6dd-2e9795fee741
+		summarizeBy: sum
+		sourceColumn: Revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Average Rate'
+		dataType: double
+		lineageTag: 6859589d-b5c6-4ee3-bbde-d3d048fa5cf4
+		summarizeBy: sum
+		sourceColumn: Average Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Avg Booking Rate'
+		dataType: double
+		lineageTag: fc1a02c6-b53b-4d05-92fc-d9533b1ecfc5
+		summarizeBy: sum
+		sourceColumn: Avg Booking Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Avg Lead Booking Time'
+		dataType: double
+		lineageTag: e1d34b8d-f217-4579-a983-2fda6e04fe22
+		summarizeBy: sum
+		sourceColumn: Avg Lead Booking Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Avg Length of Stay'
+		dataType: double
+		lineageTag: fb79307a-1fc5-4837-b74e-2cf83476deea
+		summarizeBy: sum
+		sourceColumn: Avg Length of Stay
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Avg Min Nights'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5176ab9c-405e-46a4-aa0e-edf747c2e645
+		summarizeBy: sum
+		sourceColumn: Avg Min Nights
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: c61da255-d30f-4e9f-bbb6-b45011cf616e
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: double
+		formatString: 0
+		lineageTag: c5054d26-eca0-4caf-8f5e-920a433266ec
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Calendar Rates' = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\Administrator\home\sarvesh\AirBNB Analysis\Datasets\calendar_rates"),
+				    #"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File (2)", each #"Transform File (2)"([Content])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File (2)"}),
+				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File (2)", Table.ColumnNames(#"Transform File (2)"(#"Sample File (2)"))),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"listing_id", Int64.Type}, {"date", type date}, {"vacant_days", Int64.Type}, {"reserved_days", Int64.Type}, {"occupancy", type number}, {"revenue", Int64.Type}, {"rate_avg", type number}, {"booked_rate_avg", type number}, {"booking_lead_time_avg", Int64.Type}, {"length_of_stay_avg", Int64.Type}, {"min_nights_avg", Int64.Type}, {"native_booked_rate_avg", Int64.Type}, {"native_rate_avg", Int64.Type}, {"native_revenue", Int64.Type}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Source.Name"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns",{{"occupancy", Percentage.Type}}),
+				    #"Sorted Rows" = Table.Sort(#"Changed Type1",{{"listing_id", Order.Ascending}, {"date", Order.Ascending}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Sorted Rows",null,0,Replacer.ReplaceValue,{"booked_rate_avg"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,0,Replacer.ReplaceValue,{"booking_lead_time_avg"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1",null,0,Replacer.ReplaceValue,{"length_of_stay_avg"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Replaced Value2",{"native_booked_rate_avg", "native_rate_avg", "native_revenue"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"listing_id", "Listing ID"}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"date"}, Dates, {"Date"}, "Dates", JoinKind.LeftOuter),
+				    #"Expanded Dates" = Table.ExpandTableColumn(#"Merged Queries", "Dates", {"Month", "Year"}, {"Month", "Year"}),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Expanded Dates",{"date"}),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Removed Columns2",{{"reserved_days", "Reserved Days"}, {"occupancy", "Occupancy Percentage"}, {"revenue", "Revenue"}, {"rate_avg", "Average Rate"}, {"booked_rate_avg", "Avg Booking Rate"}, {"min_nights_avg", "Avg Min Nights"}, {"length_of_stay_avg", "Avg Length of Stay"}, {"booking_lead_time_avg", "Avg Lead Booking Time"}, {"vacant_days", "Vacant Days"}}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Renamed Columns2",null,"July",Replacer.ReplaceValue,{"Month"}),
+				    #"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3",null,2025,Replacer.ReplaceValue,{"Year"})
+				in
+				    #"Replaced Value4"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

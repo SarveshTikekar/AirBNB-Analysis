@@ -1,0 +1,33 @@
+# Raw analysis data is kept local.
+Datasets/
+
+# Power BI local state, caches, and machine-specific metadata.
+**/.pbi/
+*.abf
+*.pbi.cache
+
+# Common secret and credential files.
+.env
+.env.*
+*.env
+*.local
+*.secret
+*.secrets
+credentials.*
+secrets.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.cer
+*.crt
+id_rsa*
+id_ed25519*
+
+# Large Power BI exports that should not be committed alongside PBIP source.
+*.pbix
+*.pbit
+
+# Generic local noise.
+*.log
+*.tmp

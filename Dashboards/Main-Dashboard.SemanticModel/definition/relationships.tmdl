@@ -1,0 +1,41 @@
+relationship 49afab4a-8601-4783-a2ce-5aa3e7ed6bcd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dates.Date
+	toColumn: LocalDateTable_068a8ee2-b722-49f4-81e1-e037a810cbff.Date
+
+relationship AutoDetected_ab188e98-1f27-4a6c-8fb1-6ce936a3319f
+	fromColumn: 'Calendar Rates'.Month
+	toColumn: Dates.Month
+
+relationship AutoDetected_109df405-912b-4f56-93a9-aa572a873435
+	fromColumn: Ratings.Month
+	toColumn: Dates.Month
+
+relationship AutoDetected_03c1fc6c-b387-4eb3-ad9d-b957cbbd8538
+	fromColumn: 'Calendar Rates'.'Listing ID'
+	toColumn: Listings.'Listing ID'
+
+relationship AutoDetected_971eeb44-d2ce-49fd-80e5-9c6ba792d283
+	fromColumn: Listings.City
+	toColumn: Cities.City
+
+relationship 8b20aceb-31f8-a750-7771-8d81350ed373
+	fromColumn: Ratings.'Listing ID'
+	toColumn: Listings.'Listing ID'
+
+relationship AutoDetected_0311c9dd-d6b4-4bde-9ad5-f62b5959699a
+	fromColumn: Listings.'Cancel Policy Code'
+	toColumn: 'Cancellation Policies'.'Cancel Policy Code'
+
+relationship AutoDetected_243adaf8-3ecf-449b-8b94-4c7fba48b604
+	fromColumn: Listings.'Listing Type'
+	toColumn: 'Listing Types'.'Listing Type'
+
+relationship AutoDetected_229228ce-acb5-423c-b008-58251b81ca62
+	fromColumn: 'Listing Amenities'.'Listing ID'
+	toColumn: Listings.'Listing ID'
+
+relationship AutoDetected_b2c33d2e-fcbd-4a24-864d-11354c5780cd
+	fromColumn: 'Listing Amenities'.Amenities
+	toColumn: Amenities.Amenities
+
