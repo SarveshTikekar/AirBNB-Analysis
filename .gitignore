@@ -1,6 +1,12 @@
 # Raw analysis data is kept local.
 Datasets/
 
+# Components
+Assets/Components
+
+#For Kanpilot Kanban Board
+kanpilot.toml
+
 # Power BI local state, caches, and machine-specific metadata.
 **/.pbi/
 *.abf

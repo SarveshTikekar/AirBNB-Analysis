@@ -15,6 +15,140 @@ table Metrics
 
 		formatStringDefinition = "0 " &[Selected Currency]
 
+	measure 'Average Vacant Days' = AVERAGE('Calendar Rates'[Vacant Days])
+		lineageTag: 716d2908-7750-4f11-9df4-64416073a4ba
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Reserved Days' = AVERAGE('Calendar Rates'[Reserved Days])
+		lineageTag: 74ddd99b-222a-44c3-a9b9-68cb206546ad
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Booking Rate' = AVERAGE('Calendar Rates'[Average Rate])
+		lineageTag: 1ff82c19-88ce-4756-8e0d-15c083aee9fe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Booking Revenue' = AVERAGE('Calendar Rates'[Revenue])
+		lineageTag: b805861e-6ac9-4cf7-a7ed-7cdcd9144d27
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Occupancy Percentage' = AVERAGE('Calendar Rates'[Occupancy Percentage])
+		lineageTag: e5083bec-6b3b-4c55-a294-6e4bdab31921
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Revenue' = SUM('Calendar Rates'[Revenue])
+		formatString: 0
+		lineageTag: 97ab2249-9151-453a-97d9-da67680457b1
+
+	measure 'Median Reserved Days' = MEDIAN('Calendar Rates'[Reserved Days])
+		lineageTag: 24567a89-cca0-4f45-9c51-48fb28180021
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Median Vacant Days' = MEDIAN('Calendar Rates'[Vacant Days])
+		lineageTag: 63b1ea82-dd91-488e-a808-0276b528aa2d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Reviews' = COUNT(Ratings[Reviewer ID])
+		formatString: 0
+		lineageTag: ae01fd84-d4d9-4c2f-8746-79e0019abc7a
+
+	measure 'Total Hosts' = COUNT(Listings[Host ID])
+		formatString: 0
+		lineageTag: fc0b8b7e-edc7-4809-8d22-0d07b245cbad
+
+	measure 'Registered AirBNBs' = COUNTX(Listings, Listings[Is Registered] = TRUE())
+		formatString: 0
+		lineageTag: ac4e84d0-928d-4d2e-aee0-e57df551304f
+
+	measure 'Non Registered AirBNBs' = COUNTX(Listings, Listings[Is Registered] = FALSE())
+		formatString: 0
+		lineageTag: faab5c5b-3a09-499c-af92-95891bb7257c
+
+	measure 'Non Superhosted AirBNBs' = COUNTX(Listings, Listings[Is SuperHost] = FALSE())
+		formatString: 0
+		lineageTag: 31167c99-4336-4909-9e49-e95645fa606a
+
+	measure 'Superhosted AirBNBs' = COUNTX(Listings, Listings[Is SuperHost] = TRUE())
+		formatString: 0
+		lineageTag: cec1249d-825d-4e25-87bd-48ee983413c4
+
+	measure 'Non Guest Favourite AirBNBs' = COUNTX(Listings, Listings[Is Guest Favourite] = FALSE())
+		formatString: 0
+		lineageTag: 47e38aac-0768-404f-8db4-e32a4dca5870
+
+	measure 'Guest Favourite AirBNBs' = COUNTX(Listings, Listings[Is Guest Favourite] = TRUE())
+		formatString: 0
+		lineageTag: c92fe4d4-5c19-4e9a-b931-fe1f42cda08d
+
+	measure 'Total Guest Fees' = SUM(Listings[Extra Guest Fees])
+		lineageTag: bde00160-cbaf-4585-8b62-83892e25c41b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Guest Fees' = AVERAGE(Listings[Extra Guest Fees])
+		lineageTag: a899c3ed-6a03-4813-ab61-24cd2d9365b1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Bedrooms' = SUM(Listings[No of Bedrooms])
+		formatString: 0
+		lineageTag: f4e2b813-dbd7-4f9b-ab0a-5daf8e6a7df0
+
+	measure 'Total Beds' = SUM(Listings[No of Beds])
+		formatString: 0
+		lineageTag: 0b4d8d92-0abf-4888-9022-d524976cf025
+
+	measure 'Average Rating' = AVERAGE(Listings[Overall Rating]) * (AVERAGE(Listings[Rating Accuracy])/5)
+		lineageTag: df07f9b3-beb5-4dbe-af72-c5c2574e39e4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Cleanliness Rating' = AVERAGE(Listings[Cleanliness Rating])
+		lineageTag: db4e40fb-c173-4038-ad25-83cde51e7fbb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Host Communication Rating' = AVERAGE(Listings[Commn Rating])
+		lineageTag: dae66534-0c8b-41e6-808a-8021d19fa1bd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Checkin Rating' = AVERAGE(Listings[Checkin Rating])
+		lineageTag: c0b568ab-0053-4a35-90c3-267079817842
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Location Rating' = AVERAGE(Listings[Location Rating])
+		formatString: 0.00
+		lineageTag: 50abc85a-e0c6-484e-9069-582777ac1710
+
+	measure 'Average Value Rating' = AVERAGE(Listings[Value Rating])
+		lineageTag: c7a7f3e8-c6cc-445e-adc8-22fcad651d01
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Distinct Listing Types' = DISTINCTCOUNT('Listing Types'[Listing Type])
+		formatString: 0
+		lineageTag: 64e7d7d0-908c-4577-8504-b59bc39d7ea6
+
+	measure 'Distinct Listing Group Types' = DISTINCTCOUNT('Listing Types'[Listing Type Group])
+		formatString: 0
+		lineageTag: 51a27462-5947-404c-96f6-33967d26a9ce
+
+	measure 'Distinct AirBNBs' = DISTINCTCOUNT(Listings[Listing ID])
+		formatString: 0
+		lineageTag: 7724f6c1-0d1c-46d7-9635-8e07b0a8edff
+
+	measure Five = 5
+		formatString: 0
+		lineageTag: 87a586b0-aa98-4580-8dc1-6a19cb72f10b
+
 	column _
 		lineageTag: 2d03df6c-89da-45ac-8164-6dd7640a87fe
 		summarizeBy: none

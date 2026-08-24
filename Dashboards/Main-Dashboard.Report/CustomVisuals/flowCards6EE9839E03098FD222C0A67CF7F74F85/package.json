@@ -1,0 +1,29 @@
+{
+  "version": "1.1.0.0",
+  "author": {
+    "name": "Vinicius Duarte",
+    "email": "viniciusduartelage@outlook.com"
+  },
+  "resources": [
+    {
+      "resourceId": "rId0",
+      "sourceType": 5,
+      "file": "resources/flowCards6EE9839E03098FD222C0A67CF7F74F85.pbiviz.json"
+    }
+  ],
+  "visual": {
+    "guid": "flowCards6EE9839E03098FD222C0A67CF7F74F85",
+    "name": "flowCards",
+    "displayName": "FlowCards",
+    "version": "1.1.0.0",
+    "description": "Uma faixa de cartoes, um por categoria, na ordem do modelo. Clicar filtra a pagina.",
+    "supportUrl": "https://github.com/viniciusduartelage/flowcards/issues",
+    "gitHubUrl": "https://github.com/viniciusduartelage/flowcards",
+    "visualClassName": "Visual"
+  },
+  "metadata": {
+    "pbivizjson": {
+      "resourceId": "rId0"
+    }
+  }
+}

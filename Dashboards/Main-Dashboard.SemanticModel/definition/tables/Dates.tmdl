@@ -29,10 +29,10 @@ table Dates
 		dataType: int64
 		formatString: 0
 		lineageTag: 2128d881-75e2-4e39-bb59-b9b157f50b10
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Year
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	partition Dates = m
 		mode: import

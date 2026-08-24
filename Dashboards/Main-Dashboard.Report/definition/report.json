@@ -40,7 +40,7 @@
     ]
   },
   "publicCustomVisuals": [
-    "fullclusteredstackedbarchart8E3A5B25AB30E330682718E14ABECDEE"
+    "canvasKpiCard2B8B28BD6CE94332B6BB7CD788D9E323"
   ],
   "resourcePackages": [
     {
@@ -66,12 +66,34 @@
       ]
     },
     {
-      "name": "textCardGrid9505976218EE421D85249D67C56EDF06",
+      "name": "flowCards6EE9839E03098FD222C0A67CF7F74F85",
       "type": "CustomVisual",
       "items": [
         {
-          "name": "textCardGrid9505976218EE421D85249D67C56EDF06.pbiviz.json",
-          "path": "textCardGrid9505976218EE421D85249D67C56EDF06.pbiviz.json",
+          "name": "flowCards6EE9839E03098FD222C0A67CF7F74F85.pbiviz.json",
+          "path": "flowCards6EE9839E03098FD222C0A67CF7F74F85.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "growthStackedChart1A2B3C4D5E",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "growthStackedChart1A2B3C4D5E.pbiviz.json",
+          "path": "growthStackedChart1A2B3C4D5E.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "sparklinekpicard12345",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "sparklinekpicard12345.pbiviz.json",
+          "path": "sparklinekpicard12345.pbiviz.json",
           "type": "CustomVisualMetadata"
         }
       ]
