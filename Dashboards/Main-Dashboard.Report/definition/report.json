@@ -31,7 +31,7 @@
           "expanded": {
             "expr": {
               "Literal": {
-                "Value": "true"
+                "Value": "false"
               }
             }
           }
@@ -39,6 +39,9 @@
       }
     ]
   },
+  "publicCustomVisuals": [
+    "fullclusteredstackedbarchart8E3A5B25AB30E330682718E14ABECDEE"
+  ],
   "resourcePackages": [
     {
       "name": "SharedResources",
@@ -50,6 +53,28 @@
           "type": "BaseTheme"
         }
       ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "AirBNB7391586348376636.svg",
+          "path": "AirBNB7391586348376636.svg",
+          "type": "Image"
+        }
+      ]
+    },
+    {
+      "name": "textCardGrid9505976218EE421D85249D67C56EDF06",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "textCardGrid9505976218EE421D85249D67C56EDF06.pbiviz.json",
+          "path": "textCardGrid9505976218EE421D85249D67C56EDF06.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
     }
   ],
   "settings": {
@@ -58,6 +83,9 @@
     "defaultDrillFilterOtherVisuals": true,
     "allowChangeFilterTypes": true,
     "useEnhancedTooltips": true,
-    "useDefaultAggregateDisplayName": true
+    "useDefaultAggregateDisplayName": true,
+    "queryLimitOption": "None",
+    "customMemoryLimit": "1048576",
+    "customTimeoutLimit": "225"
   }
 }

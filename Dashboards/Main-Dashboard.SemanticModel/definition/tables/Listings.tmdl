@@ -123,11 +123,11 @@ table Listings
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'No of Baths'
-		dataType: double
+	column 'No of Bathrooms'
+		dataType: int64
 		lineageTag: 86b349d0-9da7-4449-af80-ee4eb19ec05d
 		summarizeBy: sum
-		sourceColumn: No of Baths
+		sourceColumn: No of Bathrooms
 
 		annotation SummarizationSetBy = Automatic
 
@@ -210,7 +210,7 @@ table Listings
 		annotation SummarizationSetBy = Automatic
 
 	column 'CLeaning Fees'
-		dataType: int64
+		dataType: double
 		formatString: 0
 		lineageTag: 0b9190ab-acce-41da-a963-d6825069d3e0
 		summarizeBy: none
@@ -219,7 +219,7 @@ table Listings
 		annotation SummarizationSetBy = User
 
 	column 'Extra Guest Fees'
-		dataType: int64
+		dataType: double
 		formatString: 0
 		lineageTag: 6d4b8a92-76ce-4222-abc8-37327bfed943
 		summarizeBy: sum
@@ -366,7 +366,7 @@ table Listings
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'TTM Avg Min Nights'
-		dataType: double
+		dataType: int64
 		lineageTag: 30a2479c-ab95-449a-90fc-1822381f2af1
 		summarizeBy: sum
 		sourceColumn: TTM Avg Min Nights
@@ -376,7 +376,7 @@ table Listings
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'TTM Avg Length of Stay'
-		dataType: double
+		dataType: int64
 		lineageTag: 2891126b-0f74-44e8-a924-8a01599cd0c8
 		summarizeBy: sum
 		sourceColumn: TTM Avg Length of Stay
@@ -472,7 +472,7 @@ table Listings
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'Avg Min Nights in L90D'
-		dataType: double
+		dataType: int64
 		lineageTag: 5c25be4e-683b-4fd3-aac3-23b2c16bc4b3
 		summarizeBy: sum
 		sourceColumn: Avg Min Nights in L90D
@@ -482,7 +482,7 @@ table Listings
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'Avg Length Of Stay in L90D'
-		dataType: double
+		dataType: int64
 		lineageTag: a59fc25b-72f1-42a2-821a-5e0e21b6d362
 		summarizeBy: sum
 		sourceColumn: Avg Length Of Stay in L90D
@@ -531,14 +531,6 @@ table Listings
 		lineageTag: abb38f97-4337-4522-8f95-e6cf8e5f1f5c
 		summarizeBy: none
 		sourceColumn: Cancel Policy Code
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Cancellation Policy'
-		dataType: string
-		lineageTag: 2711b548-fd6b-4ffb-9b0e-d078bbf883c6
-		summarizeBy: none
-		sourceColumn: Cancellation Policy
 
 		annotation SummarizationSetBy = Automatic
 
@@ -650,9 +642,30 @@ table Listings
 				    #"Replaced Value2" = Table.ReplaceValue(#"Capitalized Each Word","","No Photos Available",Replacer.ReplaceValue,{"Photos"}),
 				    #"Removed Columns9" = Table.RemoveColumns(#"Replaced Value2",{"Photo Count"}),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns9",{{"Checkin Time", type time}, {"Checkout Time", type time}, {"TTM Occupancy Rate", Percentage.Type}, {"TTM Adjusted Occupancy Rate", Percentage.Type}, {"Occupancy L90D", Percentage.Type}, {"Adjusted Occupancy L90D", Percentage.Type}}),
-				    #"Renamed Columns7" = Table.RenameColumns(#"Changed Type1",{{"Revenue L90D", "Revenue in L90D"}, {"Avg Rate L90D", "Avg Rate in L90D"}, {"Occupancy L90D", "Occupancy in L90D"}, {"Adjusted Occupancy L90D", "Adjusted Occupancy in L90D"}, {"Revpar L90D", "Revpar in L90D"}, {"Adjusted Revpar L90D", "Adjusted Revpar in L90D"}, {"Avg Min Nights L90D", "Avg Min Nights in L90D"}, {"Avg Length Of Stay L90D", "Avg Length Of Stay in L90D"}})
+				    #"Renamed Columns7" = Table.RenameColumns(#"Changed Type1",{{"Revenue L90D", "Revenue in L90D"}, {"Avg Rate L90D", "Avg Rate in L90D"}, {"Occupancy L90D", "Occupancy in L90D"}, {"Adjusted Occupancy L90D", "Adjusted Occupancy in L90D"}, {"Revpar L90D", "Revpar in L90D"}, {"Adjusted Revpar L90D", "Adjusted Revpar in L90D"}, {"Avg Min Nights L90D", "Avg Min Nights in L90D"}, {"Avg Length Of Stay L90D", "Avg Length Of Stay in L90D"}}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Renamed Columns7",null,1,Replacer.ReplaceValue,{"No of Bedrooms"}),
+				    #"Removed Columns10" = Table.RemoveColumns(
+				        Table.TransformColumns(
+				        #"Replaced Value3",
+				        {
+				            {
+				                "Checkin Time",
+				                each if _ = null then null else Time.ToText(_, "HH:mm:ss"),
+				                type text
+				            },
+				            {
+				                "Checkout Time",
+				                each if _ = null then null else Time.ToText(_, "HH:mm:ss"),
+				                type text
+				            }
+				        }
+				    ),{"Cancellation Policy"}),
+				    #"Run Python script1" = Python.Execute("import pandas as pd#(lf)import numpy as np#(lf)#(lf)# Cancellation policy factors (width = 0.5)#(lf)cancellation_dict = {#(lf)    ""CPC5"": 1.0,#(lf)    ""CPC4"": 1.5,#(lf)    ""CPC2"": 2.0,#(lf)    ""CPC1"": 2.5,#(lf)    ""CPC3"": 3.0,#(lf)    ""CPC7"": 3.5,#(lf)    ""CPC6"": 4.0#(lf)}#(lf)#(lf)# Map cancellation policy to factor#(lf)cancellation_factor = dataset[""Cancel Policy Code""].map(cancellation_dict)#(lf)#(lf)# Weighted Overall Rating#(lf)weighted_ovr_rating = (#(lf)    dataset[""Overall Rating""]#(lf)    * (0.5 + 0.5 * dataset[""Rating Accuracy""] / 5)#(lf))#(lf)#(lf)# Calculate score#(lf)score = (#(lf)    weighted_ovr_rating#(lf)    + dataset[""Checkin Rating""]#(lf)    + dataset[""Cleanliness Rating""]#(lf)    + dataset[""Commn Rating""]#(lf)    + dataset[""Location Rating""]#(lf)    + dataset[""Value Rating""]#(lf)) / (#(lf)    cancellation_factor#(lf)    * (1 / (dataset[""Is Guest Favourite""] + 1))#(lf)    * (1 / (dataset[""Is SuperHost""] + 1))#(lf))#(lf)#(lf)# Predict Instantly Booked using threshold = 14#(lf)predicted = score >= 14#(lf)#(lf)# Fill only missing values#(lf)dataset[""Instantly Booked""] = (#(lf)    dataset[""Instantly Booked""]#(lf)    .fillna(predicted)#(lf))#(lf)#(lf)dataset[""Is Guest Favourite""] = (#(lf)    dataset[""Is Guest Favourite""]#(lf)    .fillna(predicted)#(lf))#(lf)#(lf)"""""" For filling missing values for checkin and checkout times """"""#(lf)df = dataset.copy()#(lf)#(lf)#(lf)# --------------------------------------------------#(lf)# Haversine distance#(lf)# --------------------------------------------------#(lf)#(lf)def haversine(lat1, lon1, lat2, lon2):#(lf)    R = 6371.0#(lf)#(lf)    lat1, lon1, lat2, lon2 = map(#(lf)        np.radians,#(lf)        [lat1, lon1, lat2, lon2]#(lf)    )#(lf)#(lf)    dlat = lat2[:, np.newaxis] - lat1#(lf)    dlon = lon2[:, np.newaxis] - lon1#(lf)#(lf)    a = (#(lf)        np.sin(dlat / 2.0) ** 2#(lf)        + np.cos(lat1)#(lf)        * np.cos(lat2[:, np.newaxis])#(lf)        * np.sin(dlon / 2.0) ** 2#(lf)    )#(lf)#(lf)    return R * (2 * np.arcsin(np.sqrt(a)))#(lf)#(lf)#(lf)# --------------------------------------------------#(lf)# Distance matrix#(lf)# --------------------------------------------------#(lf)#(lf)lats = df[""Latitude""].to_numpy()#(lf)lons = df[""Longitude""].to_numpy()#(lf)#(lf)dist_matrix = haversine(#(lf)    lats,#(lf)    lons,#(lf)    lats,#(lf)    lons#(lf))#(lf)#(lf)#(lf)# --------------------------------------------------#(lf)# Convert times to integer hours#(lf)# --------------------------------------------------#(lf)#(lf)time_cols = [#(lf)    ""Checkin Time"",#(lf)    ""Checkout Time""#(lf)]#(lf)#(lf)for col in time_cols:#(lf)#(lf)    df[col] = df[col].replace({#(lf)        ""null"": np.nan,#(lf)        """": np.nan#(lf)    })#(lf)#(lf)    # Convert to string first so this works whether#(lf)    # Power BI passes strings, datetime or time objects#(lf)    dt = pd.to_datetime(#(lf)        df[col].astype(""string""),#(lf)        errors=""coerce""#(lf)    )#(lf)#(lf)    # Extract hour as 0–23#(lf)    df[col] = dt.dt.hour.astype(""float"")#(lf)#(lf)#(lf)# --------------------------------------------------#(lf)# Fill missing hours using nearby listings#(lf)# --------------------------------------------------#(lf)#(lf)for col in time_cols:#(lf)#(lf)    missing_positions = np.where(#(lf)        df[col].isna().to_numpy()#(lf)    )[0]#(lf)#(lf)    for i in missing_positions:#(lf)#(lf)        nearby_mask = (#(lf)            (dist_matrix[i] <= 7)#(lf)            & df[col].notna().to_numpy()#(lf)        )#(lf)#(lf)        if nearby_mask.any():#(lf)#(lf)            median_hour = df.loc[#(lf)                nearby_mask,#(lf)                col#(lf)            ].median()#(lf)#(lf)            df.iloc[#(lf)                i,#(lf)                df.columns.get_loc(col)#(lf)            ] = round(median_hour)#(lf)#(lf)#(lf)# --------------------------------------------------#(lf)# Convert final hours to AM/PM strings#(lf)# --------------------------------------------------#(lf)#(lf)for col in time_cols:#(lf)#(lf)    def format_time(hour):#(lf)        if pd.isna(hour):#(lf)            return None#(lf)#(lf)        hour = int(hour)#(lf)#(lf)        period = ""AM"" if hour < 12 else ""PM""#(lf)#(lf)        display_hour = hour % 12#(lf)#(lf)        if display_hour == 0:#(lf)            display_hour = 12#(lf)#(lf)        return f""{display_hour:02d}:00:00 {period}""#(lf)#(lf)    df[col] = df[col].apply(format_time)#(lf)#(lf)dataset = df",[dataset=#"Removed Columns10"]),
+				    #"Final Dataset 1" = #"Run Python script1"{[Name="dataset"]}[Value],
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Final Dataset 1",{{"Listing ID", Int64.Type}, {"Host ID", Int64.Type}, {"Is SuperHost", type logical}, {"Latitude", type number}, {"Longitude", type number}, {"Guest Count", Int64.Type}, {"No of Bedrooms", Int64.Type}, {"No of Beds", Int64.Type}, {"No of Baths", Int64.Type}, {"Is Registered", type logical}, {"Instantly Booked", type logical}, {"Min Nights to Stay", Int64.Type}, {"Checkin Time", type time}, {"Checkout Time", type time}, {"Is Guest Favourite", type logical}, {"Exact Location Available", type logical}, {"CLeaning Fees", type number}, {"Extra Guest Fees", type number}, {"Single Fee Structure", type logical}, {"Overall Rating", type number}, {"Rating Accuracy", type number}, {"Checkin Rating", type number}, {"Cleanliness Rating", type number}, {"Commn Rating", type number}, {"Location Rating", type number}, {"Value Rating", type number}, {"TTM Revenue", Int64.Type}, {"TTM Avg Rate", type number}, {"TTM Occupancy Rate", Percentage.Type}, {"TTM Adjusted Occupancy Rate", Percentage.Type}, {"TTM Revpar", type number}, {"TTM Adjusted Revpar", type number}, {"TTM Avg Min Nights", Int64.Type}, {"TTM Avg Length of Stay", Int64.Type}, {"TTM Reserved Days", Int64.Type}, {"TTM Blocked Days", Int64.Type}, {"TTM Available Days", Int64.Type}, {"Revenue in L90D", Int64.Type}, {"Avg Rate in L90D", type number}, {"Occupancy in L90D", Percentage.Type}, {"Adjusted Occupancy in L90D", Percentage.Type}, {"Revpar in L90D", type number}, {"Adjusted Revpar in L90D", type number}, {"Avg Min Nights in L90D", Int64.Type}, {"Avg Length Of Stay in L90D", Int64.Type}, {"Reserved Days in L90D", Int64.Type}, {"Blocked Days in L90D", Int64.Type}, {"Available Days in L90D", Int64.Type}, {"Prof Management", type logical}}),
+				    #"Renamed Columns8" = Table.RenameColumns(#"Changed Type2",{{"No of Baths", "No of Bathrooms"}})
 				in
-				    #"Renamed Columns7"
+				    #"Renamed Columns8"
 				```
 
 	annotation PBI_NavigationStepName = Navigation
