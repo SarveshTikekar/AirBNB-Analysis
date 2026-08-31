@@ -1,8 +1,8 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
-  "name": "23a1096c79364ad6cad1",
-  "displayName": "Reviews",
+  "name": "49e5f9fef034fca7fd97",
+  "displayName": "Components 2",
   "displayOption": "FitToPage",
-  "height": 720,
-  "width": 1280
+  "height": 1080,
+  "width": 1920
 }

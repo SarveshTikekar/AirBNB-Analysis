@@ -30,13 +30,12 @@ table 'Calendar Rates'
 
 	column 'Occupancy Percentage'
 		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: ef4633ba-a53d-4c9f-b6ee-99de4072ccd3
 		summarizeBy: sum
 		sourceColumn: Occupancy Percentage
 
 		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column Revenue
 		dataType: int64

@@ -25,7 +25,7 @@ table Metrics
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Average Booking Rate' = AVERAGE('Calendar Rates'[Average Rate])
+	measure 'Average Booking Rate' = AVERAGE('Calendar Rates'[Average Rate]) * [Selected Rate]
 		lineageTag: 1ff82c19-88ce-4756-8e0d-15c083aee9fe
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -36,13 +36,8 @@ table Metrics
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Average Occupancy Percentage' = AVERAGE('Calendar Rates'[Occupancy Percentage])
+		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: e5083bec-6b3b-4c55-a294-6e4bdab31921
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Total Revenue' = SUM('Calendar Rates'[Revenue])
-		formatString: 0
-		lineageTag: 97ab2249-9151-453a-97d9-da67680457b1
 
 	measure 'Median Reserved Days' = MEDIAN('Calendar Rates'[Reserved Days])
 		lineageTag: 24567a89-cca0-4f45-9c51-48fb28180021
@@ -54,7 +49,7 @@ table Metrics
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Total Reviews' = COUNT(Ratings[Reviewer ID])
+	measure 'Total Reviews' = COUNTROWS(Ratings)
 		formatString: 0
 		lineageTag: ae01fd84-d4d9-4c2f-8746-79e0019abc7a
 
@@ -62,7 +57,7 @@ table Metrics
 		formatString: 0
 		lineageTag: fc0b8b7e-edc7-4809-8d22-0d07b245cbad
 
-	measure 'Registered AirBNBs' = COUNTX(Listings, Listings[Is Registered] = TRUE())
+	measure 'Registered AirBNBs' = CALCULATE(COUNTROWS(Listings), Listings[Is Registered] = TRUE())
 		formatString: 0
 		lineageTag: ac4e84d0-928d-4d2e-aee0-e57df551304f
 
@@ -74,7 +69,7 @@ table Metrics
 		formatString: 0
 		lineageTag: 31167c99-4336-4909-9e49-e95645fa606a
 
-	measure 'Superhosted AirBNBs' = COUNTX(Listings, Listings[Is SuperHost] = TRUE())
+	measure 'Superhosted AirBNBs' = CALCULATE(COUNTROWS(Listings), Listings[Is SuperHost] = TRUE())
 		formatString: 0
 		lineageTag: cec1249d-825d-4e25-87bd-48ee983413c4
 
@@ -82,7 +77,7 @@ table Metrics
 		formatString: 0
 		lineageTag: 47e38aac-0768-404f-8db4-e32a4dca5870
 
-	measure 'Guest Favourite AirBNBs' = COUNTX(Listings, Listings[Is Guest Favourite] = TRUE())
+	measure 'Guest Favourite AirBNBs' = CALCULATE(COUNTROWS(Listings), Listings[Is Guest Favourite] = TRUE())
 		formatString: 0
 		lineageTag: c92fe4d4-5c19-4e9a-b931-fe1f42cda08d
 
@@ -148,6 +143,32 @@ table Metrics
 	measure Five = 5
 		formatString: 0
 		lineageTag: 87a586b0-aa98-4580-8dc1-6a19cb72f10b
+
+	measure 'Total Revenue' = SUM('Calendar Rates'[Revenue]) * [Selected Rate]
+		lineageTag: f6113929-81bc-4f0d-a8d4-3dacd865de7a
+
+		formatStringDefinition = "$TEST" & "#,##0"
+
+	measure 'Average Length of Stay' = AVERAGE('Calendar Rates'[Avg Length of Stay])
+		lineageTag: 4bd6af4e-a463-4c89-8eaa-d6c3a19c45cb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure NewLine = UNICHAR(10)
+		lineageTag: d76fe920-bdab-4493-a166-facbbda068ef
+
+	measure 'Total Reserved Days' = SUM('Calendar Rates'[Reserved Days])
+		formatString: 0
+		lineageTag: ff54e1b7-873f-4b6c-81f4-a8a7ab3316d5
+
+	measure 'Total Vacant Days' = SUM('Calendar Rates'[Vacant Days])
+		formatString: 0
+		lineageTag: 611b9806-1b02-414f-b70d-22e2ead5e554
+
+	measure 'Average Daily Rate' = AVERAGE('Calendar Rates'[Average Rate]) * [Selected Rate]
+		lineageTag: 9c4aa283-3f4c-43fb-8a16-d01663a147e0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column _
 		lineageTag: 2d03df6c-89da-45ac-8164-6dd7640a87fe

@@ -1,0 +1,34 @@
+table 'AirBNB Photos'
+	lineageTag: 53407395-05cf-4976-9dd7-b231946a0900
+
+	column 'Listing ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 10e9f538-c5fc-47a9-881b-6f5523177947
+		summarizeBy: none
+		sourceColumn: Listing ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Photos
+		dataType: string
+		lineageTag: 98f75a48-24df-4f60-ace7-8e4a6c3b14b1
+		summarizeBy: none
+		sourceColumn: Photos
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'AirBNB Photos' = m
+		mode: import
+		source =
+				let
+				    Source = Table.SelectColumns(Listings, {"Listing ID", "Photos"}),
+				    #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(Source, {{"Photos", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "Photos"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Photos", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

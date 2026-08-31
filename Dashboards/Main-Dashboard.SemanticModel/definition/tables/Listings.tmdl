@@ -36,9 +36,12 @@ table Listings
 
 	column Photos
 		dataType: string
+		isHidden
 		lineageTag: 13909dbc-0a58-4081-909a-33563861d888
 		summarizeBy: none
 		sourceColumn: Photos
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -79,20 +82,20 @@ table Listings
 	column Latitude
 		dataType: double
 		lineageTag: 17cb067d-b88c-4848-8a65-72dd1b97dca9
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Latitude
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column Longitude
 		dataType: double
 		lineageTag: 44bc5dcd-2a9a-4ba5-ada7-68efbd978ccc
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Longitude
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

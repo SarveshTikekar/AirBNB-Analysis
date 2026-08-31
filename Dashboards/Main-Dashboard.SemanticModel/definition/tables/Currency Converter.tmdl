@@ -5,15 +5,28 @@ table 'Currency Converter'
 			
 			Var Curr = [Selected Currency] 
 			RETURN 
-			    LOOKUPVALUE('Currency Converter'[Value Wrt Usd], 'Currency Converter'[Currency], Curr)
+			    LOOKUPVALUE('Currency Converter'[Value Wrt Usd], 'Currency Converter'[Currency Name], Curr)
 			```
 		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
 		lineageTag: 7c8ef91b-156b-444b-b85b-87fef9788939
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
 
-	measure 'Selected Currency' = IF(HASONEVALUE('Currency Converter'[Currency]), SELECTEDVALUE('Currency Converter'[Currency]), "USD")
+	measure 'Selected Currency' = IF(HASONEVALUE('Currency Converter'[Currency Name]), SELECTEDVALUE('Currency Converter'[Currency Name]), "US Dollar")
 		lineageTag: 43384983-db83-412d-bb5f-6c62139a9dfa
+
+	measure 'Selected Currency Symbol' = ```
+			
+			Var Curr = [Selected Currency] 
+			RETURN 
+			    LOOKUPVALUE('Currency Converter'[Currency Symbol], 'Currency Converter'[Currency Name], Curr)
+			```
+		lineageTag: f2de5389-b769-4f3f-84b7-0edf8082c421
+
+	measure 'Currency Format' = ```
+			"0 " &[Selected Currency Symbol] 
+			```
+		lineageTag: 75254e85-d113-48bd-99cb-ce30d134acc9
 
 	column Currency
 		dataType: string
@@ -32,18 +45,107 @@ table 'Currency Converter'
 
 		annotation SummarizationSetBy = User
 
+	column 'Currency Name'
+		dataType: string
+		lineageTag: 9f62f515-a18a-4d5d-80bf-51ae583b615c
+		summarizeBy: none
+		sourceColumn: Currency Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Currency Symbol'
+		dataType: string
+		lineageTag: 144fc258-0aaa-4662-a51b-357c41bc87b2
+		summarizeBy: none
+		sourceColumn: Currency Symbol
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Currency Converter' = m
 		mode: import
-		source =
+		source = ```
 				let
 				    Source = Web.Contents("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json"),
 				    JsonData = Json.Document(Source)[usd],
 				    #"Currency Converter" = Record.ToTable(JsonData),
 				    #"Renamed Columns" = Table.RenameColumns(#"Currency Converter",{{"Name", "Currency"}, {"Value", "Value Wrt Usd"}}),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Value Wrt Usd", Currency.Type}}),
-				    #"Uppercased Text" = Table.TransformColumns(#"Changed Type",{{"Currency", Text.Upper, type text}})
+				    #"Uppercased Text" = Table.TransformColumns(#"Changed Type",{{"Currency", Text.Upper, type text}}),
+				
+				     // Get currency names
+				    CurrencySource = Web.Contents(
+				        "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json"
+				    ),
+				    CurrencyJson = Json.Document(CurrencySource),
+				    CurrencyTable = Record.ToTable(CurrencyJson),
+				    #"Renamed Currency Columns" = Table.RenameColumns(
+				        CurrencyTable,
+				        {{"Name", "Currency"}, {"Value", "Currency Name"}}
+				    ),
+				    #"Uppercased Currency Codes" = Table.TransformColumns(
+				        #"Renamed Currency Columns",
+				        {{"Currency", Text.Upper, type text}} 
+				    ),
+				
+				    // Join exchange rates with currency names
+				    #"Merged Currency Names" = Table.NestedJoin(
+				        #"Uppercased Text",
+				        {"Currency"},
+				        #"Uppercased Currency Codes",
+				        {"Currency"},
+				        "CurrencyInfo",
+				        JoinKind.LeftOuter
+				    ),
+				
+				    // Expand currency name
+				    #"Expanded CurrencyInfo" = Table.ExpandTableColumn(
+				        #"Merged Currency Names",
+				        "CurrencyInfo",
+				        {"Currency Name"},
+				        {"Currency Name"}
+				    ),
+				
+				    // Currency symbol mapping
+				    CurrencySymbols = [
+				        USD="$", EUR="€", GBP="£", INR="₹", JPY="¥", CNY="¥",
+				        KRW="₩", RUB="₽", TRY="₺", THB="฿", VND="₫", PHP="₱",
+				        ILS="₪", UAH="₴", PLN="zł", CZK="Kč", HUF="Ft", RON="lei",
+				        BGN="лв", CHF="CHF", SEK="kr", NOK="kr", DKK="kr", ISK="kr",
+				        AED="د.إ", SAR="﷼", QAR="﷼", KWD="د.ك", BHD=".د.ب",
+				        OMR="﷼", JOD="د.ا", EGP="£", MAD="د.م.", DZD="دج", TND="د.ت",
+				        NGN="₦", GHS="₵", KES="KSh", TZS="TSh", UGX="USh", ZAR="R",
+				        MUR="₨", LKR="Rs", NPR="₨", PKR="₨", BDT="৳", BTN="Nu.",
+				        MNT="₮", LAK="₭", KHR="៛", MMK="K", IDR="Rp", MYR="RM",
+				        BND="B$", SGD="S$", HKD="HK$", TWD="NT$", AUD="A$", CAD="C$",
+				        NZD="NZ$", FJD="FJ$", PGK="K", WST="T", TOP="T$", SBD="SI$",
+				        VUV="VT", XPF="₣", XAF="FCFA", XOF="CFA", XCD="EC$", JMD="J$",
+				        BBD="Bds$", BSD="B$", BZD="BZ$", GYD="G$", TTD="TT$", SRD="$",
+				        UYU="$U", ARS="$", BRL="R$", CLP="$", COP="$", PEN="S/",
+				        BOB="Bs", PYG="₲", CRC="₡", DOP="RD$", GTQ="Q", HNL="L",
+				        NIO="C$", PAB="B/.", MXN="MX$", CUP="$", BAM="KM", RSD="дин.",
+				        ALL="Lek", AMD="֏", AZN="₼", GEL="₾", KZT="₸", MZN="MT",
+				        AOA="Kz", ETB="Br", MGA="Ar", MWK="MK", ZMW="ZK", RWF="FRw",
+				        SLL="Le", SLE="Le", SSP="£", SDG="ج.س.", SOS="S", GMD="D",
+				        SHP="£", FKP="£", GIP="£", IMP="£", JEP="£", GGP="£",
+				        LYD="ل.د", LBP="ل.ل", IRR="﷼", IQD="ع.د", YER="﷼", SYP="£",
+				        AFN="؋", UZS="so'm"
+				    ],
+				
+				    // Add currency symbol
+				    #"Added Currency Symbol" = Table.AddColumn(
+				        #"Expanded CurrencyInfo",
+				        "Currency Symbol",
+				        each Record.FieldOrDefault(
+				            CurrencySymbols,
+				            [Currency],
+				            null
+				        ),
+				        type text
+				    ),
+				    #"Filtered Rows" = Table.SelectRows(#"Added Currency Symbol", each ([Currency Name] <> "") and ([Currency Symbol] <> null))
 				in
-				    #"Uppercased Text"
+				    #"Filtered Rows"
+				```
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -34,7 +34,7 @@ queryGroup 'Transform File from listings\Helper Queries'
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["Calendar Rates","Sample File (2)","Parameter2","Transform Sample File (2)","Transform File (2)","Ratings","Sample File (3)","Parameter3","Transform Sample File (3)","Transform File (3)","Dates","Cities","Listings","Sample File","Parameter1","Transform Sample File","Transform File","Listing Types","Currency Converter","Cancellation Policies","Listing Amenities","Amenities"]
+annotation PBI_QueryOrder = ["Calendar Rates","Sample File (2)","Parameter2","Transform Sample File (2)","Transform File (2)","Ratings","Sample File (3)","Parameter3","Transform Sample File (3)","Transform File (3)","Dates","Cities","Listings","Sample File","Parameter1","Transform Sample File","Transform File","Listing Types","Currency Converter","Cancellation Policies","Listing Amenities","Amenities","AirBNB Photos"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -51,6 +51,8 @@ ref table 'Currency Converter'
 ref table 'Cancellation Policies'
 ref table 'Listing Amenities'
 ref table Amenities
+ref table 'AirBNB Photos'
+ref table Styling
 
 ref cultureInfo en-US
 

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "38545b902392c85d399a",
   "position": {
-    "x": 506.66666666666663,
-    "y": 173.33333333333334,
+    "x": 0,
+    "y": 0,
     "z": 0,
-    "height": 173.33333333333334,
-    "width": 241.11111111111111,
+    "height": 154.15617128463475,
+    "width": 198.58942065491183,
     "tabOrder": 0
   },
   "visual": {
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "Metrics.Total Revenue",
-              "nativeQueryRef": "Total Revenue"
+              "nativeQueryRef": "Total Revenue1"
             }
           ]
         },
@@ -77,61 +77,11 @@
                       "Hierarchy": "Date Hierarchy"
                     }
                   },
-                  "Level": "Quarter"
-                }
-              },
-              "queryRef": "Dates.Date.Variation.Date Hierarchy.Quarter",
-              "nativeQueryRef": "Date Quarter"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Dates"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
                   "Level": "Month"
                 }
               },
               "queryRef": "Dates.Date.Variation.Date Hierarchy.Month",
               "nativeQueryRef": "Date Month"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Dates"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Day"
-                }
-              },
-              "queryRef": "Dates.Date.Variation.Date Hierarchy.Day",
-              "nativeQueryRef": "Date Day"
             }
           ]
         }
@@ -148,21 +98,10 @@
                 }
               }
             },
-            "lineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FF0F0F'"
-                    }
-                  }
-                }
-              }
-            },
             "showMarkers": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -171,16 +110,9 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FB0000'"
+                      "Value": "'#C57575'"
                     }
                   }
-                }
-              }
-            },
-            "fillOpacity": {
-              "expr": {
-                "Literal": {
-                  "Value": "10D"
                 }
               }
             },
@@ -188,9 +120,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#953939'"
                     }
                   }
                 }
@@ -199,14 +130,14 @@
             "markerSize": {
               "expr": {
                 "Literal": {
-                  "Value": "1D"
+                  "Value": "1.2D"
                 }
               }
             },
             "showFirst": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -277,6 +208,31 @@
                   "Value": "false"
                 }
               }
+            },
+            "fillOpacity": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E83F3F'"
+                    }
+                  }
+                }
+              }
+            },
+            "showLast": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -305,24 +261,10 @@
                 }
               }
             },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "40D"
-                }
-              }
-            },
             "labelFontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
-                }
-              }
-            },
-            "labelFontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "16D"
+                  "Value": "'''Segoe UI Light'', wf_segoe-ui_light, helvetica, arial, sans-serif'"
                 }
               }
             },
@@ -330,9 +272,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#484646'"
                     }
                   }
                 }
@@ -351,6 +292,38 @@
                   "Value": "1D"
                 }
               }
+            },
+            "fontBold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "34D"
+                }
+              }
+            },
+            "labelFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#484646'"
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -362,6 +335,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'bottom'"
+                }
+              }
+            },
+            "horizontalGap": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
                 }
               }
             }
@@ -423,7 +403,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#F8F6F6'"
+                      "Value": "'#FFFFFF'"
                     }
                   }
                 }
@@ -446,14 +426,45 @@
             "cornerRadius": {
               "expr": {
                 "Literal": {
-                  "Value": "30D"
+                  "Value": "22D"
                 }
               }
             },
             "borderWidth": {
               "expr": {
                 "Literal": {
-                  "Value": "1.5D"
+                  "Value": "1D"
+                }
+              }
+            },
+            "borderColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F29090'"
+                    }
+                  }
+                }
+              }
+            },
+            "padding": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "variance": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

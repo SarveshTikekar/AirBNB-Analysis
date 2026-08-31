@@ -39,3 +39,7 @@ relationship AutoDetected_b2c33d2e-fcbd-4a24-864d-11354c5780cd
 	fromColumn: 'Listing Amenities'.Amenities
 	toColumn: Amenities.Amenities
 
+relationship AutoDetected_986e72bb-1ee3-4fcd-a97e-a49ece86fd69
+	fromColumn: 'AirBNB Photos'.'Listing ID'
+	toColumn: Listings.'Listing ID'
+

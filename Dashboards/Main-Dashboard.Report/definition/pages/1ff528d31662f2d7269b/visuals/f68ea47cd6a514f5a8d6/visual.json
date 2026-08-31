@@ -1,0 +1,52 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f68ea47cd6a514f5a8d6",
+  "position": {
+    "x": 8.5333333333333332,
+    "y": 360.53333333333336,
+    "z": 3000,
+    "height": 359.46666666666664,
+    "width": 652.8,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "ImageCarouselByMAQSoftware1448688110701",
+    "objects": {
+      "carouselProperties": [
+        {
+          "properties": {
+            "autoNavigationSettings": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "spaceBetweenImages": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "zoomOnHover": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "slidingSpeed": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

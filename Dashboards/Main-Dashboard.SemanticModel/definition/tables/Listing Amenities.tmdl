@@ -16,6 +16,8 @@ table 'Listing Amenities'
 		summarizeBy: none
 		sourceColumn: Amenities
 
+		changedProperty = SortByColumn
+
 		annotation SummarizationSetBy = Automatic
 
 	partition 'Listing Amenities' = m

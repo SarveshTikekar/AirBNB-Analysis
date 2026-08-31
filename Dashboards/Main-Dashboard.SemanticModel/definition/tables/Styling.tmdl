@@ -1,0 +1,704 @@
+table Styling
+	lineageTag: ca990854-228d-4197-9ad6-1ab9f5c0c357
+
+	measure 'Amenity Tags' = ```
+			
+			VAR TagsHTML =
+			    CONCATENATEX(
+			        FILTER(
+			            VALUES('Listing Amenities'[Amenities]),
+			            NOT ISBLANK('Listing Amenities'[Amenities])
+			        ),
+			        "<div class='amenity'>" &
+			            "<span class='icon-box'></span>" &
+			            "<span class='name'>" & 'Listing Amenities'[Amenities] & "</span>" &
+			        "</div>",
+			        ""
+			    )
+			
+			RETURN
+			"
+			<style>
+			/* Canvas Setup & Reset */
+			.amenity-wrapper, 
+			.amenity-wrapper * {
+			    box-sizing: border-box !important;
+			    margin: 0 !important;
+			}
+			
+			.amenity-wrapper {
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    right: 0;
+			    bottom: 0;
+			    padding: 6px;
+			    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+			    overflow: hidden !important;
+			    background: transparent !important;
+			}
+			
+			/* Flex Container for Amenities */
+			.amenity-wrapper .tags-container {
+			    display: flex;
+			    flex-wrap: wrap;
+			    align-content: flex-start;
+			    gap: 10px;
+			    
+			    width: 100%;
+			    height: 100%;
+			    padding: 4px;
+			    
+			    overflow-y: auto !important;
+			    overflow-x: hidden;
+			}
+			
+			/* Custom Scrollbar */
+			.amenity-wrapper .tags-container::-webkit-scrollbar {
+			    width: 5px;
+			}
+			.amenity-wrapper .tags-container::-webkit-scrollbar-track {
+			    background: transparent;
+			}
+			.amenity-wrapper .tags-container::-webkit-scrollbar-thumb {
+			    background: #E5E7EB;
+			    border-radius: 4px;
+			}
+			.amenity-wrapper .tags-container::-webkit-scrollbar-thumb:hover {
+			    background: #8B0000;
+			}
+			
+			/* Rounded Box Pill Tag */
+			.amenity-wrapper .amenity {
+			    display: inline-flex;
+			    align-items: center;
+			    gap: 8px;
+			    
+			    padding: 8px 16px;
+			    height: 38px;
+			    
+			    background: #FFFFFF;
+			    border: 1.5px solid #E5E7EB;
+			    border-radius: 20px;
+			    
+			    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+			    transition: all 0.2s ease-in-out;
+			    cursor: default;
+			}
+			
+			.amenity-wrapper .amenity:hover {
+			    background: #FCF2F4;
+			    border-color: #F4C2CB;
+			    transform: translateY(-1px);
+			    box-shadow: 0 4px 8px rgba(139, 0, 0, 0.08);
+			}
+			
+			.amenity-wrapper .icon-box {
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			}
+			
+			.amenity-wrapper .tag-icon {
+			    width: 16px;
+			    height: 16px;
+			    flex-shrink: 0;
+			}
+			
+			/* 14px Typography */
+			.amenity-wrapper .name {
+			    font-size: 14px;
+			    font-weight: 600;
+			    color: #222222;
+			    white-space: nowrap;
+			    line-height: 1;
+			}
+			</style>
+			
+			<div class='amenity-wrapper'>
+			    <div class='tags-container'>
+			        " & TagsHTML & "
+			    </div>
+			</div>
+			
+			<script>
+			(function() {
+			    // Complete JS Icon Map for all 115+ Amenities
+			    const iconMap = {
+			        // Tech & Media
+			        'wifi': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.55a11 11 0 0 1 14 0'></path><path d='M1.42 9a16 16 0 0 1 21.16 0'></path><path d='M8.53 16.11a6 6 0 0 1 6.95 0'></path><line x1='12' y1='20' x2='12.01' y2='20' stroke-width='3'></line></svg>`,
+			        'tv': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='7' width='20' height='13' rx='2'></rect><polyline points='17 2 12 7 7 2'></polyline></svg>`,
+			        'cable': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='7' width='20' height='13' rx='2'></rect><polyline points='17 2 12 7 7 2'></polyline></svg>`,
+			        'ethernet': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='4' y='4' width='16' height='16' rx='2'></rect><rect x='9' y='9' width='6' height='6'></rect><line x1='9' y1='1' x2='9' y2='4'></line><line x1='15' y1='1' x2='15' y2='4'></line></svg>`,
+			        'outlet': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='4' y='4' width='16' height='16' rx='2'></rect><line x1='9' y1='1' x2='9' y2='4'></line><line x1='15' y1='1' x2='15' y2='4'></line></svg>`,
+			        'sound system': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 18V5l12-2v13'></path><circle cx='6' cy='18' r='3'></circle><circle cx='18' cy='16' r='3'></circle></svg>`,
+			        'record player': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 18V5l12-2v13'></path><circle cx='6' cy='18' r='3'></circle><circle cx='18' cy='16' r='3'></circle></svg>`,
+			        'game console': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><line x1='6' y1='12' x2='10' y2='12'></line><line x1='8' y1='10' x2='8' y2='14'></line><circle cx='15' cy='13' r='1'></circle><circle cx='18' cy='11' r='1'></circle><rect x='2' y='6' width='20' height='12' rx='4'></rect></svg>`,
+			        'arcade': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><line x1='6' y1='12' x2='10' y2='12'></line><line x1='8' y1='10' x2='8' y2='14'></line><circle cx='15' cy='13' r='1'></circle><circle cx='18' cy='11' r='1'></circle><rect x='2' y='6' width='20' height='12' rx='4'></rect></svg>`,
+			        'movie theater': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='7' width='20' height='13' rx='2'></rect><polyline points='17 2 12 7 7 2'></polyline></svg>`,
+			
+			        // Climate Control
+			        'air conditioning': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14'></path></svg>`,
+			        'fan': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 12c2-3 5-3 5 0s-3 5 0 5-3-5 0-5'></path><circle cx='12' cy='12' r='2'></circle></svg>`,
+			        'heating': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3s.5.5.5 0z'></path></svg>`,
+			        'fireplace': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3s.5.5.5 0z'></path></svg>`,
+			        'fire pit': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3s.5.5.5 0z'></path></svg>`,
+			
+			        // Kitchen & Dining
+			        'kitchen': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 8v6M6 8v6M12 2v20M2 12h20'></path></svg>`,
+			        'refrigerator': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='5' y='2' width='14' height='20' rx='2'></rect><line x1='5' y1='10' x2='19' y2='10'></line></svg>`,
+			        'fridge': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='5' y='2' width='14' height='20' rx='2'></rect><line x1='5' y1='10' x2='19' y2='10'></line></svg>`,
+			        'freezer': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='5' y='2' width='14' height='20' rx='2'></rect><line x1='5' y1='10' x2='19' y2='10'></line></svg>`,
+			        'coffee': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 8h1a4 4 0 0 1 0 8h-1'></path><path d='M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z'></path></svg>`,
+			        'kettle': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 8h1a4 4 0 0 1 0 8h-1'></path><path d='M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z'></path></svg>`,
+			        'microwave': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='20' height='16' rx='2'></rect><path d='M6 8h12M6 12h12'></path></svg>`,
+			        'oven': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='20' height='16' rx='2'></rect><path d='M6 8h12M6 12h12'></path></svg>`,
+			        'stove': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='20' height='16' rx='2'></rect><path d='M6 8h12M6 12h12'></path></svg>`,
+			        'toaster': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='20' height='16' rx='2'></rect></svg>`,
+			        'blender': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='20' height='16' rx='2'></rect></svg>`,
+			        'dish washer': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='20' height='16' rx='2'></rect></svg>`,
+			        'dishwasher': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='20' height='16' rx='2'></rect></svg>`,
+			        'bbq': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='9'></circle><path d='M8 12h8M12 8v8'></path></svg>`,
+			        'grill': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='9'></circle><path d='M8 12h8M12 8v8'></path></svg>`,
+			        'wine': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M8 22h8M12 15v7M7 2h10l-1 7a4 4 0 0 1-8 0L7 2z'></path></svg>`,
+			        'dining': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M8 22h8M12 15v7M7 2h10l-1 7a4 4 0 0 1-8 0L7 2z'></path></svg>`,
+			        'breakfast': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 10h-12a2 2 0 0 0 -2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-7a2 2 0 0 0 -2 -2z'></path></svg>`,
+			
+			        // Water, Bathroom & Personal Care
+			        'hot water': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'></path></svg>`,
+			        'shower': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'></path></svg>`,
+			        'bidet': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'></path></svg>`,
+			        'bathtub': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 12h20v4a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4v-4z'></path></svg>`,
+			        'bathtub': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 12h20v4a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4v-4z'></path></svg>`,
+			        'soap': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 2h6v3H9zM7 5h10v17H7z'></path></svg>`,
+			        'shampoo': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 2h6v3H9zM7 5h10v17H7z'></path></svg>`,
+			        'conditioner': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 2h6v3H9zM7 5h10v17H7z'></path></svg>`,
+			        'hair dryer': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M16 16v4M7 8h13a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H7M7 8a4 4 0 1 0 0 8'></path></svg>`,
+			        'washer': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='2'></rect><circle cx='12' cy='13' r='5'></circle></svg>`,
+			        'dryer': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='2'></rect><circle cx='12' cy='13' r='5'></circle></svg>`,
+			        'laundromat': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='2'></rect><circle cx='12' cy='13' r='5'></circle></svg>`,
+			
+			        // Bedroom & Living
+			        'bed': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 4v16M2 8h20v12M2 17h20M6 8v4M10 8v4'></path></svg>`,
+			        'linen': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 4v16M2 8h20v12M2 17h20M6 8v4M10 8v4'></path></svg>`,
+			        'pillow': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 4v16M2 8h20v12M2 17h20M6 8v4M10 8v4'></path></svg>`,
+			        'blanket': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 4v16M2 8h20v12M2 17h20M6 8v4M10 8v4'></path></svg>`,
+			        'hanger': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2a3 3 0 0 0-3 3c0 1.5 1 2.5 2 3L2 15a2 2 0 0 0 1 3h18a2 2 0 0 0 1-3L13 8c1-.5 2-1.5 2-3a3 3 0 0 0-3-3z'></path></svg>`,
+			        'iron': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2a3 3 0 0 0-3 3c0 1.5 1 2.5 2 3L2 15a2 2 0 0 0 1 3h18a2 2 0 0 0 1-3L13 8c1-.5 2-1.5 2-3a3 3 0 0 0-3-3z'></path></svg>`,
+			        'workspace': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='3' width='20' height='14' rx='2'></rect><line x1='8' y1='21' x2='16' y2='21'></line></svg>`,
+			
+			        // Outdoor, Views & Amenities
+			        'pool': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 20c5 0 5-2 10-2s5 2 10 2M2 16c5 0 5-2 10-2s5 2 10 2'></path></svg>`,
+			        'sauna': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 20c5 0 5-2 10-2s5 2 10 2M2 16c5 0 5-2 10-2s5 2 10 2'></path></svg>`,
+			        'hot tub': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 20c5 0 5-2 10-2s5 2 10 2M2 16c5 0 5-2 10-2s5 2 10 2'></path></svg>`,
+			        'lake': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1'></path></svg>`,
+			        'waterfront': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1'></path></svg>`,
+			        'beach': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1'></path></svg>`,
+			        'ocean': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1'></path></svg>`,
+			        'river': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1'></path></svg>`,
+			        'patio': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22v-9M12 9a7 7 0 0 0-7-7c0 4 3.5 7 7 7z'></path></svg>`,
+			        'balcony': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22v-9M12 9a7 7 0 0 0-7-7c0 4 3.5 7 7 7z'></path></svg>`,
+			        'backyard': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22v-9M12 9a7 7 0 0 0-7-7c0 4 3.5 7 7 7z'></path></svg>`,
+			        'garden': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22v-9M12 9a7 7 0 0 0-7-7c0 4 3.5 7 7 7z'></path></svg>`,
+			
+			        // Parking & Mobility
+			        'parking': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='5' width='20' height='14' rx='2'></rect><path d='M9 17V7h4a3 3 0 0 1 0 6H9'></path></svg>`,
+			        'ev charger': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='5' width='20' height='14' rx='2'></rect><path d='M9 17V7h4a3 3 0 0 1 0 6H9'></path></svg>`,
+			        'bike': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><circle cx='5.5' cy='17.5' r='3.5'></circle><circle cx='18.5' cy='17.5' r='3.5'></circle></svg>`,
+			
+			        // Access & Security
+			        'lock': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='11' width='18' height='11' rx='2' ry='2'></rect><path d='M7 11V7a5 5 0 0 1 10 0v4'></path></svg>`,
+			        'keypad': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='11' width='18' height='11' rx='2' ry='2'></rect><path d='M7 11V7a5 5 0 0 1 10 0v4'></path></svg>`,
+			        'safe': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='11' width='18' height='11' rx='2' ry='2'></rect><path d='M7 11V7a5 5 0 0 1 10 0v4'></path></svg>`,
+			        'security': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='11' width='18' height='11' rx='2' ry='2'></rect><path d='M7 11V7a5 5 0 0 1 10 0v4'></path></svg>`,
+			        'alarm': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'></path></svg>`,
+			        'first aid': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'></path></svg>`,
+			        'extinguisher': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'></path></svg>`,
+			        'elevator': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'></path><circle cx='12' cy='7' r='4'></circle></svg>`,
+			        'doorman': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'></path><circle cx='12' cy='7' r='4'></circle></svg>`,
+			        'staff': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'></path><circle cx='12' cy='7' r='4'></circle></svg>`,
+			
+			        // Family & Pets
+			        'crib': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><path d='M8 14s1.5 2 4 2 4-2 4-2'></path></svg>`,
+			        'baby': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><path d='M8 14s1.5 2 4 2 4-2 4-2'></path></svg>`,
+			        'children': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><path d='M8 14s1.5 2 4 2 4-2 4-2'></path></svg>`,
+			        'pet': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='4' r='2'></circle><circle cx='18' cy='8' r='2'></circle><path d='M9 10a5 5 0 0 1 5 5v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a5 5 0 0 1 5-5z'></path></svg>`
+			    };
+			
+			    // Clean checkmark fallback icon
+			    const defaultIcon = `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6L9 17l-5-5'></path></svg>`;
+			
+			    // Iterate through tags and set matched icon
+			    document.querySelectorAll('.amenity-wrapper .amenity').forEach(el => {
+			        const text = el.querySelector('.name').innerText.toLowerCase();
+			        let matchedSvg = defaultIcon;
+			
+			        for (const key in iconMap) {
+			            if (text.includes(key)) {
+			                matchedSvg = iconMap[key];
+			                break;
+			            }
+			        }
+			
+			        el.querySelector('.icon-box').innerHTML = matchedSvg;
+			    });
+			})();
+			</script>
+			"
+			```
+		lineageTag: 7f3f1477-0baf-4e68-b3a7-3456f5ed833e
+
+	measure 'Cover Photo' = ```
+			
+			VAR PhotoURL =
+			    SELECTEDVALUE(Listings[Cover Photo])
+			
+			VAR Latitude =
+			    SELECTEDVALUE('Listings'[Latitude])
+			
+			VAR Longitude =
+			    SELECTEDVALUE('Listings'[Longitude])
+			
+			VAR City =
+			    SELECTEDVALUE('Listings'[City])
+			
+			VAR Country =
+			    LOOKUPVALUE(Cities[Country], Cities[City], City)
+			
+			RETURN
+			"
+			<style>
+			/* CSS Reset & Overflow Prevention */
+			.photo-wrapper, 
+			.photo-wrapper * {
+			    box-sizing: border-box !important;
+			    margin: 0 !important;
+			}
+			
+			.photo-wrapper {
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    right: 0;
+			    bottom: 0;
+			    padding: 4px;
+			    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+			    overflow: hidden !important;
+			}
+			
+			/* Outer Crimson Card Frame using Grid */
+			.photo-wrapper .photo-card {
+			    display: grid;
+			    grid-template-rows: 1fr 40px; /* Top fills available space, bottom locked to 40px */
+			    gap: 8px;
+			    
+			    width: 100%;
+			    height: 100%;
+			    padding: 8px;
+			    
+			    background: #FAFAFA;
+			    border: 3px solid #8B0000;
+			    border-radius: 12px;
+			    
+			    box-shadow: 
+			        0 4px 14px rgba(139, 0, 0, 0.15),
+			        inset 0 0 0 1px #FFFFFF;
+			    overflow: hidden !important;
+			}
+			
+			/* Photo Canvas - Bound strictly to Row 1 */
+			.photo-wrapper .photo-frame {
+			    position: relative;
+			    width: 100%;
+			    height: 100%;
+			    
+			    border-radius: 6px;
+			    overflow: hidden;
+			    background: #F3F3F3;
+			    border: 1px solid #E5E7EB;
+			}
+			
+			/* Image fills Row 1 completely */
+			.photo-wrapper .photo-frame img {
+			    width: 100%;
+			    height: 100%;
+			    display: block;
+			    object-fit: cover;
+			    object-position: center;
+			}
+			
+			.photo-wrapper .accent {
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    width: 50px;
+			    height: 4px;
+			    background: linear-gradient(90deg, #8B0000, #DC143C);
+			    z-index: 20;
+			    border-bottom-right-radius: 4px;
+			}
+			
+			/* Geotag Footer - Bound strictly to Row 2 */
+			.photo-wrapper .geotag {
+			    display: flex;
+			    align-items: center;
+			    justify-content: space-between;
+			    
+			    width: 100%;
+			    height: 100%;
+			    
+			    padding: 0 12px;
+			    background: #FCF2F4; 
+			    border: 1px solid #F8DDE2;
+			    border-radius: 6px;
+			    gap: 8px;
+			    overflow: hidden;
+			}
+			
+			.photo-wrapper .location-main {
+			    display: flex;
+			    align-items: center;
+			    gap: 6px;
+			    min-width: 0; 
+			}
+			
+			.photo-wrapper .location-main svg {
+			    flex-shrink: 0;
+			}
+			
+			.photo-wrapper .place {
+			    font-size: 13px;
+			    font-weight: 700;
+			    color: #3B0912;
+			    white-space: nowrap;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			}
+			
+			.photo-wrapper .coords {
+			    display: flex;
+			    align-items: center;
+			    gap: 6px;
+			    flex-shrink: 0; 
+			}
+			
+			.photo-wrapper .coord-pill {
+			    display: flex;
+			    align-items: center;
+			    gap: 4px;
+			    background: #FFFFFF;
+			    padding: 3px 7px;
+			    border-radius: 5px;
+			    border: 1px solid #F4C2CB;
+			    font-size: 10px;
+			    font-weight: 600;
+			    color: #8A1529;
+			}
+			
+			.photo-wrapper .coord-pill span {
+			    line-height: 1;
+			}
+			</style>
+			
+			<div class='photo-wrapper'>
+			    <div class='photo-card'>
+			
+			        <!-- COVER PHOTO (Grid Row 1) -->
+			        <div class='photo-frame'>
+			            <div class='accent'></div>
+			            <img src='" & PhotoURL & "'>
+			        </div>
+			
+			        <!-- GEOTAG INFORMATION (Grid Row 2) -->
+			        <div class='geotag'>
+			
+			            <!-- LEFT: CITY / COUNTRY -->
+			            <div class='location-main'>
+			                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16' fill='none' stroke='#DC143C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'>
+			                    <path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'></path>
+			                    <circle cx='12' cy='10' r='3'></circle>
+			                </svg>
+			                <span class='place'>" & City & ", " & Country & "</span>
+			            </div>
+			
+			            <!-- RIGHT: COORDINATES -->
+			            <div class='coords'>
+			                <div class='coord-pill'>
+			                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='12' height='12' fill='none' stroke='#C95B6C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+			                        <circle cx='12' cy='12' r='10'></circle>
+			                        <line x1='2' y1='12' x2='22' y2='12'></line>
+			                    </svg>
+			                    <span>" & FORMAT(Latitude, "0.0000") & "°</span>
+			                </div>
+			
+			                <div class='coord-pill'>
+			                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='12' height='12' fill='none' stroke='#C95B6C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+			                        <circle cx='12' cy='12' r='10'></circle>
+			                        <path d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'></path>
+			                    </svg>
+			                    <span>" & FORMAT(Longitude, "0.0000") & "°</span>
+			                </div>
+			            </div>
+			
+			        </div>
+			    </div>
+			</div>
+			"
+			```
+		lineageTag: a0ede614-9076-4a6c-b6e6-3204facad2b8
+
+	measure 'Photo Slideshow' = ```
+			
+			VAR PhotoTable =
+			    FILTER(
+			        VALUES('AirBNB Photos'[Photos]),
+			        NOT ISBLANK('AirBNB Photos'[Photos])
+			    )
+			
+			VAR PhotoCount =
+			    COUNTROWS(PhotoTable)
+			
+			VAR DisplayTimePerImage = 4.0 -- Seconds an image stays visible
+			VAR TransitionTime = 1.0     -- Seconds spent sliding
+			
+			VAR TimePerSlide = DisplayTimePerImage + TransitionTime
+			VAR TotalTime = PhotoCount * TimePerSlide
+			
+			-- Calculate keyframe percentages dynamically so intervals are 100% uniform
+			VAR HoldPct = (DisplayTimePerImage / TotalTime) * 100
+			VAR TransPct = (TransitionTime / TotalTime) * 100
+			
+			VAR Keyframe_StartVisible = FORMAT(TransPct, "0.00") & "%"
+			VAR Keyframe_EndVisible   = FORMAT(TransPct + HoldPct, "0.00") & "%"
+			VAR Keyframe_ExitComplete = FORMAT((TransPct * 2) + HoldPct, "0.00") & "%"
+			
+			VAR Photos =
+			    CONCATENATEX(
+			        ADDCOLUMNS(
+			            PhotoTable,
+			            "__Index",
+			                RANKX(
+			                    PhotoTable,
+			                    'AirBNB Photos'[Photos],
+			                    ,
+			                    ASC,
+			                    DENSE
+			                )
+			        ),
+			        VAR CurrentIndex = [__Index]
+			        VAR Delay = (CurrentIndex - 1) * TimePerSlide
+			        RETURN
+			            "<div class='slide' style='animation-delay: " & FORMAT(Delay, "0.00") & "s;'>" &
+			                "<img src='" & 'AirBNB Photos'[Photos] & "'>" &
+			                "<div class='counter-overlay'>" & CurrentIndex & " / " & PhotoCount & "</div>" &
+			            "</div>",
+			        ""
+			    )
+			
+			RETURN
+			"
+			<style>
+			/* Reset & Canvas Setup */
+			.photo-wrapper, 
+			.photo-wrapper * {
+			    box-sizing: border-box !important;
+			    margin: 0 !important;
+			}
+			
+			.photo-wrapper {
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    right: 0;
+			    bottom: 0;
+			    padding: 4px;
+			    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+			    overflow: hidden !important;
+			}
+			
+			/* Crimson Frame Card */
+			.photo-wrapper .photo-card {
+			    display: grid;
+			    grid-template-rows: 1fr 34px;
+			    gap: 8px;
+			    
+			    width: 100%;
+			    height: 100%;
+			    padding: 8px;
+			    
+			    background: #FAFAFA;
+			    border: 3px solid #8B0000;
+			    border-radius: 12px;
+			    
+			    box-shadow: 
+			        0 4px 14px rgba(139, 0, 0, 0.15),
+			        inset 0 0 0 1px #FFFFFF;
+			    overflow: hidden !important;
+			}
+			
+			/* Slideshow Viewport */
+			.photo-wrapper .photo-frame {
+			    position: relative;
+			    width: 100%;
+			    height: 100%;
+			    
+			    border-radius: 6px;
+			    overflow: hidden;
+			    background: #111111;
+			    border: 1px solid #E5E7EB;
+			}
+			
+			/* Individual Slide */
+			.photo-wrapper .slide {
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    width: 100%;
+			    height: 100%;
+			
+			    animation-name: dynamicSlideShow;
+			    animation-duration: " & FORMAT(TotalTime, "0.00") & "s;
+			    animation-timing-function: ease-in-out;
+			    animation-iteration-count: infinite;
+			
+			    /* Hidden off-screen right by default */
+			    transform: translateX(100%);
+			}
+			
+			.photo-wrapper .slide img {
+			    width: 100%;
+			    height: 100%;
+			    display: block;
+			    object-fit: cover;
+			    object-position: center;
+			}
+			
+			/* Dynamic Animation Steps to Guarantee Uniform Intervals */
+			@keyframes dynamicSlideShow {
+			    0% {
+			        transform: translateX(100%);
+			    }
+			    " & Keyframe_StartVisible & " {
+			        transform: translateX(0%);
+			    }
+			    " & Keyframe_EndVisible & " {
+			        transform: translateX(0%);
+			    }
+			    " & Keyframe_ExitComplete & " {
+			        transform: translateX(-100%);
+			    }
+			    100% {
+			        transform: translateX(-100%);
+			    }
+			}
+			
+			/* Accent Header Ribbon */
+			.photo-wrapper .accent {
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    width: 50px;
+			    height: 4px;
+			    background: linear-gradient(90deg, #8B0000, #DC143C);
+			    z-index: 20;
+			    border-bottom-right-radius: 4px;
+			}
+			
+			.photo-wrapper .gradient {
+			    position: absolute;
+			    inset: 0;
+			    background: linear-gradient(
+			        to bottom,
+			        rgba(0,0,0,0) 60%,
+			        rgba(0,0,0,0.25) 100%
+			    );
+			    z-index: 5;
+			    pointer-events: none;
+			}
+			
+			/* Image Counter Overlay Inside Image (Per Slide) */
+			.photo-wrapper .counter-overlay {
+			    position: absolute;
+			    bottom: 8px;
+			    right: 8px;
+			    z-index: 10;
+			    
+			    background: rgba(0, 0, 0, 0.65);
+			    color: #FFFFFF;
+			    padding: 3px 8px;
+			    border-radius: 4px;
+			    font-size: 10px;
+			    font-weight: 600;
+			    backdrop-filter: blur(2px);
+			}
+			
+			/* Centered Crimson Footer */
+			.photo-wrapper .slideshow-footer {
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    
+			    width: 100%;
+			    height: 100%;
+			    
+			    background: #FCF2F4; 
+			    border: 1px solid #F8DDE2;
+			    border-radius: 6px;
+			    overflow: hidden;
+			}
+			
+			.photo-wrapper .counter-pill {
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    gap: 6px;
+			    
+			    background: #FFFFFF;
+			    padding: 3px 14px;
+			    border-radius: 5px;
+			    border: 1px solid #F4C2CB;
+			    
+			    color: #8A1529;
+			    font-size: 11px;
+			    font-weight: 700;
+			    letter-spacing: 0.5px;
+			}
+			</style>
+			
+			<div class='photo-wrapper'>
+			    <div class='photo-card'>
+			
+			        <!-- SLIDESHOW FRAME -->
+			        <div class='photo-frame'>
+			            <div class='accent'></div>
+			            " & Photos & "
+			            <div class='gradient'></div>
+			        </div>
+			
+			        <!-- FOOTER COUNTER -->
+			        <div class='slideshow-footer'>
+			            <div class='counter-pill'>
+			                <span>PHOTOS (" & PhotoCount & ")</span>
+			            </div>
+			        </div>
+			
+			    </div>
+			</div>
+			"
+			```
+		lineageTag: 8409b407-d4cf-4037-bace-273a286e3ba8
+
+	column Col
+		lineageTag: a8c779c6-e732-43b2-886b-073503bc4804
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Col]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Styling = calculated
+		mode: import
+		source = DATATABLE("Col", TEXT, {{"_"}})
+
+	annotation PBI_Id = 0d86114d39db4a52a98c6e49ae02e48d
+

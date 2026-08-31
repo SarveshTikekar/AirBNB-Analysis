@@ -40,7 +40,13 @@
     ]
   },
   "publicCustomVisuals": [
-    "canvasKpiCard2B8B28BD6CE94332B6BB7CD788D9E323"
+    "canvasKpiCard2B8B28BD6CE94332B6BB7CD788D9E323",
+    "briqlabDrillPie61C8FD718CFD44178A3121429F473563",
+    "canvasTable1A490F8566DF4C969F8EBB8F8638CCB4",
+    "ImageGrid_FC5183B9_926C_45E0_B5F7_0CE9EAF1DA9B",
+    "ImageCarouselByMAQSoftware1448688110701",
+    "StackedBarLineC23CD878BA764C3B84E5261BC83BC537",
+    "WordCloud1447959067750"
   ],
   "resourcePackages": [
     {
@@ -59,8 +65,43 @@
       "type": "RegisteredResources",
       "items": [
         {
+          "name": "AirBNB4440209241365507.svg",
+          "path": "AirBNB4440209241365507.svg",
+          "type": "Image"
+        },
+        {
           "name": "AirBNB7391586348376636.svg",
           "path": "AirBNB7391586348376636.svg",
+          "type": "Image"
+        },
+        {
+          "name": "bullseye043107076088675034.svg",
+          "path": "bullseye043107076088675034.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Cart6494425310689314.svg",
+          "path": "Cart6494425310689314.svg",
+          "type": "Image"
+        },
+        {
+          "name": "clock8581099830797875.svg",
+          "path": "clock8581099830797875.svg",
+          "type": "Image"
+        },
+        {
+          "name": "crowd9418173865586474.svg",
+          "path": "crowd9418173865586474.svg",
+          "type": "Image"
+        },
+        {
+          "name": "funnel-crimson21444470743006216.svg",
+          "path": "funnel-crimson21444470743006216.svg",
+          "type": "Image"
+        },
+        {
+          "name": "rupee5076886834425963.svg",
+          "path": "rupee5076886834425963.svg",
           "type": "Image"
         }
       ]
@@ -94,6 +135,17 @@
         {
           "name": "sparklinekpicard12345.pbiviz.json",
           "path": "sparklinekpicard12345.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "STANDALONEhtmlContent443BE3AD55E043BF878BED274D3A6855",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "STANDALONEhtmlContent443BE3AD55E043BF878BED274D3A6855.pbiviz.json",
+          "path": "STANDALONEhtmlContent443BE3AD55E043BF878BED274D3A6855.pbiviz.json",
           "type": "CustomVisualMetadata"
         }
       ]
