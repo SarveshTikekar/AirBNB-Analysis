@@ -1,0 +1,106 @@
+table Selections
+	lineageTag: 37b6c38d-0872-4d49-8434-c0de1281b2d2
+
+	measure 'Selected Currency' = IF(HASONEVALUE('Currency Converter'[Currency Name]), SELECTEDVALUE('Currency Converter'[Currency Name]), "US Dollar")
+		lineageTag: ab16a952-6322-4024-9e0a-2b935f0a6273
+
+	measure 'Selected Currency Symbol' = ```
+			
+			Var Curr = [Selected Currency] 
+			RETURN 
+			    LOOKUPVALUE('Currency Converter'[Currency Symbol], 'Currency Converter'[Currency Name], Curr)
+			```
+		lineageTag: 7c0e8ac1-5d9f-4496-b579-9232728086dd
+
+	measure 'Selected Rate' = ```
+			
+			Var Curr = [Selected Currency] 
+			RETURN 
+			    LOOKUPVALUE('Currency Converter'[Value Wrt Usd], 'Currency Converter'[Currency Name], Curr)
+			```
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 8fe1c05b-3692-4aa2-9f3d-a635ff650a9a
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Selected AirBNB' = SELECTEDVALUE(Listings[Listing ID])
+		formatString: 0
+		lineageTag: 0e8e7fb5-4af8-4e9a-bcf9-98a49dbaa29d
+
+	measure 'Is Selected AirBNB Superhost' = LOOKUPVALUE(Listings[Is SuperHost], Listings[Listing ID], Selections[Selected AirBNB])
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3aee68d9-b438-4dcf-83b9-490a15fce67f
+
+	measure 'Is Selected AirBNB GuestFavourite' = LOOKUPVALUE(Listings[Is Guest Favourite], Listings[Listing ID], Selections[Selected AirBNB])
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0af7e9a1-b09f-4e91-8ca5-44c82167ec9a
+
+	measure 'Is Selected AirBNB Registered' = LOOKUPVALUE(Listings[Is Registered], Listings[Listing ID], Selections[Selected AirBNB])
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c25cdc75-d792-404d-b309-43bc3d43ddb9
+
+	measure 'Is Selected AirBNB Instantly Booked' = LOOKUPVALUE(Listings[Instantly Booked], Listings[Listing ID], Selections[Selected AirBNB])
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 91a94c8b-1806-4261-a59a-d244c5421525
+
+	measure 'Selected AirBNB Listing Type' = LOOKUPVALUE(Listings[Listing Type], Listings[Listing ID], Selections[Selected AirBNB])
+		lineageTag: 31bf56f9-bbe9-406f-94e5-106c1ce16da8
+
+	measure 'Selected Description' = LOOKUPVALUE(Listings[Cleaned Description], Listings[Listing ID], [Selected AirBNB])
+		lineageTag: 21300f01-ae5a-4bf2-8dea-e7ad29e04c47
+
+	measure 'Selected AirBNB Beds' = LOOKUPVALUE(Listings[No of Beds], Listings[Listing ID], [Selected AirBNB])
+		formatString: 0
+		lineageTag: 6e6e44c5-a34a-4e2f-a57c-20eb07b5457e
+
+	measure 'Selected AirBNB CheckinTime' = LOOKUPVALUE(Listings[Checkin Time], Listings[Listing ID], [Selected AirBNB])
+		formatString: General Date
+		lineageTag: 254daef6-5b37-4513-9711-a87e0f431b95
+
+	measure 'Selected AirBNB CheckoutTime' = LOOKUPVALUE(Listings[Checkout Time], Listings[Listing ID], [Selected AirBNB])
+		formatString: General Date
+		lineageTag: dba86377-e3c1-43e6-8f5d-127cb8772fe4
+
+	measure 'Selected AirBNB Checkin Rating' = LOOKUPVALUE(Listings[Checkin Rating], Listings[Listing ID], [Selected AirBNB])
+		lineageTag: dab1257b-aa84-49cd-ba3e-3bdf700bd580
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selected AirBNB Cleanliness Rating' = LOOKUPVALUE(Listings[Cleanliness Rating], Listings[Listing ID], [Selected AirBNB])
+		lineageTag: 152c6f3f-d455-466b-bb0d-65ef9e600d8d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selected AirBNB Communication Rating' = LOOKUPVALUE(Listings[Commn Rating], Listings[Listing ID], [Selected AirBNB])
+		lineageTag: 6db6e8d7-b33d-42f8-a723-0802a489f81b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selected AirBNB Location Rating' = LOOKUPVALUE(Listings[Location Rating], Listings[Listing ID], [Selected AirBNB])
+		lineageTag: f6dd8f54-e9c8-4b28-9780-b32f8ae4b9e2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selected AirBNB Value Rating' = LOOKUPVALUE(Listings[Value Rating], Listings[Listing ID], [Selected AirBNB])
+		lineageTag: 76e333e8-955f-4dac-a238-0f03254de7f8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selected AirBNB Bedrooms' = LOOKUPVALUE(Listings[No of Bedrooms], Listings[Listing ID], [Selected AirBNB])
+		formatString: 0
+		lineageTag: 99a82dce-d986-4bd0-911a-ebddbe9ddbbb
+
+	column _
+		lineageTag: 7d74e5df-5e39-4736-9ccb-0d6de0749b4b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [_]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Selections = calculated
+		mode: import
+		source = DATATABLE("_", TEXT, {{"_"}})
+
+	annotation PBI_Id = a5d8ff8a1ea74f879627f81431a1ced2
+

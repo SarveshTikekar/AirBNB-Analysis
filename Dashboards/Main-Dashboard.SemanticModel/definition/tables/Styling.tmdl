@@ -3,7 +3,93 @@ table Styling
 
 	measure 'Amenity Tags' = ```
 			
-			VAR TagsHTML =
+			------------------------------------------------------------------
+			-- 1. Measure Tag Values & Dynamic Building
+			------------------------------------------------------------------
+			VAR _Bedrooms            = [Selected AirBNB Bedrooms]
+			VAR _Beds                = [Selected AirBNB Beds]
+			VAR _IsGuestFavorite     = [Is Selected AirBNB GuestFavourite]
+			VAR _IsInstantlyBookable = [Is Selected AirBNB Instantly Booked]
+			VAR _IsRegistered        = [Is Selected AirBNB Registered]
+			VAR _IsSuperhost         = [Is Selected AirBNB Superhost]
+			VAR _ListingType         = [Selected AirBNB Listing Type]
+			
+			VAR _TagSuperhost = 
+			    IF(
+			        _IsSuperhost, 
+			        "<div class='amenity measure-tag measure-highlight'>" &
+			            "<span class='icon-box'><svg class='tag-icon-white' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/></svg></span>" &
+			            "<span class='name'>Superhost</span>" &
+			        "</div>", 
+			        ""
+			    )
+			
+			VAR _TagGuestFav = 
+			    IF(
+			        _IsGuestFavorite, 
+			        "<div class='amenity measure-tag'>" &
+			            "<span class='icon-box'><svg class='tag-icon-white' viewBox='0 0 24 24' fill='currentColor'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg></span>" &
+			            "<span class='name'>Guest Favorite</span>" &
+			        "</div>", 
+			        ""
+			    )
+			
+			VAR _TagInstantBook = 
+			    IF(
+			        _IsInstantlyBookable, 
+			        "<div class='amenity measure-tag'>" &
+			            "<span class='icon-box'><svg class='tag-icon-white' viewBox='0 0 24 24' fill='currentColor'><path d='M7 2v11h3v9l7-12h-4l4-8z'/></svg></span>" &
+			            "<span class='name'>Instant Book</span>" &
+			        "</div>", 
+			        ""
+			    )
+			
+			VAR _TagRegistered = 
+			    IF(
+			        _IsRegistered, 
+			        "<div class='amenity measure-tag'>" &
+			            "<span class='icon-box'><svg class='tag-icon-white' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg></span>" &
+			            "<span class='name'>Registered</span>" &
+			        "</div>", 
+			        ""
+			    )
+			
+			VAR _TagListingType = 
+			    IF(
+			        NOT(ISBLANK(_ListingType)) && _ListingType <> "-", 
+			        "<div class='amenity measure-tag measure-outline'>" &
+			            "<span class='name'>" & _ListingType & "</span>" &
+			        "</div>", 
+			        ""
+			    )
+			
+			VAR _TagBedrooms = 
+			    IF(
+			        NOT(ISBLANK(_Bedrooms)) && _Bedrooms > 0, 
+			        "<div class='amenity measure-tag'>" &
+			            "<span class='icon-box'><svg class='tag-icon-white' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 21h18M3 7v14M21 7v14M6 7V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v3M9 14h6M9 18h6'/></svg></span>" &
+			            "<span class='name'>" & _Bedrooms & IF(_Bedrooms = 1, " Bedroom", " Bedrooms") & "</span>" &
+			        "</div>", 
+			        ""
+			    )
+			
+			VAR _TagBeds = 
+			    IF(
+			        NOT(ISBLANK(_Beds)) && _Beds > 0, 
+			        "<div class='amenity measure-tag'>" &
+			            "<span class='icon-box'><svg class='tag-icon-white' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 4v16M2 8h20v12M2 17h20M6 8v4M10 8v4'/></svg></span>" &
+			            "<span class='name'>" & _Beds & IF(_Beds = 1, " Bed", " Beds") & "</span>" &
+			        "</div>", 
+			        ""
+			    )
+			
+			-- Bedrooms and Beds placed at the very start of the top stack
+			VAR MeasureTagsHTML = _TagSuperhost & _TagGuestFav & _TagInstantBook & _TagRegistered & _TagListingType & _TagBedrooms & _TagBeds
+			
+			------------------------------------------------------------------
+			-- 2. Amenity Table Tags Building
+			------------------------------------------------------------------
+			VAR AmenitiesTagsHTML =
 			    CONCATENATEX(
 			        FILTER(
 			            VALUES('Listing Amenities'[Amenities]),
@@ -16,6 +102,9 @@ table Styling
 			        ""
 			    )
 			
+			------------------------------------------------------------------
+			-- 3. Render Combined HTML Output
+			------------------------------------------------------------------
 			RETURN
 			"
 			<style>
@@ -32,7 +121,7 @@ table Styling
 			    left: 0;
 			    right: 0;
 			    bottom: 0;
-			    padding: 6px;
+			    padding: 8px;
 			    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
 			    overflow: hidden !important;
 			    background: transparent !important;
@@ -43,11 +132,11 @@ table Styling
 			    display: flex;
 			    flex-wrap: wrap;
 			    align-content: flex-start;
-			    gap: 10px;
+			    gap: 12px;
 			    
 			    width: 100%;
 			    height: 100%;
-			    padding: 4px;
+			    padding: 6px;
 			    
 			    overflow-y: auto !important;
 			    overflow-x: hidden;
@@ -55,7 +144,7 @@ table Styling
 			
 			/* Custom Scrollbar */
 			.amenity-wrapper .tags-container::-webkit-scrollbar {
-			    width: 5px;
+			    width: 6px;
 			}
 			.amenity-wrapper .tags-container::-webkit-scrollbar-track {
 			    background: transparent;
@@ -68,20 +157,20 @@ table Styling
 			    background: #8B0000;
 			}
 			
-			/* Rounded Box Pill Tag */
+			/* Rounded Box Pill Tag (Slightly Larger Pill Design) */
 			.amenity-wrapper .amenity {
 			    display: inline-flex;
 			    align-items: center;
-			    gap: 8px;
+			    gap: 10px;
 			    
-			    padding: 8px 16px;
-			    height: 38px;
+			    padding: 10px 20px;
+			    height: 44px;
 			    
 			    background: #FFFFFF;
 			    border: 1.5px solid #E5E7EB;
-			    border-radius: 20px;
+			    border-radius: 22px;
 			    
-			    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+			    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
 			    transition: all 0.2s ease-in-out;
 			    cursor: default;
 			}
@@ -90,7 +179,7 @@ table Styling
 			    background: #FCF2F4;
 			    border-color: #F4C2CB;
 			    transform: translateY(-1px);
-			    box-shadow: 0 4px 8px rgba(139, 0, 0, 0.08);
+			    box-shadow: 0 4px 10px rgba(139, 0, 0, 0.1);
 			}
 			
 			.amenity-wrapper .icon-box {
@@ -99,25 +188,65 @@ table Styling
 			    justify-content: center;
 			}
 			
+			/* Scaled Up SVG Icons */
 			.amenity-wrapper .tag-icon {
-			    width: 16px;
-			    height: 16px;
+			    width: 20px;
+			    height: 20px;
 			    flex-shrink: 0;
 			}
 			
-			/* 14px Typography */
+			.amenity-wrapper .tag-icon-white {
+			    width: 18px;
+			    height: 18px;
+			    flex-shrink: 0;
+			    color: #FFFFFF;
+			}
+			
+			/* Typography (16px) */
 			.amenity-wrapper .name {
-			    font-size: 14px;
+			    font-size: 16px;
 			    font-weight: 600;
 			    color: #222222;
 			    white-space: nowrap;
 			    line-height: 1;
 			}
+			
+			/* Highlighted Top Measure Tags Styling */
+			.amenity-wrapper .measure-tag {
+			    background: linear-gradient(135deg, #8B0000 0%, #B81D43 100%) !important;
+			    border: 1.5px solid #8B0000 !important;
+			    box-shadow: 0 3px 8px rgba(139, 0, 0, 0.28) !important;
+			}
+			
+			.amenity-wrapper .measure-tag .name {
+			    color: #FFFFFF !important;
+			    font-weight: 700 !important;
+			}
+			
+			.amenity-wrapper .measure-tag:hover {
+			    transform: translateY(-1px);
+			    box-shadow: 0 6px 12px rgba(139, 0, 0, 0.38) !important;
+			}
+			
+			.amenity-wrapper .measure-highlight {
+			    background: linear-gradient(135deg, #D81B60 0%, #FF2A5B 100%) !important;
+			    border: 1.5px solid #D81B60 !important;
+			}
+			
+			.amenity-wrapper .measure-outline {
+			    background: #FFF0F3 !important;
+			    border: 1.5px solid #F4C2CB !important;
+			}
+			
+			.amenity-wrapper .measure-outline .name {
+			    color: #8B0000 !important;
+			}
 			</style>
 			
 			<div class='amenity-wrapper'>
 			    <div class='tags-container'>
-			        " & TagsHTML & "
+			        " & MeasureTagsHTML & "
+			        " & AmenitiesTagsHTML & "
 			    </div>
 			</div>
 			
@@ -168,7 +297,6 @@ table Styling
 			        'hot water': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'></path></svg>`,
 			        'shower': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'></path></svg>`,
 			        'bidet': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'></path></svg>`,
-			        'bathtub': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 12h20v4a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4v-4z'></path></svg>`,
 			        'bathtub': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 12h20v4a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4v-4z'></path></svg>`,
 			        'soap': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 2h6v3H9zM7 5h10v17H7z'></path></svg>`,
 			        'shampoo': `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 2h6v3H9zM7 5h10v17H7z'></path></svg>`,
@@ -228,8 +356,8 @@ table Styling
 			    // Clean checkmark fallback icon
 			    const defaultIcon = `<svg class='tag-icon' viewBox='0 0 24 24' fill='none' stroke='#8B0000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6L9 17l-5-5'></path></svg>`;
 			
-			    // Iterate through tags and set matched icon
-			    document.querySelectorAll('.amenity-wrapper .amenity').forEach(el => {
+			    // Iterate through standard non-measure amenity tags and set matched icon
+			    document.querySelectorAll('.amenity-wrapper .amenity:not(.measure-tag)').forEach(el => {
 			        const text = el.querySelector('.name').innerText.toLowerCase();
 			        let matchedSvg = defaultIcon;
 			
@@ -282,14 +410,14 @@ table Styling
 			    right: 0;
 			    bottom: 0;
 			    padding: 4px;
-			    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+			    font-family: 'Segoe UI Semibold', 'Segoe UI', -apple-system, Arial, sans-serif;
 			    overflow: hidden !important;
 			}
 			
 			/* Outer Crimson Card Frame using Grid */
 			.photo-wrapper .photo-card {
 			    display: grid;
-			    grid-template-rows: 1fr 40px; /* Top fills available space, bottom locked to 40px */
+			    grid-template-rows: 1fr 42px; /* Top fills available space, bottom locked to 42px */
 			    gap: 8px;
 			    
 			    width: 100%;
@@ -297,7 +425,7 @@ table Styling
 			    padding: 8px;
 			    
 			    background: #FAFAFA;
-			    border: 3px solid #8B0000;
+			    border: 2px solid #8B0000;
 			    border-radius: 12px;
 			    
 			    box-shadow: 
@@ -312,7 +440,7 @@ table Styling
 			    width: 100%;
 			    height: 100%;
 			    
-			    border-radius: 6px;
+			    border-radius: 8px;
 			    overflow: hidden;
 			    background: #F3F3F3;
 			    border: 1px solid #E5E7EB;
@@ -331,7 +459,7 @@ table Styling
 			    position: absolute;
 			    top: 0;
 			    left: 0;
-			    width: 50px;
+			    width: 60px;
 			    height: 4px;
 			    background: linear-gradient(90deg, #8B0000, #DC143C);
 			    z-index: 20;
@@ -347,10 +475,10 @@ table Styling
 			    width: 100%;
 			    height: 100%;
 			    
-			    padding: 0 12px;
+			    padding: 0 14px;
 			    background: #FCF2F4; 
 			    border: 1px solid #F8DDE2;
-			    border-radius: 6px;
+			    border-radius: 8px;
 			    gap: 8px;
 			    overflow: hidden;
 			}
@@ -358,7 +486,7 @@ table Styling
 			.photo-wrapper .location-main {
 			    display: flex;
 			    align-items: center;
-			    gap: 6px;
+			    gap: 8px;
 			    min-width: 0; 
 			}
 			
@@ -367,12 +495,13 @@ table Styling
 			}
 			
 			.photo-wrapper .place {
-			    font-size: 13px;
+			    font-size: 14px;
 			    font-weight: 700;
 			    color: #3B0912;
 			    white-space: nowrap;
 			    overflow: hidden;
 			    text-overflow: ellipsis;
+			    letter-spacing: 0.01em;
 			}
 			
 			.photo-wrapper .coords {
@@ -385,13 +514,13 @@ table Styling
 			.photo-wrapper .coord-pill {
 			    display: flex;
 			    align-items: center;
-			    gap: 4px;
+			    gap: 5px;
 			    background: #FFFFFF;
-			    padding: 3px 7px;
-			    border-radius: 5px;
+			    padding: 4px 9px;
+			    border-radius: 6px;
 			    border: 1px solid #F4C2CB;
-			    font-size: 10px;
-			    font-weight: 600;
+			    font-size: 11px;
+			    font-weight: 700;
 			    color: #8A1529;
 			}
 			
@@ -414,7 +543,7 @@ table Styling
 			
 			            <!-- LEFT: CITY / COUNTRY -->
 			            <div class='location-main'>
-			                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16' fill='none' stroke='#DC143C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'>
+			                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='18' height='18' fill='none' stroke='#DC143C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'>
 			                    <path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'></path>
 			                    <circle cx='12' cy='10' r='3'></circle>
 			                </svg>
@@ -424,7 +553,7 @@ table Styling
 			            <!-- RIGHT: COORDINATES -->
 			            <div class='coords'>
 			                <div class='coord-pill'>
-			                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='12' height='12' fill='none' stroke='#C95B6C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+			                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='13' height='13' fill='none' stroke='#C95B6C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
 			                        <circle cx='12' cy='12' r='10'></circle>
 			                        <line x1='2' y1='12' x2='22' y2='12'></line>
 			                    </svg>
@@ -432,7 +561,7 @@ table Styling
 			                </div>
 			
 			                <div class='coord-pill'>
-			                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='12' height='12' fill='none' stroke='#C95B6C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+			                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='13' height='13' fill='none' stroke='#C95B6C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
 			                        <circle cx='12' cy='12' r='10'></circle>
 			                        <path d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'></path>
 			                    </svg>
@@ -512,7 +641,7 @@ table Styling
 			    right: 0;
 			    bottom: 0;
 			    padding: 4px;
-			    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+			    font-family: 'Segoe UI Semibold', 'Segoe UI', -apple-system, Arial, sans-serif;
 			    overflow: hidden !important;
 			}
 			
@@ -527,7 +656,7 @@ table Styling
 			    padding: 8px;
 			    
 			    background: #FAFAFA;
-			    border: 3px solid #8B0000;
+			    border: 2px solid #8B0000;
 			    border-radius: 12px;
 			    
 			    box-shadow: 
@@ -687,6 +816,477 @@ table Styling
 			"
 			```
 		lineageTag: 8409b407-d4cf-4037-bace-273a286e3ba8
+
+	measure 'Airbnb Tags Visual' = ```
+			
+			-- 1. Evaluated Boolean / Value Checks
+			VAR _IsGuestFavorite     = [Is Selected AirBNB GuestFavourite]
+			VAR _IsInstantlyBookable = [Is Selected AirBNB Instantly Booked]
+			VAR _IsRegistered        = [Is Selected AirBNB Registered]
+			VAR _IsSuperhost         = [Is Selected AirBNB Superhost]
+			VAR _ListingType         = [Selected AirBNB Listing Type]
+			
+			-- 2. Build Tag Elements with Icons
+			VAR _TagSuperhost = 
+			    IF(
+			        _IsSuperhost, 
+			        "<div class='tag tag-highlight'><span class='icon'>★</span>Superhost</div>", 
+			        ""
+			    )
+			
+			VAR _TagGuestFav = 
+			    IF(
+			        _IsGuestFavorite, 
+			        "<div class='tag tag-primary'><span class='icon'>❤</span>Guest Favorite</div>", 
+			        ""
+			    )
+			
+			VAR _TagInstantBook = 
+			    IF(
+			        _IsInstantlyBookable, 
+			        "<div class='tag tag-primary'><span class='icon'>⚡</span>Instant Book</div>", 
+			        ""
+			    )
+			
+			VAR _TagRegistered = 
+			    IF(
+			        _IsRegistered, 
+			        "<div class='tag tag-primary'><span class='icon'>✓</span>Registered</div>", 
+			        ""
+			    )
+			
+			VAR _TagListingType = 
+			    IF(
+			        NOT(ISBLANK(_ListingType)) && _ListingType <> "-", 
+			        "<div class='tag tag-subtle'>" & _ListingType & "</div>", 
+			        ""
+			    )
+			
+			-- 3. Combine Tags
+			VAR _CombinedTags = 
+			    _TagSuperhost & _TagGuestFav & _TagInstantBook & _TagRegistered & _TagListingType
+			
+			-- 4. Responsive HTML & CSS Component
+			RETURN
+			"<div class='tag-wrapper'>" &
+			    "<style>" &
+			        "html, body { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }" &
+			        ".tag-wrapper {" &
+			            "display: flex;" &
+			            "flex-wrap: wrap;" &
+			            "align-content: flex-start;" &
+			            "align-items: center;" &
+			            "gap: 8px;" &
+			            "width: 100%;" &
+			            "height: 100%;" &
+			            "padding: 8px;" &
+			            "box-sizing: border-box;" &
+			            "font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;" &
+			        "}" &
+			        ".tag {" &
+			            "display: inline-flex;" &
+			            "align-items: center;" &
+			            "justify-content: center;" &
+			            "padding: 6px 14px;" &
+			            "border-radius: 20px;" &
+			            "font-size: 12px;" &
+			            "font-weight: 600;" &
+			            "line-height: 1;" &
+			            "letter-spacing: 0.2px;" &
+			            "transition: all 0.2s ease;" &
+			            "cursor: default;" &
+			            "user-select: none;" &
+			        "}" &
+			        ".icon {" &
+			            "margin-right: 5px;" &
+			            "font-size: 11px;" &
+			        "}" &
+			        "/* Primary Tag: Rich Crimson */" &
+			        ".tag-primary {" &
+			            "color: #FFFFFF;" &
+			            "background: linear-gradient(135deg, #8C002B 0%, #B81D43 100%);" &
+			            "box-shadow: 0 2px 6px rgba(140, 0, 43, 0.25);" &
+			            "border: 1px solid rgba(255, 255, 255, 0.15);" &
+			        "}" &
+			        "/* Highlight Tag: Vibrant Reddish Pink (Superhost) */" &
+			        ".tag-highlight {" &
+			            "color: #FFFFFF;" &
+			            "background: linear-gradient(135deg, #D81B60 0%, #FF2A5B 100%);" &
+			            "box-shadow: 0 3px 8px rgba(216, 27, 96, 0.35);" &
+			            "border: 1px solid rgba(255, 255, 255, 0.2);" &
+			        "}" &
+			        "/* Subtle Tag: Outlined / Soft Tint (Listing Type) */" &
+			        ".tag-subtle {" &
+			            "color: #8C002B;" &
+			            "background-color: #FFF0F3;" &
+			            "border: 1.5px solid #F8B4C4;" &
+			            "font-weight: 700;" &
+			        "}" &
+			        "/* Empty State Container */" &
+			        ".empty-state {" &
+			            "display: flex;" &
+			            "align-items: center;" &
+			            "justify-content: center;" &
+			            "width: 100%;" &
+			            "height: 100%;" &
+			            "color: #999999;" &
+			            "font-size: 12px;" &
+			            "font-style: italic;" &
+			            "border: 1px dashed #E0E0E0;" &
+			            "border-radius: 8px;" &
+			            "box-sizing: border-box;" &
+			        "}" &
+			    "</style>" &
+			    IF(
+			        _CombinedTags = "", 
+			        "<div class='empty-state'>No tags active for current selection</div>", 
+			        _CombinedTags
+			    ) &
+			"</div>"
+			```
+		lineageTag: c60726ad-11bc-44ac-8164-2ade826e5c5c
+
+	measure 'Description Opener' = ```
+			
+			"
+			<style>
+			/* Card Base Setup */
+			.description-card {
+			    position: relative;
+			    width: 100%;
+			    height: 100%;
+			    box-sizing: border-box !important;
+			    padding: 19px 22px;
+			    
+			    background: linear-gradient(135deg, #FFF9FA 0%, #FFF5F6 100%);
+			    border: 2px solid #8B0000;
+			    border-radius: 12px;
+			    
+			    font-family: 'Segoe UI', Arial, sans-serif;
+			    font-size: 15px;
+			    color: #333333;
+			    
+			    overflow: hidden;
+			    box-shadow: 0 3px 10px rgba(159, 20, 40, 0.08), inset 0 0 20px rgba(255, 255, 255, 0.6);
+			}
+			
+			/* Header Container */
+			.description-header {
+			    display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    margin-bottom: 9px;
+			}
+			
+			/* Decorative Mark */
+			.description-mark {
+			    width: 25px;
+			    height: 25px;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    margin-right: 10px;
+			    border-radius: 7px;
+			    background: #9F1428;
+			    color: #FFFFFF;
+			    font-size: 12px;
+			    font-weight: 700;
+			    box-shadow: 0 2px 6px rgba(159, 20, 40, 0.20);
+			}
+			
+			/* Title */
+			.description-title {
+			    font-size: 17px;
+			    font-weight: 700;
+			    letter-spacing: 1.35px;
+			    color: #8F1427;
+			    text-transform: uppercase;
+			}
+			
+			/* Divider Line */
+			.description-divider {
+			    height: 1px;
+			    background: linear-gradient(90deg, #E4A0A7, #F0C8CC, transparent);
+			    margin-bottom: 14px;
+			}
+			
+			/* Body Text */
+			.description-text {
+			    font-size: 15px;
+			    line-height: 1.65;
+			    font-weight: 400;
+			    color: #353535;
+			    text-align: left;
+			}
+			</style>
+			
+			<div class='description-card'>
+			    <div class='description-header'>
+			        <div class='description-title'>
+			            Property Description
+			        </div>
+			    </div>
+			    
+			    <div class='description-divider'></div>
+			    
+			    <div class='description-text'>
+			        " & [Selected Description] & "
+			    </div>
+			</div>
+			"
+			```
+		lineageTag: 6332ac01-2762-4a4d-894c-0bcdb0150044
+
+	measure 'Listing Important Measures Table' = ```
+			
+			
+			------------------------------------------------------------------
+			-- 1. Extract Measures from Selections
+			------------------------------------------------------------------
+			VAR _CheckinRating      = [Selected AirBNB Checkin Rating]
+			VAR _CleanlinessRating  = [Selected AirBNB Cleanliness Rating]
+			VAR _CommRating         = [Selected AirBNB Communication Rating]
+			VAR _LocationRating     = [Selected AirBNB Location Rating]
+			VAR _ValueRating        = [Selected AirBNB Value Rating]
+			VAR _CheckinTime        = [Selected AirBNB CheckinTime]
+			VAR _CheckoutTime       = [Selected AirBNB CheckoutTime]
+			
+			------------------------------------------------------------------
+			-- 2. Build HTML Table Output
+			------------------------------------------------------------------
+			RETURN
+			"
+			<style>
+			.metrics-card-wrapper, .metrics-card-wrapper * {
+			    box-sizing: border-box !important;
+			    margin: 0 !important;
+			}
+			
+			.metrics-card-wrapper {
+			    position: absolute;
+			    top: 0; left: 0; right: 0; bottom: 0;
+			    padding: 4px;
+			    font-family: 'Segoe UI Semibold', 'Segoe UI', -apple-system, Arial, sans-serif;
+			    background: transparent !important;
+			    overflow: auto !important;
+			}
+			
+			.metrics-card {
+			    background: #FFFFFF;
+			    border: 1px solid #D1D5DB;
+			    border-radius: 0px !important;
+			    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+			    overflow: hidden;
+			}
+			
+			/* Header Styling */
+			.metrics-header {
+			    background: #8B0000;
+			    color: #FFFFFF;
+			    padding: 14px 20px;
+			    font-size: 17px;
+			    font-weight: 700;
+			    letter-spacing: 0.02em;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    gap: 10px;
+			    border-radius: 0px !important;
+			    border-bottom: 2px solid #660000;
+			}
+			
+			/* Table Styling */
+			.metrics-table {
+			    width: 100%;
+			    border-collapse: collapse;
+			}
+			
+			.metrics-table tr {
+			    border-bottom: 1px solid #E5E7EB;
+			    transition: background 0.1s ease-in-out;
+			}
+			
+			.metrics-table tr:last-child {
+			    border-bottom: none;
+			}
+			
+			.metrics-table tr:hover {
+			    background: #FDF2F4;
+			}
+			
+			.metrics-table td {
+			    padding: 14px 20px;
+			    font-size: 15px;
+			    vertical-align: middle;
+			}
+			
+			.metric-label {
+			    display: flex;
+			    align-items: center;
+			    gap: 12px;
+			    color: #1F2937;
+			    font-weight: 600;
+			}
+			
+			.metric-value {
+			    text-align: right;
+			    font-weight: 700;
+			    color: #111827;
+			}
+			
+			/* Square Professional Value Badge */
+			.badge-tag {
+			    display: inline-flex;
+			    align-items: center;
+			    gap: 5px;
+			    background: #FAF0F2;
+			    border: 1px solid #E6B8C2;
+			    color: #8B0000;
+			    padding: 5px 12px;
+			    border-radius: 0px !important;
+			    font-size: 14px;
+			    font-weight: 700;
+			    line-height: 1;
+			}
+			
+			.icon-svg {
+			    width: 19px;
+			    height: 19px;
+			    stroke: #8B0000;
+			    fill: none;
+			    stroke-width: 2.2;
+			    stroke-linecap: square;
+			    stroke-linejoin: miter;
+			    flex-shrink: 0;
+			}
+			
+			.section-divider {
+			    background-color: #F8FAFC;
+			    color: #4B5563;
+			    font-size: 12px;
+			    font-weight: 700;
+			    letter-spacing: 0.08em;
+			    text-transform: uppercase;
+			    padding: 10px 20px !important;
+			    border-bottom: 1px solid #E5E7EB;
+			    border-top: 1px solid #E5E7EB;
+			}
+			</style>
+			
+			<div class='metrics-card-wrapper'>
+			    <div class='metrics-card'>
+			        <div class='metrics-header'>
+			            <svg style='width:20px; height:20px; fill:currentColor;' viewBox='0 0 24 24'><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/></svg>
+			            <span>Ratings & Schedule Overview</span>
+			        </div>
+			
+			        <table class='metrics-table'>
+			            <!-- Ratings Section Header -->
+			            <tr>
+			                <td colspan='2' class='section-divider'>Guest Ratings</td>
+			            </tr>
+			            
+			            <!-- Cleanliness -->
+			            <tr>
+			                <td>
+			                    <div class='metric-label'>
+			                        <svg class='icon-svg' viewBox='0 0 24 24'><path d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'></path></svg>
+			                        <span>Cleanliness</span>
+			                    </div>
+			                </td>
+			                <td class='metric-value'>
+			                    " & IF(ISBLANK(_CleanlinessRating), "-", "<span class='badge-tag'>★ " & FORMAT(_CleanlinessRating, "0.0") & "</span>") & "
+			                </td>
+			            </tr>
+			
+			            <!-- Value Rating -->
+			            <tr>
+			                <td>
+			                    <div class='metric-label'>
+			                        <svg class='icon-svg' viewBox='0 0 24 24'><path d='M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/></svg>
+			                        <span>Value Rating</span>
+			                    </div>
+			                </td>
+			                <td class='metric-value'>
+			                    " & IF(ISBLANK(_ValueRating), "-", "<span class='badge-tag'>★ " & FORMAT(_ValueRating, "0.0") & "</span>") & "
+			                </td>
+			            </tr>
+			
+			            <!-- Communication -->
+			            <tr>
+			                <td>
+			                    <div class='metric-label'>
+			                        <svg class='icon-svg' viewBox='0 0 24 24'><path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'></path></svg>
+			                        <span>Communication</span>
+			                    </div>
+			                </td>
+			                <td class='metric-value'>
+			                    " & IF(ISBLANK(_CommRating), "-", "<span class='badge-tag'>★ " & FORMAT(_CommRating, "0.0") & "</span>") & "
+			                </td>
+			            </tr>
+			
+			            <!-- Location -->
+			            <tr>
+			                <td>
+			                    <div class='metric-label'>
+			                        <svg class='icon-svg' viewBox='0 0 24 24'><path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'></path><circle cx='12' cy='10' r='3'></circle></svg>
+			                        <span>Location Rating</span>
+			                    </div>
+			                </td>
+			                <td class='metric-value'>
+			                    " & IF(ISBLANK(_LocationRating), "-", "<span class='badge-tag'>★ " & FORMAT(_LocationRating, "0.0") & "</span>") & "
+			                </td>
+			            </tr>
+			
+			            <!-- Check-in Rating -->
+			            <tr>
+			                <td>
+			                    <div class='metric-label'>
+			                        <svg class='icon-svg' viewBox='0 0 24 24'><path d='M22 11.08V12a10 10 0 1 1-5.93-9.14'></path><polyline points='22 4 12 14.01 9 11.01'></polyline></svg>
+			                        <span>Check-in Rating</span>
+			                    </div>
+			                </td>
+			                <td class='metric-value'>
+			                    " & IF(ISBLANK(_CheckinRating), "-", "<span class='badge-tag'>★ " & FORMAT(_CheckinRating, "0.0") & "</span>") & "
+			                </td>
+			            </tr>
+			
+			            <!-- Schedule Section Header -->
+			            <tr>
+			                <td colspan='2' class='section-divider'>Timing & Schedule</td>
+			            </tr>
+			
+			            <!-- Check-in Time -->
+			            <tr>
+			                <td>
+			                    <div class='metric-label'>
+			                        <svg class='icon-svg' viewBox='0 0 24 24'><rect x='3' y='4' width='18' height='18' rx='0' ry='0'></rect><line x1='16' y1='2' x2='16' y2='6'></line><line x1='8' y1='2' x2='8' y2='6'></line><line x1='3' y1='10' x2='21' y2='10'></line></svg>
+			                        <span>Check-in Window</span>
+			                    </div>
+			                </td>
+			                <td class='metric-value'>
+			                    " & IF(ISBLANK(_CheckinTime), "-", "<span class='badge-tag'>" & _CheckinTime & "</span>") & "
+			                </td>
+			            </tr>
+			
+			            <!-- Check-out Time -->
+			            <tr>
+			                <td>
+			                    <div class='metric-label'>
+			                        <svg class='icon-svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'></circle><polyline points='12 6 12 12 16 14'></polyline></svg>
+			                        <span>Check-out Time</span>
+			                    </div>
+			                </td>
+			                <td class='metric-value'>
+			                    " & IF(ISBLANK(_CheckoutTime), "-", "<span class='badge-tag'>" & _CheckoutTime & "</span>") & "
+			                </td>
+			            </tr>
+			        </table>
+			    </div>
+			</div>
+			"
+			```
+		lineageTag: 70fbd23e-540a-494f-bbec-1e489a9a79f7
 
 	column Col
 		lineageTag: a8c779c6-e732-43b2-886b-073503bc4804

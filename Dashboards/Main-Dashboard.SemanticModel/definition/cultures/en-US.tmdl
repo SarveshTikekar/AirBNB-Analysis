@@ -7649,7 +7649,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Avg Occupancy Percentage": {
+			          "Average Occupancy %": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -9922,244 +9922,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "currency_converter.selected_rate": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Currency Converter",
-			          "ConceptualProperty": "Selected Rate"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "selected rate": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "rate": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "selected degree": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "selected frequency": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "selected percentage": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "selected ratio": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "selected quotient": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "degree": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.491
-			          }
-			        },
-			        {
-			          "frequency": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.491
-			          }
-			        },
-			        {
-			          "ratio": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.491
-			          }
-			        },
-			        {
-			          "quotient": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.491
-			          }
-			        },
-			        {
-			          "selected amount": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
-			          }
-			        }
-			      ]
-			    },
-			    "currency_converter.selected_currency": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Currency Converter",
-			          "ConceptualProperty": "Selected Currency"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "selected currency": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "selected money": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "selected coinage": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "selected exchange": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
-			          }
-			        },
-			        {
-			          "selected cash": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
-			          }
-			        },
-			        {
-			          "selected prevalence": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.475
-			          }
-			        },
-			        {
-			          "selected frequency": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.475
-			          }
-			        },
-			        {
-			          "selected popularity": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.475
-			          }
-			        },
-			        {
-			          "selected vogue": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.475
-			          }
-			        },
-			        {
-			          "selected circulation": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.475
-			          }
-			        },
-			        {
-			          "selected commonness": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.475
-			          }
-			        }
-			      ]
-			    },
 			    "cancellation_policy": {
 			      "Definition": {
 			        "Binding": {
@@ -11326,10 +11088,1228 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "currency_converter.selected_currency_symbol": {
+			    "listing.cleaned_description": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Currency Converter",
+			          "ConceptualEntity": "Listings",
+			          "ConceptualProperty": "Cleaned Description"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cleaned description": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "cleaned appearance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "cleaned descriptor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "cleaned explanation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "cleaned specification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "cleaned account": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "cleaned overview": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "cleaned report": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "metrics.total_reserved_days": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Metrics",
+			          "ConceptualProperty": "Total Reserved Days"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total reserved days": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "aggregate reserved day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall reserved day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "total reserved existence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "total reserved being": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total reserved living": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total reserved eras": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "total reserved generation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "total reserved epoch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "total reserved period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        },
+			        {
+			          "total reserved age": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        }
+			      ]
+			    },
+			    "metrics.total_vacant_days": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Metrics",
+			          "ConceptualProperty": "Total Vacant Days"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total vacant days": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "aggregate vacant day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall vacant day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "total vacant existence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "total vacant being": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total vacant living": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total vacant eras": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "total vacant generation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "total vacant epoch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "total vacant period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        },
+			        {
+			          "total vacant age": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        }
+			      ]
+			    },
+			    "metrics.average_daily_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Metrics",
+			          "ConceptualProperty": "Average Daily Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "average daily rate": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "rate": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "daily rate": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "average daily degree": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "average daily frequency": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "average daily percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "average daily ratio": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "average daily quotient": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "daily degree": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "daily frequency": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "daily percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "daily ratio": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "daily quotient": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        }
+			      ]
+			    },
+			    "styling": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Styling"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "styling": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "styling.col": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Styling",
+			          "ConceptualProperty": "Col"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "col": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "pass": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "saddle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "gap": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "dip": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "passage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "styling.amenity_tags": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Styling",
+			          "ConceptualProperty": "Amenity Tags"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "amenity tags": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "tags": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "amenity identifier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "amenity device": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "device": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "amenity label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "amenity ticket": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "amenity tab": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "amenity docket": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "amenity code": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "amenity chip": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "amenity marks": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ]
+			    },
+			    "styling.cover_photo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Styling",
+			          "ConceptualProperty": "Cover Photo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cover photo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "cover photograph": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "cover picture": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "cover snap": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "cover snapshot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "cover print": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "cover shot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ]
+			    },
+			    "styling.photo_slideshow": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Styling",
+			          "ConceptualProperty": "Photo Slideshow"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "photo slideshow": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "slideshow": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ]
+			    },
+			    "styling.airbnb_tags_visual": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Styling",
+			          "ConceptualProperty": "Airbnb Tags Visual"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "airbnb tags visual": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "styling.description_opener": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Styling",
+			          "ConceptualProperty": "Description Opener"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "description opener": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "opener": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "appearance opener": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "descriptor opener": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "explanation opener": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "specification opener": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "account opener": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "overview opener": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "report opener": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "description corkscrew": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "corkscrew": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "description icebreaker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        }
+			      ]
+			    },
+			    "styling.listing_important_measures_table": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Styling",
+			          "ConceptualProperty": "Listing Important Measures Table"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "listing important measures table": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "listing important measure tabletop": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "listing important measure bench": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "listing important measure board": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "listing important measure counter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "listing important measure stand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "listing important measure slab": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "listing important measure desk": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "listing important measure stall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "listing important measure table top": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "listing important measure spreadsheet": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.489
+			          }
+			        }
+			      ]
+			    },
+			    "selection": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selection": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "assortment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "collection": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "variety": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "mixture": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "medley": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "miscellany": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "choice": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "selection.entity__": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "_"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "_": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "selection.selected_currency": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected Currency"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected currency": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "selected money": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "selected coinage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "selected exchange": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "selected cash": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "selected prevalence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "selected frequency": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "selected popularity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "selected vogue": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "selected circulation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "selected commonness": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        }
+			      ]
+			    },
+			    "selection.selected_currency_symbol": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
 			          "ConceptualProperty": "Selected Currency Symbol"
 			        }
 			      },
@@ -11448,28 +12428,28 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "currency_converter.currency_format": {
+			    "selection.selected_rate": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Currency Converter",
-			          "ConceptualProperty": "Currency Format"
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected Rate"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "currency format": {
+			          "selected rate": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "format": {
+			          "rate": {
 			            "State": "Generated",
 			            "Weight": 0.97
 			          }
 			        },
 			        {
-			          "currency arrangement": {
+			          "selected degree": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11479,7 +12459,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "currency setup": {
+			          "selected frequency": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11489,7 +12469,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "currency presentation": {
+			          "selected percentage": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11499,7 +12479,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "currency organization": {
+			          "selected ratio": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11509,7 +12489,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "currency layout": {
+			          "selected quotient": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11519,17 +12499,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "currency system": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "arrangement": {
+			          "degree": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11539,7 +12509,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "setup": {
+			          "frequency": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11549,7 +12519,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "presentation": {
+			          "ratio": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11559,29 +12529,1908 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "organization": {
+			          "quotient": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "selected amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
 			          }
 			        }
 			      ]
 			    },
-			    "cancellation_reasons.reason_description": {
+			    "selection.selected_AirBNB": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Cancellation Reasons",
-			          "ConceptualProperty": "Reason Description"
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected AirBNB"
 			        }
 			      },
-			      "State": "Generated"
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected AirBNB": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "selection.is_selected_AirBNB_superhost": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Is Selected AirBNB Superhost"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "is selected AirBNB superhost": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "selection.is_selected_AirBNB_GuestFavourite": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Is Selected AirBNB GuestFavourite"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "is selected AirBNB GuestFavourite": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "selection.is_selected_AirBNB_registered": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Is Selected AirBNB Registered"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "is selected AirBNB registered": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "selection.is_selected_AirBNB_instantly_booked": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Is Selected AirBNB Instantly Booked"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "is selected AirBNB instantly booked": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "selection.selected_AirBNB_listing_type": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected AirBNB Listing Type"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected AirBNB listing type": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "selected airbnb listing category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "selected airbnb listing genre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "selected airbnb listing manner": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "selected airbnb listing variety": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "selected airbnb listing brand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected airbnb listing class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected airbnb listing kind": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected airbnb listing style": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected airbnb listing form": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected airbnb listing grouping": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        }
+			      ]
+			    },
+			    "selection.selected_description": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected Description"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected description": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "selected appearance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "selected descriptor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "selected explanation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "selected specification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "selected account": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "selected overview": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "selected report": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "selection.selected_AirBNB_beds": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected AirBNB Beds"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected AirBNB beds": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "selected airbnb divan": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "selected airbnb cot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "selected airbnb bedstead": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "selected airbnb couch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "selected airbnb cradle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "selected airbnb crib": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "selected airbnb bas": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "selected airbnb stratum": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "selected airbnb riverbed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "selected airbnb layer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        }
+			      ]
+			    },
+			    "selection.selected_AirBNB_CheckinTime": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected AirBNB CheckinTime"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected AirBNB CheckinTime": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "selection.selected_AirBNB_CheckoutTime": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected AirBNB CheckoutTime"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected AirBNB CheckoutTime": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "selection.selected_AirBNB_checkin_rating": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected AirBNB Checkin Rating"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected AirBNB checkin rating": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "selected airbnb checkin assessment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "selected airbnb checkin evaluation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "selected airbnb checkin score": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb checkin grade": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb checkin ranking": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb checkin mark": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb checkin sailor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.489
+			          }
+			        },
+			        {
+			          "selected airbnb checkin seaman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.489
+			          }
+			        },
+			        {
+			          "selected airbnb checkin hand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.474
+			          }
+			        }
+			      ]
+			    },
+			    "selection.selected_AirBNB_cleanliness_rating": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected AirBNB Cleanliness Rating"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected AirBNB cleanliness rating": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "selected airbnb cleanliness assessment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "selected airbnb cleanliness evaluation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "selected airbnb cleanliness score": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb cleanliness grade": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb cleanliness ranking": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb cleanliness mark": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb cleanliness sailor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.489
+			          }
+			        },
+			        {
+			          "selected airbnb cleanliness seaman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.489
+			          }
+			        },
+			        {
+			          "selected airbnb cleanliness hand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.474
+			          }
+			        }
+			      ]
+			    },
+			    "selection.selected_AirBNB_communication_rating": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected AirBNB Communication Rating"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected AirBNB communication rating": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "selected airbnb communication assessment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "selected airbnb communication evaluation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "selected airbnb communication score": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb communication grade": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb communication ranking": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb communication mark": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb communication sailor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.489
+			          }
+			        },
+			        {
+			          "selected airbnb communication seaman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.489
+			          }
+			        },
+			        {
+			          "selected airbnb communication hand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.474
+			          }
+			        }
+			      ]
+			    },
+			    "selection.selected_AirBNB_location_rating": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected AirBNB Location Rating"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected AirBNB location rating": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "selected airbnb locality rating": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "selected airbnb placement rating": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "selected airbnb scene rating": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "selected airbnb venue rating": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "selected airbnb address rating": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "selected airbnb place rating": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "selected airbnb position rating": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "selected airbnb setting rating": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "selected airbnb site rating": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "selected airbnb spot rating": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "selection.selected_AirBNB_value_rating": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected AirBNB Value Rating"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected AirBNB value rating": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "selected airbnb value assessment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "selected airbnb value evaluation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "selected airbnb value score": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb value grade": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb value ranking": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb value mark": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "selected airbnb value sailor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.489
+			          }
+			        },
+			        {
+			          "selected airbnb value seaman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.489
+			          }
+			        },
+			        {
+			          "selected airbnb value hand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.474
+			          }
+			        }
+			      ]
+			    },
+			    "selection.selected_AirBNB_bedrooms": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Selections",
+			          "ConceptualProperty": "Selected AirBNB Bedrooms"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected AirBNB bedrooms": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "selected airbnb boudoir": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "selected airbnb dorm": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "selected airbnb bedchamber": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "selected airbnb chamber": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "selected airbnb dormitory": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "selected airbnb room": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
-			    "currency_converter_has_selected_currency_symbol": {
+			    "listing_has_cancellation_policy": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "cancellation_policy": {
+			          "Target": {
+			            "Entity": "cancellation_policy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "cancellation_policy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_cancellation_policies"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cancellation_policy"
+			            },
+			            "Object": {
+			              "Role": "listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cancellation_policies_have_listing"
+			        }
+			      ]
+			    },
+			    "listing_has_city": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "city": {
+			          "Target": {
+			            "Entity": "city"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "city"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_cities"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "city"
+			            },
+			            "Object": {
+			              "Role": "listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cities_have_listing"
+			        }
+			      ]
+			    },
+			    "rating_has_listing": {
+			      "Binding": {
+			        "ConceptualEntity": "Ratings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rating": {
+			          "Target": {
+			            "Entity": "rating"
+			          }
+			        },
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rating"
+			            },
+			            "Object": {
+			              "Role": "listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rating_have_listing"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "rating"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_rating"
+			        }
+			      ]
+			    },
+			    "rating_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Ratings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rating": {
+			          "Target": {
+			            "Entity": "rating"
+			          }
+			        },
+			        "date": {
+			          "Target": {
+			            "Entity": "date"
+			          },
+			          "Nouns": [
+			            {
+			              "month": {
+			                "State": "Generated"
+			              }
+			            }
+			          ]
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rating"
+			            },
+			            "Object": {
+			              "Role": "date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rating_have_dates"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date"
+			            },
+			            "Object": {
+			              "Role": "rating"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dates_have_rating"
+			        }
+			      ]
+			    },
+			    "calendar_rate_has_listing": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendar Rates"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendar_rate": {
+			          "Target": {
+			            "Entity": "calendar_rate"
+			          }
+			        },
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendar_rate"
+			            },
+			            "Object": {
+			              "Role": "listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendar_rates_have_listing"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "calendar_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_calendar_rates"
+			        }
+			      ]
+			    },
+			    "calendar_rate_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendar Rates"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendar_rate": {
+			          "Target": {
+			            "Entity": "calendar_rate"
+			          }
+			        },
+			        "date": {
+			          "Target": {
+			            "Entity": "date"
+			          },
+			          "Nouns": [
+			            {
+			              "month": {
+			                "State": "Generated"
+			              }
+			            }
+			          ]
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendar_rate"
+			            },
+			            "Object": {
+			              "Role": "date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendar_rates_have_dates"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date"
+			            },
+			            "Object": {
+			              "Role": "calendar_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dates_have_calendar_rates"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_selected_AirBNB_bedrooms": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB_bedrooms": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB_bedrooms"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_AirBNB_bedrooms"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_selected_AirBNB_bedrooms"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_selected_AirBNB_value_rating": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB_value_rating": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB_value_rating"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_AirBNB_value_rating"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_selected_AirBNB_value_rating"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_selected_AirBNB_location_rating": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB_location_rating": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB_location_rating"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_AirBNB_location_rating"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_selected_AirBNB_location_rating"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_selected_AirBNB_communication_rating": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB_communication_rating": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB_communication_rating"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_AirBNB_communication_rating"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_selected_AirBNB_communication_rating"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_selected_AirBNB_cleanliness_rating": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB_cleanliness_rating": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB_cleanliness_rating"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_AirBNB_cleanliness_rating"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_selected_AirBNB_cleanliness_rating"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_selected_AirBNB_checkin_rating": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB_checkin_rating": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB_checkin_rating"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_AirBNB_checkin_rating"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_selected_AirBNB_checkin_rating"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_selected_AirBNB_CheckoutTime": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB_CheckoutTime": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB_CheckoutTime"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_AirBNB_CheckoutTime"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_selected_AirBNB_CheckoutTime"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_selected_AirBNB_CheckinTime": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB_CheckinTime": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB_CheckinTime"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_AirBNB_CheckinTime"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_selected_AirBNB_CheckinTime"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_selected_AirBNB_beds": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB_beds": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB_beds"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_AirBNB_beds"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_selected_AirBNB_beds"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_selected_description": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_description": {
+			          "Target": {
+			            "Entity": "selection.selected_description"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_description"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_selected_description"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_selected_AirBNB_listing_type": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB_listing_type": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB_listing_type"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_AirBNB_listing_type"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_selected_AirBNB_listing_type"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_is_selected_AirBNB_instantly_booked": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.is_selected_AirBNB_instantly_booked": {
+			          "Target": {
+			            "Entity": "selection.is_selected_AirBNB_instantly_booked"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.is_selected_AirBNB_instantly_booked"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_is_selected_AirBNB_instantly_booked"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_is_selected_AirBNB_registered": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.is_selected_AirBNB_registered": {
+			          "Target": {
+			            "Entity": "selection.is_selected_AirBNB_registered"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.is_selected_AirBNB_registered"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_is_selected_AirBNB_registered"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_is_selected_AirBNB_GuestFavourite": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.is_selected_AirBNB_GuestFavourite": {
+			          "Target": {
+			            "Entity": "selection.is_selected_AirBNB_GuestFavourite"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.is_selected_AirBNB_GuestFavourite"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_is_selected_AirBNB_GuestFavourite"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_is_selected_AirBNB_superhost": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.is_selected_AirBNB_superhost": {
+			          "Target": {
+			            "Entity": "selection.is_selected_AirBNB_superhost"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.is_selected_AirBNB_superhost"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_is_selected_AirBNB_superhost"
+			        }
+			      ]
+			    },
+			    "listing_has_selection_selected_AirBNB": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_AirBNB"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_selected_AirBNB"
+			        }
+			      ]
+			    },
+			    "currency_converter_has_selection_selected_rate": {
 			      "Binding": {
 			        "ConceptualEntity": "Currency Converter"
 			      },
@@ -11592,9 +14441,9 @@ cultureInfo en-US
 			            "Entity": "currency_converter"
 			          }
 			        },
-			        "currency_converter.selected_currency_symbol": {
+			        "selection.selected_rate": {
 			          "Target": {
-			            "Entity": "currency_converter.selected_currency_symbol"
+			            "Entity": "selection.selected_rate"
 			          }
 			        }
 			      },
@@ -11605,12 +14454,606 @@ cultureInfo en-US
 			              "Role": "currency_converter"
 			            },
 			            "Object": {
-			              "Role": "currency_converter.selected_currency_symbol"
+			              "Role": "selection.selected_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "currency_converters_have_selected_rate"
+			        }
+			      ]
+			    },
+			    "currency_converter_has_selection_selected_currency_symbol": {
+			      "Binding": {
+			        "ConceptualEntity": "Currency Converter"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "currency_converter": {
+			          "Target": {
+			            "Entity": "currency_converter"
+			          }
+			        },
+			        "selection.selected_currency_symbol": {
+			          "Target": {
+			            "Entity": "selection.selected_currency_symbol"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "currency_converter"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_currency_symbol"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "currency_converters_have_selected_currency_symbol"
+			        }
+			      ]
+			    },
+			    "currency_converter_has_selection_selected_currency": {
+			      "Binding": {
+			        "ConceptualEntity": "Currency Converter"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "currency_converter": {
+			          "Target": {
+			            "Entity": "currency_converter"
+			          }
+			        },
+			        "selection.selected_currency": {
+			          "Target": {
+			            "Entity": "selection.selected_currency"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "currency_converter"
+			            },
+			            "Object": {
+			              "Role": "selection.selected_currency"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "currency_converters_have_selected_currency"
+			        }
+			      ]
+			    },
+			    "selection_has_entity__": {
+			      "Binding": {
+			        "ConceptualEntity": "Selections"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "selection": {
+			          "Target": {
+			            "Entity": "selection"
+			          }
+			        },
+			        "selection.entity__": {
+			          "Target": {
+			            "Entity": "selection.entity__"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "selection"
+			            },
+			            "Object": {
+			              "Role": "selection.entity__"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "selections_have__"
+			        }
+			      ]
+			    },
+			    "listing_has_styling_listing_important_measures_table": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "styling.listing_important_measures_table": {
+			          "Target": {
+			            "Entity": "styling.listing_important_measures_table"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "styling.listing_important_measures_table"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_listing_important_measures_table"
+			        }
+			      ]
+			    },
+			    "listing_has_styling_description_opener": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "styling.description_opener": {
+			          "Target": {
+			            "Entity": "styling.description_opener"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "styling.description_opener"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_description_opener"
+			        },
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "styling.description_opener"
+			            },
+			            "Verbs": [
+			              {
+			                "open": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.75,
+			          "ID": "description_opener_open_listing"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "styling.description_opener"
+			            },
+			            "Object": {
+			              "Role": "listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "description_opener_have_listing"
+			        }
+			      ]
+			    },
+			    "listing_has_styling_airbnb_tags_visual": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "styling.airbnb_tags_visual": {
+			          "Target": {
+			            "Entity": "styling.airbnb_tags_visual"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "styling.airbnb_tags_visual"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_airbnb_tags_visual"
+			        }
+			      ]
+			    },
+			    "styling_has_photo_slideshow": {
+			      "Binding": {
+			        "ConceptualEntity": "Styling"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "styling": {
+			          "Target": {
+			            "Entity": "styling"
+			          }
+			        },
+			        "styling.photo_slideshow": {
+			          "Target": {
+			            "Entity": "styling.photo_slideshow"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "styling"
+			            },
+			            "Object": {
+			              "Role": "styling.photo_slideshow"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "styling_have_photo_slideshow"
+			        }
+			      ]
+			    },
+			    "listing_has_styling_cover_photo": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "styling.cover_photo": {
+			          "Target": {
+			            "Entity": "styling.cover_photo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "styling.cover_photo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_cover_photo"
+			        }
+			      ]
+			    },
+			    "city_has_styling_cover_photo": {
+			      "Binding": {
+			        "ConceptualEntity": "Cities"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "city": {
+			          "Target": {
+			            "Entity": "city"
+			          }
+			        },
+			        "styling.cover_photo": {
+			          "Target": {
+			            "Entity": "styling.cover_photo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "city"
+			            },
+			            "Object": {
+			              "Role": "styling.cover_photo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cities_have_cover_photo"
+			        }
+			      ]
+			    },
+			    "listing_has_styling_amenity_tags": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "styling.amenity_tags": {
+			          "Target": {
+			            "Entity": "styling.amenity_tags"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "styling.amenity_tags"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_amenity_tags"
+			        }
+			      ]
+			    },
+			    "listing_amenity_has_styling_amenity_tags": {
+			      "Binding": {
+			        "ConceptualEntity": "Listing Amenities"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing_amenity": {
+			          "Target": {
+			            "Entity": "listing_amenity"
+			          }
+			        },
+			        "styling.amenity_tags": {
+			          "Target": {
+			            "Entity": "styling.amenity_tags"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing_amenity"
+			            },
+			            "Object": {
+			              "Role": "styling.amenity_tags"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_amenities_have_amenity_tags"
+			        }
+			      ]
+			    },
+			    "styling_has_col": {
+			      "Binding": {
+			        "ConceptualEntity": "Styling"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "styling": {
+			          "Target": {
+			            "Entity": "styling"
+			          }
+			        },
+			        "styling.col": {
+			          "Target": {
+			            "Entity": "styling.col"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "styling"
+			            },
+			            "Object": {
+			              "Role": "styling.col"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "styling_have_cols"
+			        }
+			      ]
+			    },
+			    "currency_converter_has_metrics_average_daily_rate": {
+			      "Binding": {
+			        "ConceptualEntity": "Currency Converter"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "currency_converter": {
+			          "Target": {
+			            "Entity": "currency_converter"
+			          }
+			        },
+			        "metrics.average_daily_rate": {
+			          "Target": {
+			            "Entity": "metrics.average_daily_rate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "currency_converter"
+			            },
+			            "Object": {
+			              "Role": "metrics.average_daily_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "currency_converters_have_average_daily_rate"
+			        }
+			      ]
+			    },
+			    "calendar_rate_has_metrics_average_daily_rate": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendar Rates"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendar_rate": {
+			          "Target": {
+			            "Entity": "calendar_rate"
+			          }
+			        },
+			        "metrics.average_daily_rate": {
+			          "Target": {
+			            "Entity": "metrics.average_daily_rate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendar_rate"
+			            },
+			            "Object": {
+			              "Role": "metrics.average_daily_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendar_rates_have_average_daily_rate"
+			        }
+			      ]
+			    },
+			    "calendar_rate_has_metrics_total_vacant_days": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendar Rates"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendar_rate": {
+			          "Target": {
+			            "Entity": "calendar_rate"
+			          }
+			        },
+			        "metrics.total_vacant_days": {
+			          "Target": {
+			            "Entity": "metrics.total_vacant_days"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendar_rate"
+			            },
+			            "Object": {
+			              "Role": "metrics.total_vacant_days"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendar_rates_have_total_vacant_days"
+			        }
+			      ]
+			    },
+			    "calendar_rate_has_metrics_total_reserved_days": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendar Rates"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendar_rate": {
+			          "Target": {
+			            "Entity": "calendar_rate"
+			          }
+			        },
+			        "metrics.total_reserved_days": {
+			          "Target": {
+			            "Entity": "metrics.total_reserved_days"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendar_rate"
+			            },
+			            "Object": {
+			              "Role": "metrics.total_reserved_days"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendar_rates_have_total_reserved_days"
+			        }
+			      ]
+			    },
+			    "listing_has_cleaned_description": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "listing.cleaned_description": {
+			          "Target": {
+			            "Entity": "listing.cleaned_description"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "listing.cleaned_description"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_cleaned_descriptions"
 			        }
 			      ]
 			    },
@@ -11941,72 +15384,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "cancel_policy_codes_are_names_IDs_of_cancellation_policies"
-			        }
-			      ]
-			    },
-			    "currency_converter_has_selected_currency": {
-			      "Binding": {
-			        "ConceptualEntity": "Currency Converter"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "currency_converter": {
-			          "Target": {
-			            "Entity": "currency_converter"
-			          }
-			        },
-			        "currency_converter.selected_currency": {
-			          "Target": {
-			            "Entity": "currency_converter.selected_currency"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "currency_converter"
-			            },
-			            "Object": {
-			              "Role": "currency_converter.selected_currency"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "currency_converters_have_selected_currency"
-			        }
-			      ]
-			    },
-			    "currency_converter_has_selected_rate": {
-			      "Binding": {
-			        "ConceptualEntity": "Currency Converter"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "currency_converter": {
-			          "Target": {
-			            "Entity": "currency_converter"
-			          }
-			        },
-			        "currency_converter.selected_rate": {
-			          "Target": {
-			            "Entity": "currency_converter.selected_rate"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "currency_converter"
-			            },
-			            "Object": {
-			              "Role": "currency_converter.selected_rate"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "currency_converters_have_selected_rate"
 			        }
 			      ]
 			    },
@@ -16004,6 +19381,90 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
+			    "listing_is_selected_on_selection_selected_AirBNB_CheckoutTime": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB_CheckoutTime": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB_CheckoutTime"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "When": {
+			          "Role": "selection.selected_AirBNB_CheckoutTime"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Verbs": [
+			              {
+			                "select": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.9,
+			          "ID": "listing_are_selected_on_selected_AirBNB_CheckoutTime"
+			        }
+			      ]
+			    },
+			    "listing_is_selected_on_selection_selected_AirBNB_CheckinTime": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "selection.selected_AirBNB_CheckinTime": {
+			          "Target": {
+			            "Entity": "selection.selected_AirBNB_CheckinTime"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "When": {
+			          "Role": "selection.selected_AirBNB_CheckinTime"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Verbs": [
+			              {
+			                "select": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.9,
+			          "ID": "listing_are_selected_on_selected_AirBNB_CheckinTime"
+			        }
+			      ]
+			    },
 			    "listing_is_instantly_booked": {
 			      "Binding": {
 			        "ConceptualEntity": "Listings"
@@ -16138,329 +19599,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.75,
 			          "ID": "currency_converters_convert"
-			        }
-			      ]
-			    },
-			    "currency_converter_has_currency_format": {
-			      "Binding": {
-			        "ConceptualEntity": "Currency Converter"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "currency_converter": {
-			          "Target": {
-			            "Entity": "currency_converter"
-			          }
-			        },
-			        "currency_converter.currency_format": {
-			          "Target": {
-			            "Entity": "currency_converter.currency_format"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "currency_converter"
-			            },
-			            "Object": {
-			              "Role": "currency_converter.currency_format"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "currency_converters_have_currency_format"
-			        }
-			      ]
-			    },
-			    "calendar_rate_has_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Calendar Rates"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "calendar_rate": {
-			          "Target": {
-			            "Entity": "calendar_rate"
-			          }
-			        },
-			        "date": {
-			          "Target": {
-			            "Entity": "date"
-			          },
-			          "Nouns": [
-			            {
-			              "month": {
-			                "State": "Generated"
-			              }
-			            }
-			          ]
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "calendar_rate"
-			            },
-			            "Object": {
-			              "Role": "date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "calendar_rates_have_dates"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date"
-			            },
-			            "Object": {
-			              "Role": "calendar_rate"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dates_have_calendar_rates"
-			        }
-			      ]
-			    },
-			    "calendar_rate_has_listing": {
-			      "Binding": {
-			        "ConceptualEntity": "Calendar Rates"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "calendar_rate": {
-			          "Target": {
-			            "Entity": "calendar_rate"
-			          }
-			        },
-			        "listing": {
-			          "Target": {
-			            "Entity": "listing"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "calendar_rate"
-			            },
-			            "Object": {
-			              "Role": "listing"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "calendar_rates_have_listing"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "listing"
-			            },
-			            "Object": {
-			              "Role": "calendar_rate"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "listing_have_calendar_rates"
-			        }
-			      ]
-			    },
-			    "rating_has_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Ratings"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "rating": {
-			          "Target": {
-			            "Entity": "rating"
-			          }
-			        },
-			        "date": {
-			          "Target": {
-			            "Entity": "date"
-			          },
-			          "Nouns": [
-			            {
-			              "month": {
-			                "State": "Generated"
-			              }
-			            }
-			          ]
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "rating"
-			            },
-			            "Object": {
-			              "Role": "date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "rating_have_dates"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date"
-			            },
-			            "Object": {
-			              "Role": "rating"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dates_have_rating"
-			        }
-			      ]
-			    },
-			    "rating_has_listing": {
-			      "Binding": {
-			        "ConceptualEntity": "Ratings"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "rating": {
-			          "Target": {
-			            "Entity": "rating"
-			          }
-			        },
-			        "listing": {
-			          "Target": {
-			            "Entity": "listing"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "rating"
-			            },
-			            "Object": {
-			              "Role": "listing"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "rating_have_listing"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "listing"
-			            },
-			            "Object": {
-			              "Role": "rating"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "listing_have_rating"
-			        }
-			      ]
-			    },
-			    "listing_has_city": {
-			      "Binding": {
-			        "ConceptualEntity": "Listings"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "listing": {
-			          "Target": {
-			            "Entity": "listing"
-			          }
-			        },
-			        "city": {
-			          "Target": {
-			            "Entity": "city"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "listing"
-			            },
-			            "Object": {
-			              "Role": "city"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "listing_have_cities"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "city"
-			            },
-			            "Object": {
-			              "Role": "listing"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "cities_have_listing"
-			        }
-			      ]
-			    },
-			    "listing_has_cancellation_policy": {
-			      "Binding": {
-			        "ConceptualEntity": "Listings"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "listing": {
-			          "Target": {
-			            "Entity": "listing"
-			          }
-			        },
-			        "cancellation_policy": {
-			          "Target": {
-			            "Entity": "cancellation_policy"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "listing"
-			            },
-			            "Object": {
-			              "Role": "cancellation_policy"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "listing_have_cancellation_policies"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "cancellation_policy"
-			            },
-			            "Object": {
-			              "Role": "listing"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "cancellation_policies_have_listing"
 			        }
 			      ]
 			    },

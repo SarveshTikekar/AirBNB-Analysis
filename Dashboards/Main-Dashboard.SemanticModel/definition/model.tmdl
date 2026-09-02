@@ -53,6 +53,7 @@ ref table 'Listing Amenities'
 ref table Amenities
 ref table 'AirBNB Photos'
 ref table Styling
+ref table Selections
 
 ref cultureInfo en-US
 

@@ -5,8 +5,8 @@
     "x": 0,
     "y": 0,
     "z": 0,
-    "height": 126.58354114713217,
-    "width": 801.24688279301745,
+    "height": 126.25501202886927,
+    "width": 802.18123496391331,
     "tabOrder": 0
   },
   "visual": {
@@ -23,7 +23,7 @@
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Segoe (Bold)",
-                      "fontSize": "40pt"
+                      "fontSize": "42pt"
                     }
                   }
                 ],
@@ -115,9 +115,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 9,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#F02D3A'"
                     }
                   }
                 }
@@ -182,5 +181,6 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  }
+  },
+  "parentGroupName": "259df50acb1fbd515ae2"
 }

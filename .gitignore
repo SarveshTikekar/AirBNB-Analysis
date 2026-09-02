@@ -1,5 +1,5 @@
 # Raw analysis data is kept local.
-Datasets/
+Datasets/*
 
 # Components
 Assets/Components
@@ -37,3 +37,7 @@ id_ed25519*
 # Generic local noise.
 *.log
 *.tmp
+
+# Py Virtual Environment
+venv/
+.venv/

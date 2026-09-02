@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "327cf002af5d55e8f54b",
+  "name": "0342a56d8583520ed414",
   "position": {
-    "x": 1312.9675810473816,
-    "y": 141.39650872817955,
-    "z": 9000,
-    "height": 142.7431421446384,
-    "width": 241.04738154613466,
-    "tabOrder": 7000
+    "x": 1324.1379310344826,
+    "y": 141.65196471531675,
+    "z": 13,
+    "height": 143.1916599839615,
+    "width": 252.51002405773855,
+    "tabOrder": 28
   },
   "visual": {
     "visualType": "sparklinekpicard12345",
@@ -77,12 +77,11 @@
                       "Entity": "Metrics"
                     }
                   },
-                  "Property": "Average Occupancy Percentage"
+                  "Property": "Average Daily Rate"
                 }
               },
-              "queryRef": "Metrics.Average Occupancy Percentage",
-              "nativeQueryRef": "Avg Occupancy Percentage",
-              "displayName": "Avg Occupancy Percentage"
+              "queryRef": "Metrics.Average Daily Rate",
+              "nativeQueryRef": "Average Daily Rate"
             }
           ]
         }
@@ -244,7 +243,7 @@
             "formatType": {
               "expr": {
                 "Literal": {
-                  "Value": "'percentage'"
+                  "Value": "'general'"
                 }
               }
             },
@@ -340,17 +339,17 @@
                 }
               }
             },
-            "decimalPlaces": {
-              "expr": {
-                "Literal": {
-                  "Value": "2D"
-                }
-              }
-            },
             "suffix": {
               "expr": {
                 "Literal": {
                   "Value": "''"
+                }
+              }
+            },
+            "decimalPlaces": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
                 }
               }
             }
@@ -403,7 +402,7 @@
             "granularity": {
               "expr": {
                 "Literal": {
-                  "Value": "'auto'"
+                  "Value": "'month'"
                 }
               }
             },
@@ -417,7 +416,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "11D"
                 }
               }
             }
@@ -462,7 +461,7 @@
             "borderWidth": {
               "expr": {
                 "Literal": {
-                  "Value": "3D"
+                  "Value": "2D"
                 }
               }
             },
@@ -471,7 +470,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E77272'"
+                      "Value": "'#BF4342'"
                     }
                   }
                 }
@@ -488,6 +487,32 @@
         }
       ],
       "variance": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "targetValue": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "previousValue": [
         {
           "properties": {
             "show": {
@@ -518,7 +543,42 @@
       "visualTooltip": [
         {
           "properties": {
-            "showSentenceFormat": {
+            "showValuesInBold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showChartSpecificTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Canvas'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "bold": {
               "expr": {
                 "Literal": {
                   "Value": "true"
@@ -528,21 +588,14 @@
             "sentenceTemplate": {
               "expr": {
                 "Literal": {
-                  "Value": "'Avg Occupancy: {Avg Occupancy Percentage} for {Date}\n'"
+                  "Value": "''"
                 }
               }
             },
-            "fontFamily": {
+            "showSentenceFormat": {
               "expr": {
                 "Literal": {
-                  "Value": "'''Segoe UI Bold'', wf_segoe-ui_bold, helvetica, arial, sans-serif'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "12D"
+                  "Value": "false"
                 }
               }
             }

@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 187.4413085827731,
-        "y": 29.595996092016804
+        "x": 187.91208450593422,
+        "y": 0
       },
       "nodes": [
         {
           "location": {
             "x": 388.43504499014392,
-            "y": 517.99198748497
+            "y": 673.63558857063515
           },
           "nodeIndex": "Calendar Rates",
           "nodeLineageTag": "9b97b9c3-f2a4-44dc-b871-e1b1cced1d05",
@@ -24,7 +24,7 @@
         {
           "location": {
             "x": 966.94966550539016,
-            "y": 842.97599976720312
+            "y": 998.6196008528683
           },
           "nodeIndex": "Cities",
           "nodeLineageTag": "8a98aa61-df83-491c-9d19-14ce804ef975",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 320.25355616863538,
-            "y": 1031.4900057515392
+            "y": 1187.1336068372043
           },
           "nodeIndex": "Dates",
           "nodeLineageTag": "39f07fe5-478d-455e-b6a3-50b0ddf21c06",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 632.05458980966387,
-            "y": 858.21705360190492
+            "y": 1013.8606546875701
           },
           "nodeIndex": "Ratings",
           "nodeLineageTag": "b9248cfe-1f1e-43e7-b7ec-1ef67a570f89",
@@ -63,7 +63,7 @@
         {
           "location": {
             "x": 736.84970737663855,
-            "y": 513.41433646489327
+            "y": 669.05793755055845
           },
           "nodeIndex": "Listings",
           "nodeLineageTag": "9c10487d-111c-4859-b025-78eee1c47ad6",
@@ -76,7 +76,7 @@
         {
           "location": {
             "x": 1537.1736331249574,
-            "y": 833.48635098025932
+            "y": 989.1299520659245
           },
           "nodeIndex": "Listing Types",
           "nodeLineageTag": "3d57ecdd-eeb2-49c2-bc02-a2736884ab3b",
@@ -89,7 +89,7 @@
         {
           "location": {
             "x": 1387.8350170759784,
-            "y": 311.28720217133031
+            "y": 466.93080325699549
           },
           "nodeIndex": "Metrics",
           "nodeLineageTag": "abf2c8cb-f276-4ca0-b0c6-8cfdfc12cb09",
@@ -102,7 +102,7 @@
         {
           "location": {
             "x": 1256.6226422882951,
-            "y": 836.24785408124012
+            "y": 991.8914551669053
           },
           "nodeIndex": "Cancellation Policies",
           "nodeLineageTag": "49d88916-3738-4724-95fd-0f0ddcacb89d",
@@ -115,7 +115,7 @@
         {
           "location": {
             "x": 1076.7617051435052,
-            "y": 342.76801986540238
+            "y": 498.41162095106756
           },
           "nodeIndex": "Currency Converter",
           "nodeLineageTag": "909cbadb-a4c6-42f4-a09e-5b97c37877cf",
@@ -128,7 +128,7 @@
         {
           "location": {
             "x": 1825.1173983796114,
-            "y": 819.18558840333787
+            "y": 974.829189489003
           },
           "nodeIndex": "Listing Amenities",
           "nodeLineageTag": "7792d9ec-7d8c-4a05-8cb6-bfff46d22c45",
@@ -141,7 +141,7 @@
         {
           "location": {
             "x": 1823.7080652323727,
-            "y": 1051.4839933401138
+            "y": 1207.1275944257791
           },
           "nodeIndex": "Amenities",
           "nodeLineageTag": "a3c23c04-15ca-4922-912e-7ea559fc3333",
@@ -154,7 +154,7 @@
         {
           "location": {
             "x": 1812.8225057140373,
-            "y": 481.61874470398209
+            "y": 637.26234578964727
           },
           "nodeIndex": "AirBNB Photos",
           "nodeLineageTag": "53407395-05cf-4976-9dd7-b231946a0900",
@@ -167,9 +167,21 @@
         {
           "location": {
             "x": 1788.8638422109761,
-            "y": 439.86380251388118
+            "y": 595.50740359954636
           },
           "nodeIndex": "Styling",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1788.8638422109761,
+            "y": 491.74500287576961
+          },
+          "nodeIndex": "Selections",
           "size": {
             "height": 200,
             "width": 234
