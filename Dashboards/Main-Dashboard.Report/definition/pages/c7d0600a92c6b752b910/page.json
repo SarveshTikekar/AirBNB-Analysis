@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "c7d0600a92c6b752b910",
+  "displayName": "Geographical Dashboard",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "359L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "e83e6c68a9294e30312a",
+      "target": "67a5d0e300b8e03eac94",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c4362d0e63c4a1d8063d",
+      "target": "7c42dd869b00040d71ab",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c4362d0e63c4a1d8063d",
+      "target": "8451a3970b14d0b21b42",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c4362d0e63c4a1d8063d",
+      "target": "9b44019a00deced96bca",
+      "type": "NoFilter"
+    }
+  ]
+}

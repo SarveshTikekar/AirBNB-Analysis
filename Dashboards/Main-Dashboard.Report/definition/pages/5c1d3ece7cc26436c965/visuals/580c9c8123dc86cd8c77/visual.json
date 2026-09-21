@@ -5,9 +5,9 @@
     "x": 0,
     "y": 0,
     "z": 0,
-    "height": 126.25501202886927,
-    "width": 802.18123496391331,
-    "tabOrder": 2
+    "height": 102.3441396508728,
+    "width": 802.59351620947632,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "AirBNB Host Dashboard",
+                    "value": "AirBNB Overall Dashboard",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Segoe (Bold)",

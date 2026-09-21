@@ -27,42 +27,107 @@ table Cities
 		mode: import
 		source =
 				let
-				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WckrMS0/MyS9KVdJR8sxLyUxUitWJVnJJzcnIRBHxyS9WcMxLT81JLQaKhwY7gkV9S3OTElEVBiQWZYKUuBUl5iWngoVC8rMr84FCXokFiXlKsbEA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [City = _t, Country = _t]),
-				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"City", type text}, {"Country", type text}}),
-				    #"Add Cities" = Table.InsertRows(#"Changed Type", Table.RowCount(#"Changed Type"), {
-				        [
-				            City = "London",
-				            Country = "UK"
-				        ],
-				        [
-				            City = "Edinburgh",
-				            Country = "UK"
-				        ],
-				        [
-				            City = "Birmingham",
-				            Country = "UK"
-				        ],
-				        [
-				            City = "Lyon",
-				            Country = "France"
-				        ],
-				        [
-				            City = "Marseille",
-				            Country = "France"
-				        ],
-				        [
-				            City = "Osaka",
-				            Country = "Japan"
-				        ],
-				        [City = "Kyoto", Country = "Japan"], [City = "New York", Country = "USA"],
-				        [City = "Miami", Country = "USA"]
-				    }),
-				    #"Added Custom" = Table.AddColumn(#"Add Cities", "Currency", each if [Country] = "India" then "INR" else if [Country] = "USA" then "USD" else if [Country] = "UK" then "GBP" else if [Country] = "France" then "EUR" else "JPY"),
-				    #"Merged Queries" = Table.NestedJoin(#"Added Custom", {"Currency"}, #"Currency Converter", {"Currency"}, "Currency Convertor", JoinKind.LeftOuter),
-				    #"Expanded Currency Convertor" = Table.ExpandTableColumn(#"Merged Queries", "Currency Convertor", {"Currency"}, {"Currency.1"}),
-				    #"Removed Columns" = Table.RemoveColumns(#"Expanded Currency Convertor",{"Currency"}),
-				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"Currency.1", "Currency"}}),
-				    #"Removed Columns1" = Table.RemoveColumns(#"Renamed Columns",{"Currency"})
+				    Source = Table.FromRows(
+				        Json.Document(
+				            Binary.Decompress(
+				                Binary.FromText(
+				                    "i45WckrMS0/MyS9KVdJR8sxLyUxUitWJVnJJzcnIRBHxyS9WcMxLT81JLQaKhwY7gkV9S3OTElEVBiQWZYKUuBUl5iWngoVC8rMr84FCXokFiXlKsbEA",
+				                    BinaryEncoding.Base64
+				                ),
+				                Compression.Deflate
+				            )
+				        ),
+				        let _t = ((type nullable text) meta [Serialized.Text = true])
+				        in type table [City = _t, Country = _t]
+				    ),
+				
+				    #"Changed Type" = Table.TransformColumnTypes(
+				        Source,
+				        {{"City", type text}, {"Country", type text}}
+				    ),
+				
+				    #"Add Cities" = Table.InsertRows(
+				        #"Changed Type",
+				        Table.RowCount(#"Changed Type"),
+				        {
+				            // UK
+				            [City = "London", Country = "UK"],
+				            [City = "Edinburgh", Country = "UK"],
+				            [City = "Birmingham", Country = "UK"],
+				
+				            // France
+				            [City = "Lyon", Country = "France"],
+				            [City = "Marseille", Country = "France"],
+				
+				            // Japan
+				            [City = "Osaka", Country = "Japan"],
+				            [City = "Kyoto", Country = "Japan"],
+				
+				            // USA
+				            [City = "New York", Country = "USA"],
+				            [City = "Miami", Country = "USA"],
+				
+				            // Brazil
+				            [City = "Sao Paulo", Country = "Brazil"],
+				            [City = "Rio", Country = "Brazil"],
+				            [City = "Florianopolis", Country = "Brazil"],
+				            [City = "Ubatuba", Country = "Brazil"],
+				            [City = "Salvador", Country = "Brazil"],
+				
+				            // Australia
+				            [City = "Melbourne", Country = "Australia"],
+				            [City = "Sydney", Country = "Australia"],
+				            [City = "Brisbane", Country = "Australia"],
+				            [City = "Adelaide", Country = "Australia"],
+				
+				            // Hong Kong
+				            [City = "Hong Kong", Country = "Hong Kong"]
+				        }
+				    ),
+				
+				    #"Added Custom" = Table.AddColumn(
+				        #"Add Cities",
+				        "Currency",
+				        each
+				            if [Country] = "India" then "INR"
+				            else if [Country] = "USA" then "USD"
+				            else if [Country] = "UK" then "GBP"
+				            else if [Country] = "France" then "EUR"
+				            else if [Country] = "Brazil" then "BRL"
+				            else "JPY"
+				    ),
+				
+				    #"Merged Queries" = Table.NestedJoin(
+				        #"Added Custom",
+				        {"Currency"},
+				        #"Currency Converter",
+				        {"Currency"},
+				        "Currency Convertor",
+				        JoinKind.LeftOuter
+				    ),
+				
+				    #"Expanded Currency Convertor" = Table.ExpandTableColumn(
+				        #"Merged Queries",
+				        "Currency Convertor",
+				        {"Currency"},
+				        {"Currency.1"}
+				    ),
+				
+				    #"Removed Columns" = Table.RemoveColumns(
+				        #"Expanded Currency Convertor",
+				        {"Currency"}
+				    ),
+				
+				    #"Renamed Columns" = Table.RenameColumns(
+				        #"Removed Columns",
+				        {{"Currency.1", "Currency"}}
+				    ),
+				
+				    #"Removed Columns1" = Table.RemoveColumns(
+				        #"Renamed Columns",
+				        {"Currency"}
+				    )
+				
 				in
 				    #"Removed Columns1"
 

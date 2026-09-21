@@ -1,0 +1,635 @@
+table 'Main Metrics'
+	lineageTag: abf2c8cb-f276-4ca0-b0c6-8cfdfc12cb09
+
+	measure 'Median Guests' = MEDIAN(Listings[Guest Count])
+		lineageTag: 4605badf-a21a-4b44-a917-6780c3f73599
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Mean Guests' = AVERAGE(Listings[Guest Count])
+		formatString: 0
+		lineageTag: b1da00c5-8de8-4af2-8506-379533376c68
+
+	measure 'Total Cleaning Fee' = SUM(Listings[CLeaning Fees]) * [Selected Rate]
+		lineageTag: a439fa39-4d73-4dc9-9b3b-8fb3c25a8262
+
+		formatStringDefinition = "0 " &[Selected Currency Symbol]
+
+	measure 'Average Vacant Days' = AVERAGE('Calendar Rates'[Vacant Days])
+		lineageTag: 716d2908-7750-4f11-9df4-64416073a4ba
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Reserved Days' = AVERAGE('Calendar Rates'[Reserved Days])
+		lineageTag: 74ddd99b-222a-44c3-a9b9-68cb206546ad
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Booking Rate' = AVERAGE('Calendar Rates'[Average Rate]) * [Selected Rate]
+		lineageTag: 1ff82c19-88ce-4756-8e0d-15c083aee9fe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Booking Revenue' = AVERAGE('Calendar Rates'[Revenue])
+		lineageTag: b805861e-6ac9-4cf7-a7ed-7cdcd9144d27
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Occupancy Percentage' = AVERAGE('Calendar Rates'[Occupancy Percentage])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e5083bec-6b3b-4c55-a294-6e4bdab31921
+
+	measure 'Median Reserved Days' = MEDIAN('Calendar Rates'[Reserved Days])
+		lineageTag: 24567a89-cca0-4f45-9c51-48fb28180021
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Median Vacant Days' = MEDIAN('Calendar Rates'[Vacant Days])
+		lineageTag: 63b1ea82-dd91-488e-a808-0276b528aa2d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Reviews' = COUNTROWS(Ratings)
+		formatString: 0
+		lineageTag: ae01fd84-d4d9-4c2f-8746-79e0019abc7a
+
+	measure 'Total Hosts' = COUNT(Listings[Host ID])
+		formatString: 0
+		lineageTag: fc0b8b7e-edc7-4809-8d22-0d07b245cbad
+
+	measure 'Registered AirBNBs' = CALCULATE(COUNTROWS(Listings), Listings[Is Registered] = TRUE())
+		formatString: 0
+		lineageTag: ac4e84d0-928d-4d2e-aee0-e57df551304f
+
+	measure 'Non Registered AirBNBs' = COUNTX(Listings, Listings[Is Registered] = FALSE())
+		formatString: 0
+		lineageTag: faab5c5b-3a09-499c-af92-95891bb7257c
+
+	measure 'Non Superhosted AirBNBs' = COUNTX(Listings, Listings[Is SuperHost] = FALSE())
+		formatString: 0
+		lineageTag: 31167c99-4336-4909-9e49-e95645fa606a
+
+	measure 'Superhosted AirBNBs' = CALCULATE(COUNTROWS(Listings), Listings[Is SuperHost] = TRUE())
+		formatString: 0
+		lineageTag: cec1249d-825d-4e25-87bd-48ee983413c4
+
+	measure 'Non Guest Favourite AirBNBs' = COUNTX(Listings, Listings[Is Guest Favourite] = FALSE())
+		formatString: 0
+		lineageTag: 47e38aac-0768-404f-8db4-e32a4dca5870
+
+	measure 'Guest Favourite AirBNBs' = CALCULATE(COUNTROWS(Listings), Listings[Is Guest Favourite] = TRUE())
+		formatString: 0%;-0%;0%
+		lineageTag: c92fe4d4-5c19-4e9a-b931-fe1f42cda08d
+
+	measure 'Total Guest Fees' = SUM(Listings[Extra Guest Fees])
+		lineageTag: bde00160-cbaf-4585-8b62-83892e25c41b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Guest Fees' = AVERAGE(Listings[Extra Guest Fees])
+		lineageTag: a899c3ed-6a03-4813-ab61-24cd2d9365b1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Bedrooms' = SUM(Listings[No of Bedrooms])
+		formatString: 0
+		lineageTag: f4e2b813-dbd7-4f9b-ab0a-5daf8e6a7df0
+
+	measure 'Total Beds' = SUM(Listings[No of Beds])
+		formatString: 0
+		lineageTag: 0b4d8d92-0abf-4888-9022-d524976cf025
+
+	measure 'Average Rating' = AVERAGE(Listings[Overall Rating]) * (AVERAGE(Listings[Rating Accuracy])/5)
+		formatString: 0.00
+		lineageTag: df07f9b3-beb5-4dbe-af72-c5c2574e39e4
+
+	measure 'Average Cleanliness Rating' = AVERAGE(Listings[Cleanliness Rating])
+		lineageTag: db4e40fb-c173-4038-ad25-83cde51e7fbb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Host Communication Rating' = AVERAGE(Listings[Commn Rating])
+		lineageTag: dae66534-0c8b-41e6-808a-8021d19fa1bd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Checkin Rating' = AVERAGE(Listings[Checkin Rating])
+		lineageTag: c0b568ab-0053-4a35-90c3-267079817842
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Location Rating' = AVERAGE(Listings[Location Rating])
+		formatString: 0.00
+		lineageTag: 50abc85a-e0c6-484e-9069-582777ac1710
+
+	measure 'Average Value Rating' = AVERAGE(Listings[Value Rating])
+		lineageTag: c7a7f3e8-c6cc-445e-adc8-22fcad651d01
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Distinct Listing Types' = DISTINCTCOUNT('Listing Types'[Listing Type])
+		formatString: 0
+		lineageTag: 64e7d7d0-908c-4577-8504-b59bc39d7ea6
+
+	measure 'Distinct Listing Group Types' = DISTINCTCOUNT('Listing Types'[Listing Type Group])
+		formatString: 0
+		lineageTag: 51a27462-5947-404c-96f6-33967d26a9ce
+
+	measure 'Distinct AirBNBs' = DISTINCTCOUNT(Listings[Listing ID])
+		formatString: 0
+		lineageTag: 7724f6c1-0d1c-46d7-9635-8e07b0a8edff
+
+	measure 'Total Revenue' = SUM('Calendar Rates'[Revenue]) * [Selected Rate]
+		lineageTag: f6113929-81bc-4f0d-a8d4-3dacd865de7a
+
+		formatStringDefinition = "0 " &[Selected Currency Symbol]
+
+	measure 'Average Length of Stay' = AVERAGE('Calendar Rates'[Avg Length of Stay])
+		lineageTag: 4bd6af4e-a463-4c89-8eaa-d6c3a19c45cb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Reserved Days' = SUM('Calendar Rates'[Reserved Days])
+		formatString: 0
+		lineageTag: ff54e1b7-873f-4b6c-81f4-a8a7ab3316d5
+
+	measure 'Total Vacant Days' = SUM('Calendar Rates'[Vacant Days])
+		formatString: 0
+		lineageTag: 611b9806-1b02-414f-b70d-22e2ead5e554
+
+	measure 'Average Daily Rate' = AVERAGE('Calendar Rates'[Average Rate]) * [Selected Rate]
+		lineageTag: 9c4aa283-3f4c-43fb-8a16-d01663a147e0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Bookings' = SUM(Listings[Guest Count])
+		formatString: 0
+		lineageTag: 6ed7ca95-19d6-458a-812e-1c289449b7a8
+
+	measure 'Total Listings' = DISTINCTCOUNT(Listings[Listing ID])
+		formatString: 0
+		lineageTag: c1195e1a-2912-4d96-8996-b46aeeb3677b
+
+	measure 'SuperHost Percentage' = DIVIDE([Superhosted AirBNBs], [Total Listings], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7597c99d-0d49-46dc-8e38-0236aa20f890
+
+	measure 'Guest Favourite Percentage' = DIVIDE([Guest Favourite AirBNBs], [Total Listings], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b9e55002-57a3-4608-bffb-b445f94d3030
+
+	measure 'Last 90 days Revenue Average' = AVERAGE(Listings[Revenue in L90D]) * [Selected Rate]
+		lineageTag: a0421306-a2c8-422f-8dc4-ac550695c375
+
+		formatStringDefinition = "0 " &[Selected Currency Symbol]
+
+	measure 'L90D Avg Occupancy Percentage' = AVERAGE(Listings[Occupancy in L90D])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f59cb17c-9378-49e3-9e54-6faa3b86be43
+
+	measure 'TTM Total Average Rate' = Average(Listings[TTM Avg Rate]) * [Selected Rate]
+		lineageTag: 63c7c2f4-0ed8-45c2-af67-8de29f169722
+
+		formatStringDefinition = "0 " &[Selected Currency Symbol]
+
+	measure 'TTM Average Occupancy Rate' = Average(Listings[TTM Occupancy Rate])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3427b582-012a-4109-8fcd-d3d49aac185e
+
+	measure 'TTM Average Revenue' = AVERAGE(Listings[TTM Revenue]) * [Selected Rate]
+		lineageTag: 80824a72-684e-4235-9a1e-a215c77b1526
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'TTM Average Revpar' = Average(Listings[TTM Adjusted Revpar]) * [Selected Rate]
+		lineageTag: 5b47e6a6-d600-49a9-a6f0-cb1b6b1365bf
+
+		formatStringDefinition = "0 " &[Selected Currency Symbol]
+
+	measure 'Max Selected Metric' =
+			
+			VAR _MAX =
+			    MAXX(
+			        ALLSELECTED('Cities'[Country]),
+			        [Selected Metric]
+			    )
+			
+			VAR _Metric =
+			    SELECTEDVALUE(
+			        'Main Metrics'[Metric Name]
+			    )
+			
+			RETURN
+			    SWITCH(
+			        _Metric,
+			        // Days
+			        "Average Vacant Days",
+			            FORMAT(_MAX, "0.00") & " days",
+			
+			        "Average Reserved Days",
+			            FORMAT(_MAX, "0.00") & " days",
+			
+			        "Median Reserved Days",
+			            FORMAT(_MAX, "0.00") & " days",
+			
+			        "Median Vacant Days",
+			            FORMAT(_MAX, "0.00") & " days",
+			
+			        "Average Length of Stay",
+			            FORMAT(_MAX, "0.00") & " days",
+			
+			        "Total Reserved Days",
+			            FORMAT(_MAX, "#,##0") & " days",
+			
+			        "Total Vacant Days",
+			            FORMAT(_MAX, "#,##0") & " days",
+			
+			        // Currency
+			        "Average Booking Rate",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MAX, "#,##0.00"),
+			
+			        "Average Booking Revenue",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MAX, "#,##0.00"),
+			
+			        "Total Revenue",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MAX, "#,##0.00"),
+			
+			        "Average Daily Rate",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MAX, "#,##0.00"),
+			
+			        "Total Cleaning Fee",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MAX, "#,##0.00"),
+			
+			        "Average Guest Fees",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MAX, "#,##0.00"),
+			
+			        "Total Guest Fees",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MAX, "#,##0.00"),
+			
+			        // Percentages
+			        "Average Occupancy Percentage",
+			            FORMAT(_MAX, "0.00%"),
+			
+			        "SuperHost Percentage",
+			            FORMAT(_MAX, "0.00%"),
+			
+			        "Guest Favourite Percentage",
+			            FORMAT(_MAX, "0.00%"),
+			
+			        "L90D Avg Occupancy Percentage",
+			            FORMAT(_MAX, "0.00%"),
+			
+			        "TTM Average Occupancy Rate",
+			            FORMAT(_MAX, "0.00%"),
+			
+			        // Ratings
+			        "Average Rating",
+			            FORMAT(_MAX, "0.00"),
+			
+			        "Average Cleanliness Rating",
+			            FORMAT(_MAX, "0.00"),
+			
+			        "Average Host Communication Rating",
+			            FORMAT(_MAX, "0.00"),
+			
+			        "Average Checkin Rating",
+			            FORMAT(_MAX, "0.00"),
+			
+			        "Average Location Rating",
+			            FORMAT(_MAX, "0.00"),
+			
+			        "Average Value Rating",
+			            FORMAT(_MAX, "0.00"),
+			
+			        // Counts
+			        "Total Reviews",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Total Hosts",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Registered AirBNBs",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Non Registered AirBNBs",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Non Superhosted AirBNBs",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Superhosted AirBNBs",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Non Guest Favourite AirBNBs",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Guest Favourite AirBNBs",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Total Bedrooms",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Total Beds",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Distinct Listing Types",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Distinct Listing Group Types",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Distinct AirBNBs",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Total Bookings",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        "Total Listings",
+			            FORMAT(_MAX, "#,##0"),
+			
+			        // L90D / TTM
+			        "Last 90 days Revenue Average",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MAX, "#,##0.00"),
+			
+			        "TTM Total Average Rate",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MAX, "#,##0.00"),
+			
+			        "TTM Average Revenue",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MAX, "#,##0.00"),
+			
+			        "TTM Average Revpar",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MAX, "#,##0.00"),
+			
+			        // Fallback
+			        FORMAT(_MAX, "#,##0.00")
+			    )
+		lineageTag: 561bbb77-d292-490c-a3a6-231c50167786
+
+	measure 'Min Selected Metric' =
+			
+			VAR _MIN =
+			    MINX(
+			        ALLSELECTED('Cities'[Country]),
+			        [Selected Metric]
+			    )
+			
+			VAR _Metric =
+			    SELECTEDVALUE(
+			        'Main Metrics'[Metric Name]
+			    )
+			
+			RETURN
+			    SWITCH(
+			        _Metric,
+			
+			        // Days
+			        "Average Vacant Days",
+			            FORMAT(_MIN, "0.00") & " days",
+			
+			        "Average Reserved Days",
+			            FORMAT(_MIN, "0.00") & " days",
+			
+			        "Median Reserved Days",
+			            FORMAT(_MIN, "0.00") & " days",
+			
+			        "Median Vacant Days",
+			            FORMAT(_MIN, "0.00") & " days",
+			
+			        "Average Length of Stay",
+			            FORMAT(_MIN, "0.00") & " days",
+			
+			        "Total Reserved Days",
+			            FORMAT(_MIN, "#,##0") & " days",
+			
+			        "Total Vacant Days",
+			            FORMAT(_MIN, "#,##0") & " days",
+			
+			        // Currency
+			        "Average Booking Rate",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MIN, "#,##0.00"),
+			
+			        "Average Booking Revenue",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MIN, "#,##0.00"),
+			
+			        "Total Revenue",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MIN, "#,##0.00"),
+			
+			        "Average Daily Rate",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MIN, "#,##0.00"),
+			
+			        "Total Cleaning Fee",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MIN, "#,##0.00"),
+			
+			        "Average Guest Fees",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MIN, "#,##0.00"),
+			
+			        "Total Guest Fees",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MIN, "#,##0.00"),
+			
+			        // Percentages
+			        "Average Occupancy Percentage",
+			            FORMAT(_MIN, "0.00%"),
+			
+			        "SuperHost Percentage",
+			            FORMAT(_MIN, "0.00%"),
+			
+			        "Guest Favourite Percentage",
+			            FORMAT(_MIN, "0.00%"),
+			
+			        "L90D Avg Occupancy Percentage",
+			            FORMAT(_MIN, "0.00%"),
+			
+			        "TTM Average Occupancy Rate",
+			            FORMAT(_MIN, "0.00%"),
+			
+			        // Ratings
+			        "Average Rating",
+			            FORMAT(_MIN, "0.00"),
+			
+			        "Average Cleanliness Rating",
+			            FORMAT(_MIN, "0.00"),
+			
+			        "Average Host Communication Rating",
+			            FORMAT(_MIN, "0.00"),
+			
+			        "Average Checkin Rating",
+			            FORMAT(_MIN, "0.00"),
+			
+			        "Average Location Rating",
+			            FORMAT(_MIN, "0.00"),
+			
+			        "Average Value Rating",
+			            FORMAT(_MIN, "0.00"),
+			
+			        // Counts
+			        "Total Reviews",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Total Hosts",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Registered AirBNBs",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Non Registered AirBNBs",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Non Superhosted AirBNBs",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Superhosted AirBNBs",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Non Guest Favourite AirBNBs",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Guest Favourite AirBNBs",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Total Bedrooms",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Total Beds",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Distinct Listing Types",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Distinct Listing Group Types",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Distinct AirBNBs",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Total Bookings",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        "Total Listings",
+			            FORMAT(_MIN, "#,##0"),
+			
+			        // L90D / TTM
+			        "Last 90 days Revenue Average",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MIN, "#,##0.00"),
+			
+			        "TTM Total Average Rate",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MIN, "#,##0.00"),
+			
+			        "TTM Average Revenue",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MIN, "#,##0.00"),
+			
+			        "TTM Average Revpar",
+			            [Selected Currency Symbol] & " "
+			                & FORMAT(_MIN, "#,##0.00"),
+			
+			        // Fallback
+			        FORMAT(_MIN, "#,##0.00")
+			    )
+		lineageTag: f1f67522-a880-42ff-bb8b-b9e61d6fd7e2
+
+	measure 'Selected Max Metric Title' =
+			
+			VAR _Metric =
+			    SELECTEDVALUE(
+			        'Main Metrics'[Metric Name]
+			    )
+			RETURN
+			    "Max " &(_Metric)
+		lineageTag: 3f31af45-40ca-4765-9441-024e3557126c
+
+	measure 'Selected Min Metric Title' =
+			
+			VAR _Metric =
+			    SELECTEDVALUE(
+			        'Main Metrics'[Metric Name]
+			    )
+			RETURN
+			    "Min " &(_Metric)
+		lineageTag: 753ffc0c-31a2-4039-8ae6-b1131d21da47
+
+	column 'Metric Name'
+		lineageTag: e3aaad53-0c1d-499b-b978-d5d6b5449d88
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Metric Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Main Metrics' = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Metric Name", STRING,
+				    {
+				        {"Median Guests"},
+				        {"Mean Guests"},
+				        {"Total Cleaning Fee"},
+				        {"Average Vacant Days"},
+				        {"Average Reserved Days"},
+				        {"Average Booking Rate"},
+				        {"Average Booking Revenue"},
+				        {"Average Occupancy Percentage"},
+				        {"Median Reserved Days"},
+				        {"Median Vacant Days"},
+				        {"Total Reviews"},
+				        {"Total Hosts"},
+				        {"Registered AirBNBs"},
+				        {"Non Registered AirBNBs"},
+				        {"Non Superhosted AirBNBs"},
+				        {"Superhosted AirBNBs"},
+				        {"Non Guest Favourite AirBNBs"},
+				        {"Guest Favourite AirBNBs"},
+				        {"Total Guest Fees"},
+				        {"Average Guest Fees"},
+				        {"Total Bedrooms"},
+				        {"Total Beds"},
+				        {"Average Rating"},
+				        {"Average Cleanliness Rating"},
+				        {"Average Host Communication Rating"},
+				        {"Average Checkin Rating"},
+				        {"Average Location Rating"},
+				        {"Average Value Rating"},
+				        {"Distinct Listing Types"},
+				        {"Distinct Listing Group Types"},
+				        {"Distinct AirBNBs"},
+				        {"Total Revenue"},
+				        {"Average Length of Stay"},
+				        {"Total Reserved Days"},
+				        {"Total Vacant Days"},
+				        {"Average Daily Rate"},
+				        {"Total Bookings"},
+				        {"Total Listings"},
+				        {"SuperHost Percentage"},
+				        {"Guest Favourite Percentage"},
+				        {"Last 90 days Revenue Average"},
+				        {"L90D Avg Occupancy Percentage"},
+				        {"TTM Total Average Rate"},
+				        {"TTM Average Occupancy Rate"},
+				        {"TTM Average Revenue"},
+				        {"TTM Average Revpar"}
+				    }
+				)
+
+	annotation PBI_Id = b7543e0248ec45df9a2123942c07980f
+

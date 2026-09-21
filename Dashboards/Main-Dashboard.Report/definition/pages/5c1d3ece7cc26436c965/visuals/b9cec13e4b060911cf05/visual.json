@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "b9cec13e4b060911cf05",
   "position": {
-    "x": 1642.8548516439453,
-    "y": 141.65196471531675,
-    "z": 14,
+    "x": 1653.327334981549,
+    "y": 127.36154821363806,
+    "z": 9000,
     "height": 143.1916599839615,
     "width": 250.9703287890938,
-    "tabOrder": 29
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "sparklinekpicard12345",
@@ -20,71 +20,36 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Metrics"
+                      "Entity": "Main Metrics"
                     }
                   },
-                  "Property": "Total Reviews"
+                  "Property": "L90D Avg Occupancy Percentage"
                 }
               },
-              "queryRef": "Metrics.Total Reviews",
-              "nativeQueryRef": "Total Reviews"
-            }
-          ]
-        },
-        "dateAxis": {
-          "projections": [
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Dates"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Year"
-                }
-              },
-              "queryRef": "Dates.Date.Variation.Date Hierarchy.Year",
-              "nativeQueryRef": "Date Year"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Dates"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Month"
-                }
-              },
-              "queryRef": "Dates.Date.Variation.Date Hierarchy.Month",
-              "nativeQueryRef": "Date Month"
+              "queryRef": "Metrics.L90D Avg Occupancy Percentage",
+              "nativeQueryRef": "L90D Avg Occupancy",
+              "displayName": "L90D Avg Occupancy"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Main Metrics"
+                  }
+                },
+                "Property": "L90D Avg Occupancy Percentage"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -310,7 +275,7 @@
             "labelFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "20D"
                 }
               }
             },
@@ -342,7 +307,7 @@
             "suffix": {
               "expr": {
                 "Literal": {
-                  "Value": "' reviews'"
+                  "Value": "''"
                 }
               }
             },
@@ -544,6 +509,13 @@
                   "Value": "11D"
                 }
               }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -556,7 +528,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FFF0F3'"
+                      "Value": "'#F1D3D7'"
                     }
                   }
                 }

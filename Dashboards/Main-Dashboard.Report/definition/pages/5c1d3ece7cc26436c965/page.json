@@ -4,5 +4,58 @@
   "displayName": "Listings",
   "displayOption": "FitToPage",
   "height": 1080,
-  "width": 1920
+  "width": 1920,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F1D3D7'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "689bd575b067a34d07e1",
+      "target": "2b34f7991e300b5c9582",
+      "type": "NoFilter"
+    },
+    {
+      "source": "689bd575b067a34d07e1",
+      "target": "53b8dce73c3448c72500",
+      "type": "NoFilter"
+    },
+    {
+      "source": "689bd575b067a34d07e1",
+      "target": "d99013c344460539a7c9",
+      "type": "HighlightFilter"
+    },
+    {
+      "source": "689bd575b067a34d07e1",
+      "target": "fd9f8ce4de00aa8a73a3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "689bd575b067a34d07e1",
+      "target": "c0c14242201d80827726",
+      "type": "NoFilter"
+    }
+  ]
 }

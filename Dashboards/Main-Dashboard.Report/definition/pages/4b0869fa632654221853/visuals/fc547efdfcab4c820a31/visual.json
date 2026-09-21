@@ -74,7 +74,7 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Metrics"
+                      "Entity": "Main Metrics"
                     }
                   },
                   "Property": "Average Booking Rate"
@@ -556,7 +556,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FFF0F3'"
+                      "Value": "'#F1D3D7'"
                     }
                   }
                 }

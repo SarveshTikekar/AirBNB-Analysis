@@ -3,11 +3,11 @@
   "name": "689bd575b067a34d07e1",
   "position": {
     "x": 0,
-    "y": 306.39935846030471,
-    "z": 18,
-    "height": 371.06655974338412,
-    "width": 597.401764234162,
-    "tabOrder": 32
+    "y": 289.99170124481327,
+    "z": 11000,
+    "height": 392.94974508375822,
+    "width": 597.115804806992,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "lineChart",
@@ -17,55 +17,33 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Dates"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
+                    "SourceRef": {
+                      "Entity": "Listing Types"
                     }
                   },
-                  "Level": "Year"
+                  "Property": "Listing Type Group"
                 }
               },
-              "queryRef": "Dates.Date.Variation.Date Hierarchy.Year",
-              "nativeQueryRef": "Date Year",
+              "queryRef": "Listing Types.Listing Type Group",
+              "nativeQueryRef": "Listing Type Group",
               "active": true
             },
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Dates"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
+                    "SourceRef": {
+                      "Entity": "Listing Types"
                     }
                   },
-                  "Level": "Month"
+                  "Property": "Listing Type"
                 }
               },
-              "queryRef": "Dates.Date.Variation.Date Hierarchy.Month",
-              "nativeQueryRef": "Date Month",
-              "active": true
+              "queryRef": "Listing Types.Listing Type",
+              "nativeQueryRef": "Listing Type",
+              "active": false
             }
           ]
         },
@@ -76,18 +54,34 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Metrics"
+                      "Entity": "Main Metrics"
                     }
                   },
                   "Property": "Average Occupancy Percentage"
                 }
               },
               "queryRef": "Metrics.Average Occupancy Percentage",
-              "nativeQueryRef": "Average Occupancy %",
-              "displayName": "Average Occupancy %"
+              "nativeQueryRef": "Average Occupancy Percentage"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Main Metrics"
+                  }
+                },
+                "Property": "Average Occupancy Percentage"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
       }
     },
     "objects": {
@@ -488,5 +482,81 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0be753d64bd6711903b9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Listing Types"
+              }
+            },
+            "Property": "Listing Type Group"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "l",
+              "Entity": "Listing Types",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "l"
+                              }
+                            },
+                            "Property": "Listing Type Group"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }

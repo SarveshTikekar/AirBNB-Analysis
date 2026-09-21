@@ -32,6 +32,7 @@ relationship AutoDetected_243adaf8-3ecf-449b-8b94-4c7fba48b604
 	toColumn: 'Listing Types'.'Listing Type'
 
 relationship AutoDetected_229228ce-acb5-423c-b008-58251b81ca62
+	crossFilteringBehavior: bothDirections
 	fromColumn: 'Listing Amenities'.'Listing ID'
 	toColumn: Listings.'Listing ID'
 
@@ -42,4 +43,8 @@ relationship AutoDetected_b2c33d2e-fcbd-4a24-864d-11354c5780cd
 relationship AutoDetected_986e72bb-1ee3-4fcd-a97e-a49ece86fd69
 	fromColumn: 'AirBNB Photos'.'Listing ID'
 	toColumn: Listings.'Listing ID'
+
+relationship afb62249-81cc-378a-8e83-2ca85b39df97
+	fromColumn: Listings.'Is SuperHost'
+	toColumn: SuperHost.'Is SuperHost'
 

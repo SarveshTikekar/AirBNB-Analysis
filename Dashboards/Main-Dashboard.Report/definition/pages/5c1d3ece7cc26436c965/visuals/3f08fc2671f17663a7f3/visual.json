@@ -2,71 +2,17 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "3f08fc2671f17663a7f3",
   "position": {
-    "x": 354.12991178829185,
-    "y": 138.57257417802725,
-    "z": 8,
+    "x": 364.60239512589544,
+    "y": 124.28215767634856,
+    "z": 7000,
     "height": 143.1916599839615,
     "width": 255.58941459502805,
-    "tabOrder": 23
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "sparklinekpicard12345",
     "query": {
       "queryState": {
-        "dateAxis": {
-          "projections": [
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Dates"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Year"
-                }
-              },
-              "queryRef": "Dates.Date.Variation.Date Hierarchy.Year",
-              "nativeQueryRef": "Date Year"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Dates"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Month"
-                }
-              },
-              "queryRef": "Dates.Date.Variation.Date Hierarchy.Month",
-              "nativeQueryRef": "Date Month"
-            }
-          ]
-        },
         "kpiMeasure": {
           "projections": [
             {
@@ -74,17 +20,35 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Metrics"
+                      "Entity": "Main Metrics"
                     }
                   },
-                  "Property": "Average Length of Stay"
+                  "Property": "Total Bookings"
                 }
               },
-              "queryRef": "Metrics.Average Length of Stay",
-              "nativeQueryRef": "Average Length of Stay"
+              "queryRef": "Metrics.Total Bookings",
+              "nativeQueryRef": "Total Bookings"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Main Metrics"
+                  }
+                },
+                "Property": "Total Bookings"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -94,7 +58,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -310,7 +274,7 @@
             "labelFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "20D"
                 }
               }
             },
@@ -342,7 +306,7 @@
             "suffix": {
               "expr": {
                 "Literal": {
-                  "Value": "' days'"
+                  "Value": "''"
                 }
               }
             },
@@ -588,7 +552,7 @@
             "sentenceTemplate": {
               "expr": {
                 "Literal": {
-                  "Value": "'Avg Length of Stay: {Average Length of Stay} days for Month {Date}\n'"
+                  "Value": "'Total Bookings: {Total Bookings} for Month {Date}\n'"
                 }
               }
             },
@@ -610,7 +574,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FFF0F3'"
+                      "Value": "'#F1D3D7'"
                     }
                   }
                 }

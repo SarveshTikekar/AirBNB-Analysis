@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "a7ea68e3948255039813",
   "position": {
-    "x": 127.62401635446518,
+    "x": 74.365057885459635,
     "y": 0,
     "z": 1000,
-    "height": 39.92648560343067,
-    "width": 156.41054475344947,
-    "tabOrder": 17
+    "height": 39.483532191720876,
+    "width": 91.1386394719084,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "AIRBNB NAME",
+                    "value": "CITY",
                     "textStyle": {
                       "fontFamily": "Segoe (Bold)",
                       "fontSize": "14pt",

@@ -2,71 +2,17 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "a6f81cdfb8231b0250ae",
   "position": {
-    "x": 674.38652766639927,
-    "y": 141.65196471531675,
-    "z": 9,
+    "x": 684.85901100400292,
+    "y": 127.36154821363806,
+    "z": 8000,
     "height": 143.1916599839615,
     "width": 255.58941459502805,
-    "tabOrder": 24
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "sparklinekpicard12345",
     "query": {
       "queryState": {
-        "dateAxis": {
-          "projections": [
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Dates"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Year"
-                }
-              },
-              "queryRef": "Dates.Date.Variation.Date Hierarchy.Year",
-              "nativeQueryRef": "Date Year"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Dates"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Month"
-                }
-              },
-              "queryRef": "Dates.Date.Variation.Date Hierarchy.Month",
-              "nativeQueryRef": "Date Month"
-            }
-          ]
-        },
         "kpiMeasure": {
           "projections": [
             {
@@ -74,17 +20,35 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Metrics"
+                      "Entity": "Main Metrics"
                     }
                   },
-                  "Property": "Average Booking Rate"
+                  "Property": "SuperHost Percentage"
                 }
               },
-              "queryRef": "Metrics.Average Booking Rate",
-              "nativeQueryRef": "Average Booking Rate"
+              "queryRef": "Metrics.SuperHost Percentage",
+              "nativeQueryRef": "SuperHost Percentage"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Main Metrics"
+                  }
+                },
+                "Property": "SuperHost Percentage"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -310,7 +274,7 @@
             "labelFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "20D"
                 }
               }
             },
@@ -556,7 +520,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FFF0F3'"
+                      "Value": "'#F1D3D7'"
                     }
                   }
                 }

@@ -46,7 +46,9 @@
     "ImageGrid_FC5183B9_926C_45E0_B5F7_0CE9EAF1DA9B",
     "ImageCarouselByMAQSoftware1448688110701",
     "StackedBarLineC23CD878BA764C3B84E5261BC83BC537",
-    "WordCloud1447959067750"
+    "WordCloud1447959067750",
+    "tMap8E0FD0EA52A241AAB7312149B2333625",
+    "iconMapV34089C0EB522B416294AA926F71B4FDBB"
   ],
   "resourcePackages": [
     {
@@ -70,19 +72,14 @@
           "type": "Image"
         },
         {
-          "name": "bullseye043107076088675034.svg",
-          "path": "bullseye043107076088675034.svg",
-          "type": "Image"
-        },
-        {
-          "name": "Cart6494425310689314.svg",
-          "path": "Cart6494425310689314.svg",
-          "type": "Image"
-        },
-        {
           "name": "clock8581099830797875.svg",
           "path": "clock8581099830797875.svg",
           "type": "Image"
+        },
+        {
+          "name": "countries.geo7616231614001895.json",
+          "path": "countries.geo7616231614001895.json",
+          "type": "ShapeMap"
         },
         {
           "name": "crowd9418173865586474.svg",
@@ -90,8 +87,18 @@
           "type": "Image"
         },
         {
+          "name": "decrease7368167533807776.svg",
+          "path": "decrease7368167533807776.svg",
+          "type": "Image"
+        },
+        {
           "name": "funnel-crimson21444470743006216.svg",
           "path": "funnel-crimson21444470743006216.svg",
+          "type": "Image"
+        },
+        {
+          "name": "increasing4349429872081726.svg",
+          "path": "increasing4349429872081726.svg",
           "type": "Image"
         },
         {

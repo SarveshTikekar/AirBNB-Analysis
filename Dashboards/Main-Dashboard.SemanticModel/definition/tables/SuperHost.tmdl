@@ -1,0 +1,32 @@
+table SuperHost
+	lineageTag: 6d5c7a8b-2a21-40c0-b092-18c5176d6934
+
+	column 'Is SuperHost'
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3ecdcce6-77e1-4a7e-98f3-02375123f4af
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Is SuperHost]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		lineageTag: 8da10fb2-17f2-44ae-bc65-49ccfa03bee3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Description]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SuperHost = calculated
+		mode: import
+		source =
+				DATATABLE(
+				
+				    "Is SuperHost", BOOLEAN,
+				    "Description", TEXT,
+				    {{True, "SuperHost"}, {False, "Not SuperHost"}}
+				    )
+
+	annotation PBI_Id = 27643c96dea742b1b19814e75df3a139
+

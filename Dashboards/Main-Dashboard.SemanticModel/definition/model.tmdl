@@ -36,7 +36,7 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_QueryOrder = ["Calendar Rates","Sample File (2)","Parameter2","Transform Sample File (2)","Transform File (2)","Ratings","Sample File (3)","Parameter3","Transform Sample File (3)","Transform File (3)","Dates","Cities","Listings","Sample File","Parameter1","Transform Sample File","Transform File","Listing Types","Currency Converter","Cancellation Policies","Listing Amenities","Amenities","AirBNB Photos"]
 
-annotation PBI_ProTooling = ["DevMode"]
+annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
 
 ref table 'Calendar Rates'
 ref table Ratings
@@ -46,7 +46,7 @@ ref table LocalDateTable_068a8ee2-b722-49f4-81e1-e037a810cbff
 ref table Cities
 ref table Listings
 ref table 'Listing Types'
-ref table Metrics
+ref table 'Main Metrics'
 ref table 'Currency Converter'
 ref table 'Cancellation Policies'
 ref table 'Listing Amenities'
@@ -54,6 +54,8 @@ ref table Amenities
 ref table 'AirBNB Photos'
 ref table Styling
 ref table Selections
+ref table SuperHost
+ref table 'AirBNB Specific Metrics'
 
 ref cultureInfo en-US
 

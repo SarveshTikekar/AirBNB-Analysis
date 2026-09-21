@@ -126,16 +126,6 @@ table Listings
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'No of Bathrooms'
-		dataType: int64
-		lineageTag: 86b349d0-9da7-4449-af80-ee4eb19ec05d
-		summarizeBy: sum
-		sourceColumn: No of Bathrooms
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	column 'Is Registered'
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
@@ -173,26 +163,20 @@ table Listings
 		annotation SummarizationSetBy = Automatic
 
 	column 'Checkin Time'
-		dataType: dateTime
-		formatString: Long Time
+		dataType: string
 		lineageTag: 45ba097b-f107-4bdd-9cfe-fc3e16cdb1f2
 		summarizeBy: none
 		sourceColumn: Checkin Time
 
 		annotation SummarizationSetBy = Automatic
 
-		annotation UnderlyingDateTimeDataType = Time
-
 	column 'Checkout Time'
-		dataType: dateTime
-		formatString: Long Time
+		dataType: string
 		lineageTag: f2c6e897-c9b2-4606-8b08-47d085c36f89
 		summarizeBy: none
 		sourceColumn: Checkout Time
 
 		annotation SummarizationSetBy = Automatic
-
-		annotation UnderlyingDateTimeDataType = Time
 
 	column 'Is Guest Favourite'
 		dataType: boolean
@@ -310,7 +294,7 @@ table Listings
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'TTM Revenue'
-		dataType: int64
+		dataType: double
 		formatString: 0
 		lineageTag: 0dd49f5f-d825-4e65-9f34-bf0cf7fd34c6
 		summarizeBy: sum
@@ -369,7 +353,7 @@ table Listings
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'TTM Avg Min Nights'
-		dataType: int64
+		dataType: double
 		lineageTag: 30a2479c-ab95-449a-90fc-1822381f2af1
 		summarizeBy: sum
 		sourceColumn: TTM Avg Min Nights
@@ -379,7 +363,7 @@ table Listings
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'TTM Avg Length of Stay'
-		dataType: int64
+		dataType: double
 		lineageTag: 2891126b-0f74-44e8-a924-8a01599cd0c8
 		summarizeBy: sum
 		sourceColumn: TTM Avg Length of Stay
@@ -416,7 +400,7 @@ table Listings
 		annotation SummarizationSetBy = Automatic
 
 	column 'Revenue in L90D'
-		dataType: int64
+		dataType: double
 		formatString: 0
 		lineageTag: 89c5ecdd-bbf9-44e3-91de-e3b8bc3ffa7d
 		summarizeBy: sum
@@ -475,7 +459,7 @@ table Listings
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'Avg Min Nights in L90D'
-		dataType: int64
+		dataType: double
 		lineageTag: 5c25be4e-683b-4fd3-aac3-23b2c16bc4b3
 		summarizeBy: sum
 		sourceColumn: Avg Min Nights in L90D
@@ -485,7 +469,7 @@ table Listings
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'Avg Length Of Stay in L90D'
-		dataType: int64
+		dataType: double
 		lineageTag: a59fc25b-72f1-42a2-821a-5e0e21b6d362
 		summarizeBy: sum
 		sourceColumn: Avg Length Of Stay in L90D
@@ -556,129 +540,138 @@ table Listings
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Cleaned Description'
+	column cleaned_description
 		dataType: string
 		lineageTag: cf51fb07-0235-4788-90eb-150ab5b5c03f
 		summarizeBy: none
-		sourceColumn: Cleaned Description
+		sourceColumn: cleaned_description
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'No of Bathrooms'
+		dataType: double
+		lineageTag: 42318e07-6ad7-42b0-830f-226c7b34a3d0
+		summarizeBy: sum
+		sourceColumn: No of Bathrooms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition Listings = m
 		mode: import
-		source = ```
+		source =
 				let
-				    Source = Folder.Files("C:\Users\Administrator\home\sarvesh\AirBNB Analysis\Datasets\listings"),
-				    #"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
-				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
-				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
-				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
-				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"listing_id", Int64.Type}, {"listing_name", type text}, {"description", type text}, {"listing_type", type text}, {"room_type", type text}, {"cover_photo_url", type text}, {"photos_count", Int64.Type}, {"photo_urls", type text}, {"host_id", Int64.Type}, {"host_name", type text}, {"cohost_ids", type text}, {"cohost_names", type text}, {"superhost", type logical}, {"latitude", type number}, {"longitude", type number}, {"guests", Int64.Type}, {"bedrooms", Int64.Type}, {"beds", Int64.Type}, {"baths", type number}, {"registration", type logical}, {"amenities", type text}, {"instant_book", type logical}, {"professional_management", type logical}, {"min_nights", Int64.Type}, {"cancellation_policy", type text}, {"checkin_time", type time}, {"checkout_time", type time}, {"guest_favorite", type logical}, {"exact_location", type logical}, {"currency", type text}, {"cleaning_fee", Int64.Type}, {"extra_guest_fee", Int64.Type}, {"single_fee_structure", type logical}, {"num_reviews", Int64.Type}, {"rating_overall", type number}, {"rating_accuracy", type number}, {"rating_checkin", type number}, {"rating_cleanliness", type number}, {"rating_communication", type number}, {"rating_location", type number}, {"rating_value", type number}, {"ttm_revenue", Int64.Type}, {"ttm_revenue_native", Int64.Type}, {"ttm_avg_rate", type number}, {"ttm_avg_rate_native", type number}, {"ttm_occupancy", type number}, {"ttm_adjusted_occupancy", type number}, {"ttm_revpar", type number}, {"ttm_revpar_native", type number}, {"ttm_adjusted_revpar", type number}, {"ttm_adjusted_revpar_native", type number}, {"ttm_avg_min_nights", type number}, {"ttm_avg_length_of_stay", type number}, {"ttm_reserved_days", Int64.Type}, {"ttm_blocked_days", Int64.Type}, {"ttm_available_days", Int64.Type}, {"ttm_total_days", Int64.Type}, {"l90d_revenue", Int64.Type}, {"l90d_revenue_native", Int64.Type}, {"l90d_avg_rate", type number}, {"l90d_avg_rate_native", type number}, {"l90d_occupancy", type number}, {"l90d_adjusted_occupancy", type number}, {"l90d_revpar", type number}, {"l90d_revpar_native", type number}, {"l90d_adjusted_revpar", type number}, {"l90d_adjusted_revpar_native", type number}, {"l90d_avg_min_nights", type number}, {"l90d_avg_length_of_stay", type number}, {"l90d_reserved_days", Int64.Type}, {"l90d_blocked_days", Int64.Type}, {"l90d_available_days", Int64.Type}, {"l90d_total_days", Int64.Type}}),
+				Source = Folder.Files("C:\Users\Administrator\home\sarvesh\AirBNB Analysis\Datasets\listings"),
+				#"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+				#"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
+				#"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
+				#"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
+				#"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
+				#"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"listing_id", Int64.Type}, {"listing_name", type text}, {"description", type text}, {"listing_type", type text}, {"room_type", type text}, {"cover_photo_url", type text}, {"photos_count", Int64.Type}, {"photo_urls", type text}, {"host_id", Int64.Type}, {"host_name", type text}, {"cohost_ids", type text}, {"cohost_names", type text}, {"superhost", type logical}, {"latitude", type number}, {"longitude", type number}, {"guests", Int64.Type}, {"bedrooms", Int64.Type}, {"beds", Int64.Type}, {"baths", type number}, {"registration", type logical}, {"amenities", type text}, {"instant_book", type logical}, {"professional_management", type logical}, {"min_nights", Int64.Type}, {"cancellation_policy", type text}, {"checkin_time", type time}, {"checkout_time", type time}, {"guest_favorite", type logical}, {"exact_location", type logical}, {"currency", type text}, {"cleaning_fee", Int64.Type}, {"extra_guest_fee", Int64.Type}, {"single_fee_structure", type logical}, {"num_reviews", Int64.Type}, {"rating_overall", type number}, {"rating_accuracy", type number}, {"rating_checkin", type number}, {"rating_cleanliness", type number}, {"rating_communication", type number}, {"rating_location", type number}, {"rating_value", type number}, {"ttm_revenue", Int64.Type}, {"ttm_revenue_native", Int64.Type}, {"ttm_avg_rate", type number}, {"ttm_avg_rate_native", type number}, {"ttm_occupancy", type number}, {"ttm_adjusted_occupancy", type number}, {"ttm_revpar", type number}, {"ttm_revpar_native", type number}, {"ttm_adjusted_revpar", type number}, {"ttm_adjusted_revpar_native", type number}, {"ttm_avg_min_nights", type number}, {"ttm_avg_length_of_stay", type number}, {"ttm_reserved_days", Int64.Type}, {"ttm_blocked_days", Int64.Type}, {"ttm_available_days", Int64.Type}, {"ttm_total_days", Int64.Type}, {"l90d_revenue", Int64.Type}, {"l90d_revenue_native", Int64.Type}, {"l90d_avg_rate", type number}, {"l90d_avg_rate_native", type number}, {"l90d_occupancy", type number}, {"l90d_adjusted_occupancy", type number}, {"l90d_revpar", type number}, {"l90d_revpar_native", type number}, {"l90d_adjusted_revpar", type number}, {"l90d_adjusted_revpar_native", type number}, {"l90d_avg_min_nights", type number}, {"l90d_avg_length_of_stay", type number}, {"l90d_reserved_days", Int64.Type}, {"l90d_blocked_days", Int64.Type}, {"l90d_available_days", Int64.Type}, {"l90d_total_days", Int64.Type}}),
 				
-				    #"Extract Cities from Source Name" = Table.AddColumn(
-				    #"Changed Type",
-				    "City",
-				    each Text.BeforeDelimiter([Source.Name], "_"),
-				    type text
-				    ),
-				    
-				    #"Removed Columns" = Table.RemoveColumns(#"Extract Cities from Source Name",{"Source.Name"}),
-				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"City"}, Cities, {"City"}, "Cities", JoinKind.LeftOuter),
-				    #"Expanded Cities" = Table.ExpandTableColumn(#"Merged Queries", "Cities", {"City"}, {"City.1"}),
-				    #"Removed Columns1" = Table.RemoveColumns(#"Expanded Cities",{"City"}),
-				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"City.1", "City"}}),
-				    #"Merged Queries1" = Table.NestedJoin(#"Renamed Columns", {"listing_type"}, #"Listing Types", {"Listing Type"}, "Listing Types", JoinKind.LeftOuter),
-				    #"Expanded Listing Types1" = Table.ExpandTableColumn(#"Merged Queries1", "Listing Types", {"Listing Type", "Listing Type Group"}, {"Listing Type", "Listing Type Group"}),
-				    #"Time Columns as Text" =
+				#"Extract Cities from Source Name" = Table.AddColumn(
+				#"Changed Type",
+				"City",
+				each Text.BeforeDelimiter([Source.Name], "_"),
+				type text
+				),
+				
+				#"Removed Columns" = Table.RemoveColumns(#"Extract Cities from Source Name",{"Source.Name"}),
+				#"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"City"}, Cities, {"City"}, "Cities", JoinKind.LeftOuter),
+				#"Expanded Cities" = Table.ExpandTableColumn(#"Merged Queries", "Cities", {"City"}, {"City.1"}),
+				#"Removed Columns1" = Table.RemoveColumns(#"Expanded Cities",{"City"}),
+				#"Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"City.1", "City"}}),
+				#"Merged Queries1" = Table.NestedJoin(#"Renamed Columns", {"listing_type"}, #"Listing Types", {"Listing Type"}, "Listing Types", JoinKind.LeftOuter),
+				#"Expanded Listing Types1" = Table.ExpandTableColumn(#"Merged Queries1", "Listing Types", {"Listing Type", "Listing Type Group"}, {"Listing Type", "Listing Type Group"}),
+				#"Time Columns as Text" =
+				Table.TransformColumns(
+				    #"Expanded Listing Types1",
+				    {
+				        {
+				            "checkin_time",
+				            each if _ = null then null else Time.ToText(_, "HH:mm:ss"),
+				            type text
+				        },
+				        {
+				            "checkout_time",
+				            each if _ = null then null else Time.ToText(_, "HH:mm:ss"),
+				            type text
+				        }
+				    }
+				),
+				#"Run Python script" = Python.Execute("import pandas as pd#(lf)#(lf)medians = dataset.groupby([""Listing Type Group"", ""City""])[""guests""].transform(""median"")#(lf)dataset[""guests""] = dataset[""guests""].fillna(medians).fillna(1).round().astype(int)#(lf)#(lf)def format_time(x):#(lf)    if pd.isna(x) or str(x).strip() in ["""", ""None"", ""nan"", ""null""]:#(lf)        return None#(lf)    return str(x).strip()#(lf)#(lf)dataset[""checkin_time""] = dataset[""checkin_time""].apply(format_time)#(lf)dataset[""checkout_time""] = dataset[""checkout_time""].apply(format_time)",[dataset=#"Time Columns as Text"]),
+				dataset = #"Run Python script"{[Name="dataset"]}[Value],
+				#"Filled NAN for guests using List Type group and City" = Table.TransformColumnTypes(dataset,{{"listing_id", Int64.Type}, {"listing_name", type text}, {"description", type text}, {"listing_type", type text}, {"room_type", type text}, {"cover_photo_url", type text}, {"photos_count", Int64.Type}, {"photo_urls", type text}, {"host_id", Int64.Type}, {"host_name", type text}, {"cohost_ids", type text}, {"cohost_names", type text}, {"superhost", type logical}, {"latitude", type number}, {"longitude", type number}, {"guests", Int64.Type}, {"bedrooms", Int64.Type}, {"beds", Int64.Type}, {"baths", type number}, {"registration", type logical}, {"amenities", type text}, {"instant_book", type logical}, {"professional_management", type logical}, {"min_nights", Int64.Type}, {"cancellation_policy", type text}, {"checkin_time", type text}, {"checkout_time", type text}, {"guest_favorite", type logical}, {"exact_location", type logical}, {"currency", type text}, {"cleaning_fee", Int64.Type}, {"extra_guest_fee", Int64.Type}, {"single_fee_structure", type logical}, {"num_reviews", Int64.Type}, {"rating_overall", type number}, {"rating_accuracy", type number}, {"rating_checkin", type number}, {"rating_cleanliness", type number}, {"rating_communication", type number}, {"rating_location", type number}, {"rating_value", type number}, {"ttm_revenue", Int64.Type}, {"ttm_revenue_native", Int64.Type}, {"ttm_avg_rate", type number}, {"ttm_avg_rate_native", type number}, {"ttm_occupancy", type number}, {"ttm_adjusted_occupancy", type number}, {"ttm_revpar", type number}, {"ttm_revpar_native", type number}, {"ttm_adjusted_revpar", type number}, {"ttm_adjusted_revpar_native", type number}, {"ttm_avg_min_nights", type number}, {"ttm_avg_length_of_stay", type number}, {"ttm_reserved_days", Int64.Type}, {"ttm_blocked_days", Int64.Type}, {"ttm_available_days", Int64.Type}, {"ttm_total_days", Int64.Type}, {"l90d_revenue", Int64.Type}, {"l90d_revenue_native", Int64.Type}, {"l90d_avg_rate", type number}, {"l90d_avg_rate_native", type number}, {"l90d_occupancy", type number}, {"l90d_adjusted_occupancy", type number}, {"l90d_revpar", type number}, {"l90d_revpar_native", type number}, {"l90d_adjusted_revpar", type number}, {"l90d_adjusted_revpar_native", type number}, {"l90d_avg_min_nights", type number}, {"l90d_avg_length_of_stay", type number}, {"l90d_reserved_days", Int64.Type}, {"l90d_blocked_days", Int64.Type}, {"l90d_available_days", Int64.Type}, {"l90d_total_days", Int64.Type}, {"City", type text}, {"Listing Type", type text}, {"Listing Type Group", type text}}),
+				#"Removed Columns2" = Table.RemoveColumns(#"Filled NAN for guests using List Type group and City",{"Listing Type Group"}),
+				#"Merged Queries2" = Table.NestedJoin(#"Removed Columns2", {"currency"}, #"Currency Converter", {"Currency"}, "Currency Convertor", JoinKind.LeftOuter),
+				#"Expanded Currency Convertor" = Table.ExpandTableColumn(#"Merged Queries2", "Currency Convertor", {"Value Wrt Usd"}, {"Value Wrt Usd"}),
+				#"Removed Columns3" = Table.RemoveColumns(#"Expanded Currency Convertor",{"Value Wrt Usd", "listing_type", "room_type", "currency"}),
+				#"Renamed Columns2" = Table.RenameColumns(#"Removed Columns3",{{"listing_id", "Listing ID"}, {"listing_name", "Listing Name"}, {"description", "Description"}, {"cover_photo_url", "Cover Photo"}, {"photos_count", "Photo Count"}, {"photo_urls", "Photos"}, {"host_id", "Host ID"}, {"host_name", "Host Name"}, {"cohost_ids", "Cohost IDs"}, {"cohost_names", "Cohost Names"}, {"superhost", "Is SuperHost"}, {"latitude", "Latitude"}, {"longitude", "Longitude"}, {"guests", "Guest Count"}, {"bedrooms", "No of Bedrooms"}, {"beds", "No of Beds"}, {"baths", "No of Baths"}, {"instant_book", "Instantly Booked"}, {"professional_management", "Prof Management"}, {"min_nights", "Min Nights to Stay"}, {"cancellation_policy", "Cancellation Policy"}, {"guest_favorite", "Is Guest Favourite"}, {"exact_location", "Exact Location Available"}, {"cleaning_fee", "CLeaning Fees"}, {"extra_guest_fee", "Extra Guest Fees"}, {"single_fee_structure", "Single Fee Structure"}, {"num_reviews", "Number of Reviews"}}),
+				#"Removed Columns4" = Table.RemoveColumns(#"Renamed Columns2",{"Number of Reviews"}),
+				#"Renamed Columns3" = Table.RenameColumns(#"Removed Columns4",{{"rating_overall", "Overall Rating"}, {"rating_accuracy", "Rating Accuracy"}}),
+				#"Merged Queries3" = Table.NestedJoin(#"Renamed Columns3", {"Cancellation Policy"}, #"Cancellation Policies", {"Cancellation Policy"}, "Cancellation Policies", JoinKind.LeftOuter),
+				#"Expanded Cancellation Policies" = Table.ExpandTableColumn(#"Merged Queries3", "Cancellation Policies", {"Cancel Policy Code"}, {"Cancel Policy Code"}),
+				#"Merged Queries4" = Table.NestedJoin(#"Expanded Cancellation Policies", {"Listing Type"}, #"Listing Types", {"Listing Type"}, "Listing Types", JoinKind.LeftOuter),
+				#"Expanded Listing Types" = Table.ExpandTableColumn(#"Merged Queries4", "Listing Types", {"Listing Type"}, {"Listing Type.1"}),
+				#"Removed Columns5" = Table.RemoveColumns(#"Expanded Listing Types",{"Listing Type"}),
+				#"Renamed Columns4" = Table.RenameColumns(#"Removed Columns5",{{"Listing Type.1", "Listing Type"}}),
+				#"Removed Columns6" = Table.RemoveColumns(#"Renamed Columns4",{"Cohost IDs"}),
+				#"Replaced Value" = Table.ReplaceValue(#"Removed Columns6","","No Cohosts for the AirBNB",Replacer.ReplaceValue,{"Cohost Names"}),
+				#"Parsed Description" =
+				Table.TransformColumns(
+				    #"Replaced Value",
+				    {
+				        {
+				            "Description",
+				            each
+				                let
+				                    Parsed = Html.Table(
+				                        _,
+				                        {{"Text", ":root"}}
+				                    )
+				                in
+				                    if Table.IsEmpty(Parsed)
+				                    then null
+				                    else Parsed{0}[Text],
+				            type text
+				        }
+				    }
+				),
+				#"Replaced Value1" = Table.ReplaceValue(#"Parsed Description","","No Description Available",Replacer.ReplaceValue,{"Description"}),
+				#"Renamed Columns5" = Table.RenameColumns(#"Replaced Value1",{{"registration", "Is Registered"}, {"amenities", "Amenities"}, {"checkin_time", "Checkin Time"}, {"checkout_time", "Checkout Time"}, {"rating_checkin", "Checkin Rating"}, {"rating_cleanliness", "Cleanliness Rating"}, {"rating_communication", "Commn Rating"}, {"rating_location", "Location Rating"}, {"rating_value", "Value Rating"}}),
+				#"Removed Columns7" = Table.RemoveColumns(#"Renamed Columns5",{"ttm_revenue_native", "ttm_avg_rate_native", "ttm_revpar_native", "ttm_adjusted_revpar_native", "l90d_revenue_native", "l90d_avg_rate_native", "l90d_revpar_native", "l90d_adjusted_revpar_native"}),
+				#"Renamed Columns6" = Table.RenameColumns(#"Removed Columns7",{{"ttm_revenue", "TTM Revenue"}, {"ttm_avg_rate", "TTM Avg Rate"}, {"ttm_occupancy", "TTM Occupancy Rate"}, {"ttm_adjusted_occupancy", "TTM Adjusted Occupancy Rate"}, {"ttm_revpar", "TTM Revpar"}, {"ttm_adjusted_revpar", "TTM Adjusted Revpar"}, {"ttm_avg_min_nights", "TTM Avg Min Nights"}, {"ttm_avg_length_of_stay", "TTM Avg Length of Stay"}, {"ttm_reserved_days", "TTM Reserved Days"}, {"ttm_blocked_days", "TTM Blocked Days"}, {"ttm_available_days", "TTM Available Days"}, {"ttm_total_days", "TTM Total Days"}, {"l90d_revenue", "Revenue L90D"}, {"l90d_avg_rate", "Avg Rate L90D"}, {"l90d_occupancy", "Occupancy L90D"}, {"l90d_adjusted_occupancy", "Adjusted Occupancy L90D"}, {"l90d_revpar", "Revpar L90D"}, {"l90d_adjusted_revpar", "Adjusted Revpar L90D"}, {"l90d_avg_min_nights", "Avg Min Nights L90D"}, {"l90d_avg_length_of_stay", "Avg Length Of Stay L90D"}, {"l90d_reserved_days", "Reserved Days in L90D"}, {"l90d_blocked_days", "Blocked Days in L90D"}, {"l90d_available_days", "Available Days in L90D"}}),
+				#"Removed Columns8" = Table.RemoveColumns(#"Renamed Columns6",{"l90d_total_days", "TTM Total Days"}),
+				#"Capitalized Each Word" = Table.TransformColumns(#"Removed Columns8",{{"Amenities", Text.Proper, type text}}),
+				#"Replaced Value2" = Table.ReplaceValue(#"Capitalized Each Word","","No Photos Available",Replacer.ReplaceValue,{"Photos"}),
+				#"Removed Columns9" = Table.RemoveColumns(#"Replaced Value2",{"Photo Count"}),
+				#"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns9",{{"Checkin Time", type text}, {"Checkout Time", type text}, {"TTM Occupancy Rate", Percentage.Type}, {"TTM Adjusted Occupancy Rate", Percentage.Type}, {"Occupancy L90D", Percentage.Type}, {"Adjusted Occupancy L90D", Percentage.Type}}),
+				#"Renamed Columns7" = Table.RenameColumns(#"Changed Type1",{{"Revenue L90D", "Revenue in L90D"}, {"Avg Rate L90D", "Avg Rate in L90D"}, {"Occupancy L90D", "Occupancy in L90D"}, {"Adjusted Occupancy L90D", "Adjusted Occupancy in L90D"}, {"Revpar L90D", "Revpar in L90D"}, {"Adjusted Revpar L90D", "Adjusted Revpar in L90D"}, {"Avg Min Nights L90D", "Avg Min Nights in L90D"}, {"Avg Length Of Stay L90D", "Avg Length Of Stay in L90D"}}),
+				#"Replaced Value3" = Table.ReplaceValue(#"Renamed Columns7",null,1,Replacer.ReplaceValue,{"No of Bedrooms"}),
+				#"Removed Columns10" = Table.RemoveColumns(
 				    Table.TransformColumns(
-				        #"Expanded Listing Types1",
+				    #"Replaced Value3",
+				    {
 				        {
-				            {
-				                "checkin_time",
-				                each if _ = null then null else Time.ToText(_, "HH:mm:ss"),
-				                type text
-				            },
-				            {
-				                "checkout_time",
-				                each if _ = null then null else Time.ToText(_, "HH:mm:ss"),
-				                type text
-				            }
-				        }
-				    ),
-				    #"Run Python script" = Python.Execute("# 'dataset' holds the input data for this script#(lf)#(lf)import datetime#(lf)import pandas as pd#(lf)#(lf)dataset[""guests""] = dataset[""guests""].fillna(#(lf)    dataset.groupby([""Listing Type Group"", ""City""])[""guests""].transform(""median"")#(lf))#(lf)#(lf)def format_time(x):#(lf)    if pd.isna(x):#(lf)        return None#(lf)#(lf)    if isinstance(x, datetime.time):#(lf)        return x.strftime(""%H:%M:%S"")#(lf)#(lf)    return str(x)#(lf)#(lf)dataset[""checkin_time""] = dataset[""checkin_time""].apply(format_time)#(lf)dataset[""checkout_time""] = dataset[""checkout_time""].apply(format_time)",[dataset=#"Time Columns as Text"]),
-				    dataset = #"Run Python script"{[Name="dataset"]}[Value],
-				    #"Filled NAN for guests using List Type group and City" = Table.TransformColumnTypes(dataset,{{"listing_id", Int64.Type}, {"listing_name", type text}, {"description", type text}, {"listing_type", type text}, {"room_type", type text}, {"cover_photo_url", type text}, {"photos_count", Int64.Type}, {"photo_urls", type text}, {"host_id", Int64.Type}, {"host_name", type text}, {"cohost_ids", type text}, {"cohost_names", type text}, {"superhost", type logical}, {"latitude", type number}, {"longitude", type number}, {"guests", Int64.Type}, {"bedrooms", Int64.Type}, {"beds", Int64.Type}, {"baths", type number}, {"registration", type logical}, {"amenities", type text}, {"instant_book", type logical}, {"professional_management", type logical}, {"min_nights", Int64.Type}, {"cancellation_policy", type text}, {"checkin_time", type text}, {"checkout_time", type text}, {"guest_favorite", type logical}, {"exact_location", type logical}, {"currency", type text}, {"cleaning_fee", Int64.Type}, {"extra_guest_fee", Int64.Type}, {"single_fee_structure", type logical}, {"num_reviews", Int64.Type}, {"rating_overall", type number}, {"rating_accuracy", type number}, {"rating_checkin", type number}, {"rating_cleanliness", type number}, {"rating_communication", type number}, {"rating_location", type number}, {"rating_value", type number}, {"ttm_revenue", Int64.Type}, {"ttm_revenue_native", Int64.Type}, {"ttm_avg_rate", type number}, {"ttm_avg_rate_native", type number}, {"ttm_occupancy", type number}, {"ttm_adjusted_occupancy", type number}, {"ttm_revpar", type number}, {"ttm_revpar_native", type number}, {"ttm_adjusted_revpar", type number}, {"ttm_adjusted_revpar_native", type number}, {"ttm_avg_min_nights", type number}, {"ttm_avg_length_of_stay", type number}, {"ttm_reserved_days", Int64.Type}, {"ttm_blocked_days", Int64.Type}, {"ttm_available_days", Int64.Type}, {"ttm_total_days", Int64.Type}, {"l90d_revenue", Int64.Type}, {"l90d_revenue_native", Int64.Type}, {"l90d_avg_rate", type number}, {"l90d_avg_rate_native", type number}, {"l90d_occupancy", type number}, {"l90d_adjusted_occupancy", type number}, {"l90d_revpar", type number}, {"l90d_revpar_native", type number}, {"l90d_adjusted_revpar", type number}, {"l90d_adjusted_revpar_native", type number}, {"l90d_avg_min_nights", type number}, {"l90d_avg_length_of_stay", type number}, {"l90d_reserved_days", Int64.Type}, {"l90d_blocked_days", Int64.Type}, {"l90d_available_days", Int64.Type}, {"l90d_total_days", Int64.Type}, {"City", type text}, {"Listing Type", type text}, {"Listing Type Group", type text}}),
-				    #"Removed Columns2" = Table.RemoveColumns(#"Filled NAN for guests using List Type group and City",{"Listing Type Group"}),
-				    #"Merged Queries2" = Table.NestedJoin(#"Removed Columns2", {"currency"}, #"Currency Converter", {"Currency"}, "Currency Convertor", JoinKind.LeftOuter),
-				    #"Expanded Currency Convertor" = Table.ExpandTableColumn(#"Merged Queries2", "Currency Convertor", {"Value Wrt Usd"}, {"Value Wrt Usd"}),
-				    #"Removed Columns3" = Table.RemoveColumns(#"Expanded Currency Convertor",{"Value Wrt Usd", "listing_type", "room_type", "currency"}),
-				    #"Renamed Columns2" = Table.RenameColumns(#"Removed Columns3",{{"listing_id", "Listing ID"}, {"listing_name", "Listing Name"}, {"description", "Description"}, {"cover_photo_url", "Cover Photo"}, {"photos_count", "Photo Count"}, {"photo_urls", "Photos"}, {"host_id", "Host ID"}, {"host_name", "Host Name"}, {"cohost_ids", "Cohost IDs"}, {"cohost_names", "Cohost Names"}, {"superhost", "Is SuperHost"}, {"latitude", "Latitude"}, {"longitude", "Longitude"}, {"guests", "Guest Count"}, {"bedrooms", "No of Bedrooms"}, {"beds", "No of Beds"}, {"baths", "No of Baths"}, {"instant_book", "Instantly Booked"}, {"professional_management", "Prof Management"}, {"min_nights", "Min Nights to Stay"}, {"cancellation_policy", "Cancellation Policy"}, {"guest_favorite", "Is Guest Favourite"}, {"exact_location", "Exact Location Available"}, {"cleaning_fee", "CLeaning Fees"}, {"extra_guest_fee", "Extra Guest Fees"}, {"single_fee_structure", "Single Fee Structure"}, {"num_reviews", "Number of Reviews"}}),
-				    #"Removed Columns4" = Table.RemoveColumns(#"Renamed Columns2",{"Number of Reviews"}),
-				    #"Renamed Columns3" = Table.RenameColumns(#"Removed Columns4",{{"rating_overall", "Overall Rating"}, {"rating_accuracy", "Rating Accuracy"}}),
-				    #"Merged Queries3" = Table.NestedJoin(#"Renamed Columns3", {"Cancellation Policy"}, #"Cancellation Policies", {"Cancellation Policy"}, "Cancellation Policies", JoinKind.LeftOuter),
-				    #"Expanded Cancellation Policies" = Table.ExpandTableColumn(#"Merged Queries3", "Cancellation Policies", {"Cancel Policy Code"}, {"Cancel Policy Code"}),
-				    #"Merged Queries4" = Table.NestedJoin(#"Expanded Cancellation Policies", {"Listing Type"}, #"Listing Types", {"Listing Type"}, "Listing Types", JoinKind.LeftOuter),
-				    #"Expanded Listing Types" = Table.ExpandTableColumn(#"Merged Queries4", "Listing Types", {"Listing Type"}, {"Listing Type.1"}),
-				    #"Removed Columns5" = Table.RemoveColumns(#"Expanded Listing Types",{"Listing Type"}),
-				    #"Renamed Columns4" = Table.RenameColumns(#"Removed Columns5",{{"Listing Type.1", "Listing Type"}}),
-				    #"Removed Columns6" = Table.RemoveColumns(#"Renamed Columns4",{"Cohost IDs"}),
-				    #"Replaced Value" = Table.ReplaceValue(#"Removed Columns6","","No Cohosts for the AirBNB",Replacer.ReplaceValue,{"Cohost Names"}),
-				    #"Parsed Description" =
-				    Table.TransformColumns(
-				        #"Replaced Value",
+				            "Checkin Time",
+				            each if _ = null then null else Text.From(_),
+				            type text
+				        },
 				        {
-				            {
-				                "Description",
-				                each
-				                    let
-				                        Parsed = Html.Table(
-				                            _,
-				                            {{"Text", ":root"}}
-				                        )
-				                    in
-				                        if Table.IsEmpty(Parsed)
-				                        then null
-				                        else Parsed{0}[Text],
-				                type text
-				            }
+				            "Checkout Time",
+				            each if _ = null then null else Text.From(_),
+				            type text
 				        }
-				    ),
-				    #"Replaced Value1" = Table.ReplaceValue(#"Parsed Description","","No Description Available",Replacer.ReplaceValue,{"Description"}),
-				    #"Renamed Columns5" = Table.RenameColumns(#"Replaced Value1",{{"registration", "Is Registered"}, {"amenities", "Amenities"}, {"checkin_time", "Checkin Time"}, {"checkout_time", "Checkout Time"}, {"rating_checkin", "Checkin Rating"}, {"rating_cleanliness", "Cleanliness Rating"}, {"rating_communication", "Commn Rating"}, {"rating_location", "Location Rating"}, {"rating_value", "Value Rating"}}),
-				    #"Removed Columns7" = Table.RemoveColumns(#"Renamed Columns5",{"ttm_revenue_native", "ttm_avg_rate_native", "ttm_revpar_native", "ttm_adjusted_revpar_native", "l90d_revenue_native", "l90d_avg_rate_native", "l90d_revpar_native", "l90d_adjusted_revpar_native"}),
-				    #"Renamed Columns6" = Table.RenameColumns(#"Removed Columns7",{{"ttm_revenue", "TTM Revenue"}, {"ttm_avg_rate", "TTM Avg Rate"}, {"ttm_occupancy", "TTM Occupancy Rate"}, {"ttm_adjusted_occupancy", "TTM Adjusted Occupancy Rate"}, {"ttm_revpar", "TTM Revpar"}, {"ttm_adjusted_revpar", "TTM Adjusted Revpar"}, {"ttm_avg_min_nights", "TTM Avg Min Nights"}, {"ttm_avg_length_of_stay", "TTM Avg Length of Stay"}, {"ttm_reserved_days", "TTM Reserved Days"}, {"ttm_blocked_days", "TTM Blocked Days"}, {"ttm_available_days", "TTM Available Days"}, {"ttm_total_days", "TTM Total Days"}, {"l90d_revenue", "Revenue L90D"}, {"l90d_avg_rate", "Avg Rate L90D"}, {"l90d_occupancy", "Occupancy L90D"}, {"l90d_adjusted_occupancy", "Adjusted Occupancy L90D"}, {"l90d_revpar", "Revpar L90D"}, {"l90d_adjusted_revpar", "Adjusted Revpar L90D"}, {"l90d_avg_min_nights", "Avg Min Nights L90D"}, {"l90d_avg_length_of_stay", "Avg Length Of Stay L90D"}, {"l90d_reserved_days", "Reserved Days in L90D"}, {"l90d_blocked_days", "Blocked Days in L90D"}, {"l90d_available_days", "Available Days in L90D"}}),
-				    #"Removed Columns8" = Table.RemoveColumns(#"Renamed Columns6",{"l90d_total_days", "TTM Total Days"}),
-				    #"Capitalized Each Word" = Table.TransformColumns(#"Removed Columns8",{{"Amenities", Text.Proper, type text}}),
-				    #"Replaced Value2" = Table.ReplaceValue(#"Capitalized Each Word","","No Photos Available",Replacer.ReplaceValue,{"Photos"}),
-				    #"Removed Columns9" = Table.RemoveColumns(#"Replaced Value2",{"Photo Count"}),
-				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns9",{{"Checkin Time", type time}, {"Checkout Time", type time}, {"TTM Occupancy Rate", Percentage.Type}, {"TTM Adjusted Occupancy Rate", Percentage.Type}, {"Occupancy L90D", Percentage.Type}, {"Adjusted Occupancy L90D", Percentage.Type}}),
-				    #"Renamed Columns7" = Table.RenameColumns(#"Changed Type1",{{"Revenue L90D", "Revenue in L90D"}, {"Avg Rate L90D", "Avg Rate in L90D"}, {"Occupancy L90D", "Occupancy in L90D"}, {"Adjusted Occupancy L90D", "Adjusted Occupancy in L90D"}, {"Revpar L90D", "Revpar in L90D"}, {"Adjusted Revpar L90D", "Adjusted Revpar in L90D"}, {"Avg Min Nights L90D", "Avg Min Nights in L90D"}, {"Avg Length Of Stay L90D", "Avg Length Of Stay in L90D"}}),
-				    #"Replaced Value3" = Table.ReplaceValue(#"Renamed Columns7",null,1,Replacer.ReplaceValue,{"No of Bedrooms"}),
-				    #"Removed Columns10" = Table.RemoveColumns(
-				        Table.TransformColumns(
-				        #"Replaced Value3",
-				        {
-				            {
-				                "Checkin Time",
-				                each if _ = null then null else Time.ToText(_, "HH:mm:ss"),
-				                type text
-				            },
-				            {
-				                "Checkout Time",
-				                each if _ = null then null else Time.ToText(_, "HH:mm:ss"),
-				                type text
-				            }
-				        }
-				    ),{"Cancellation Policy"}),
-				    #"Run Python script1" = Python.Execute("import pandas as pd#(lf)import numpy as np#(lf)#(lf)# Cancellation policy factors (width = 0.5)#(lf)cancellation_dict = {#(lf)    ""CPC5"": 1.0,#(lf)    ""CPC4"": 1.5,#(lf)    ""CPC2"": 2.0,#(lf)    ""CPC1"": 2.5,#(lf)    ""CPC3"": 3.0,#(lf)    ""CPC7"": 3.5,#(lf)    ""CPC6"": 4.0#(lf)}#(lf)#(lf)# Map cancellation policy to factor#(lf)cancellation_factor = dataset[""Cancel Policy Code""].map(cancellation_dict)#(lf)#(lf)# Weighted Overall Rating#(lf)weighted_ovr_rating = (#(lf)    dataset[""Overall Rating""]#(lf)    * (0.5 + 0.5 * dataset[""Rating Accuracy""] / 5)#(lf))#(lf)#(lf)# Calculate score#(lf)score = (#(lf)    weighted_ovr_rating#(lf)    + dataset[""Checkin Rating""]#(lf)    + dataset[""Cleanliness Rating""]#(lf)    + dataset[""Commn Rating""]#(lf)    + dataset[""Location Rating""]#(lf)    + dataset[""Value Rating""]#(lf)) / (#(lf)    cancellation_factor#(lf)    * (1 / (dataset[""Is Guest Favourite""] + 1))#(lf)    * (1 / (dataset[""Is SuperHost""] + 1))#(lf))#(lf)#(lf)# Predict Instantly Booked using threshold = 14#(lf)predicted = score >= 14#(lf)#(lf)# Fill only missing values#(lf)dataset[""Instantly Booked""] = (#(lf)    dataset[""Instantly Booked""]#(lf)    .fillna(predicted)#(lf))#(lf)#(lf)dataset[""Is Guest Favourite""] = (#(lf)    dataset[""Is Guest Favourite""]#(lf)    .fillna(predicted)#(lf))#(lf)#(lf)"""""" For filling missing values for checkin and checkout times """"""#(lf)df = dataset.copy()#(lf)#(lf)#(lf)# --------------------------------------------------#(lf)# Haversine distance#(lf)# --------------------------------------------------#(lf)#(lf)def haversine(lat1, lon1, lat2, lon2):#(lf)    R = 6371.0#(lf)#(lf)    lat1, lon1, lat2, lon2 = map(#(lf)        np.radians,#(lf)        [lat1, lon1, lat2, lon2]#(lf)    )#(lf)#(lf)    dlat = lat2[:, np.newaxis] - lat1#(lf)    dlon = lon2[:, np.newaxis] - lon1#(lf)#(lf)    a = (#(lf)        np.sin(dlat / 2.0) ** 2#(lf)        + np.cos(lat1)#(lf)        * np.cos(lat2[:, np.newaxis])#(lf)        * np.sin(dlon / 2.0) ** 2#(lf)    )#(lf)#(lf)    return R * (2 * np.arcsin(np.sqrt(a)))#(lf)#(lf)#(lf)# --------------------------------------------------#(lf)# Distance matrix#(lf)# --------------------------------------------------#(lf)#(lf)lats = df[""Latitude""].to_numpy()#(lf)lons = df[""Longitude""].to_numpy()#(lf)#(lf)dist_matrix = haversine(#(lf)    lats,#(lf)    lons,#(lf)    lats,#(lf)    lons#(lf))#(lf)#(lf)#(lf)# --------------------------------------------------#(lf)# Convert times to integer hours#(lf)# --------------------------------------------------#(lf)#(lf)time_cols = [#(lf)    ""Checkin Time"",#(lf)    ""Checkout Time""#(lf)]#(lf)#(lf)for col in time_cols:#(lf)#(lf)    df[col] = df[col].replace({#(lf)        ""null"": np.nan,#(lf)        """": np.nan#(lf)    })#(lf)#(lf)    # Convert to string first so this works whether#(lf)    # Power BI passes strings, datetime or time objects#(lf)    dt = pd.to_datetime(#(lf)        df[col].astype(""string""),#(lf)        errors=""coerce""#(lf)    )#(lf)#(lf)    # Extract hour as 0–23#(lf)    df[col] = dt.dt.hour.astype(""float"")#(lf)#(lf)#(lf)# --------------------------------------------------#(lf)# Fill missing hours using nearby listings#(lf)# --------------------------------------------------#(lf)#(lf)for col in time_cols:#(lf)#(lf)    missing_positions = np.where(#(lf)        df[col].isna().to_numpy()#(lf)    )[0]#(lf)#(lf)    for i in missing_positions:#(lf)#(lf)        nearby_mask = (#(lf)            (dist_matrix[i] <= 7)#(lf)            & df[col].notna().to_numpy()#(lf)        )#(lf)#(lf)        if nearby_mask.any():#(lf)#(lf)            median_hour = df.loc[#(lf)                nearby_mask,#(lf)                col#(lf)            ].median()#(lf)#(lf)            df.iloc[#(lf)                i,#(lf)                df.columns.get_loc(col)#(lf)            ] = round(median_hour)#(lf)#(lf)#(lf)# --------------------------------------------------#(lf)# Convert final hours to AM/PM strings#(lf)# --------------------------------------------------#(lf)#(lf)for col in time_cols:#(lf)#(lf)    def format_time(hour):#(lf)        if pd.isna(hour):#(lf)            return None#(lf)#(lf)        hour = int(hour)#(lf)#(lf)        period = ""AM"" if hour < 12 else ""PM""#(lf)#(lf)        display_hour = hour % 12#(lf)#(lf)        if display_hour == 0:#(lf)            display_hour = 12#(lf)#(lf)        return f""{display_hour:02d}:00:00 {period}""#(lf)#(lf)    df[col] = df[col].apply(format_time)#(lf)#(lf)dataset = df",[dataset=#"Removed Columns10"]),
-				    #"Final Dataset 1" = #"Run Python script1"{[Name="dataset"]}[Value],
-				    #"Changed Type2" = Table.TransformColumnTypes(#"Final Dataset 1",{{"Listing ID", Int64.Type}, {"Host ID", Int64.Type}, {"Is SuperHost", type logical}, {"Latitude", type number}, {"Longitude", type number}, {"Guest Count", Int64.Type}, {"No of Bedrooms", Int64.Type}, {"No of Beds", Int64.Type}, {"No of Baths", Int64.Type}, {"Is Registered", type logical}, {"Instantly Booked", type logical}, {"Min Nights to Stay", Int64.Type}, {"Checkin Time", type time}, {"Checkout Time", type time}, {"Is Guest Favourite", type logical}, {"Exact Location Available", type logical}, {"CLeaning Fees", type number}, {"Extra Guest Fees", type number}, {"Single Fee Structure", type logical}, {"Overall Rating", type number}, {"Rating Accuracy", type number}, {"Checkin Rating", type number}, {"Cleanliness Rating", type number}, {"Commn Rating", type number}, {"Location Rating", type number}, {"Value Rating", type number}, {"TTM Revenue", Int64.Type}, {"TTM Avg Rate", type number}, {"TTM Occupancy Rate", Percentage.Type}, {"TTM Adjusted Occupancy Rate", Percentage.Type}, {"TTM Revpar", type number}, {"TTM Adjusted Revpar", type number}, {"TTM Avg Min Nights", Int64.Type}, {"TTM Avg Length of Stay", Int64.Type}, {"TTM Reserved Days", Int64.Type}, {"TTM Blocked Days", Int64.Type}, {"TTM Available Days", Int64.Type}, {"Revenue in L90D", Int64.Type}, {"Avg Rate in L90D", type number}, {"Occupancy in L90D", Percentage.Type}, {"Adjusted Occupancy in L90D", Percentage.Type}, {"Revpar in L90D", type number}, {"Adjusted Revpar in L90D", type number}, {"Avg Min Nights in L90D", Int64.Type}, {"Avg Length Of Stay in L90D", Int64.Type}, {"Reserved Days in L90D", Int64.Type}, {"Blocked Days in L90D", Int64.Type}, {"Available Days in L90D", Int64.Type}, {"Prof Management", type logical}}),
-				    #"Renamed Columns8" = Table.RenameColumns(#"Changed Type2",{{"No of Baths", "No of Bathrooms"}, {"cleaned_description", "Cleaned Description"}}),
-				    #"Replaced Value4" = Table.ReplaceValue(#"Renamed Columns8","","No Description Available",Replacer.ReplaceValue,{"Cleaned Description"})
+				    }
+				),{"Cancellation Policy"}),
+				#"Changed Type2" = Table.TransformColumnTypes(#"Removed Columns10",{{"Listing ID", Int64.Type}, {"Host ID", Int64.Type}, {"Is SuperHost", type logical}, {"Latitude", type number}, {"Longitude", type number}, {"Guest Count", Int64.Type}, {"No of Bedrooms", Int64.Type}, {"No of Beds", Int64.Type}, {"No of Baths", type number}, {"Is Registered", type logical}, {"Instantly Booked", type logical}, {"Min Nights to Stay", Int64.Type}, {"Checkin Time", type text}, {"Checkout Time", type text}, {"Is Guest Favourite", type logical}, {"Exact Location Available", type logical}, {"CLeaning Fees", type number}, {"Extra Guest Fees", type number}, {"Single Fee Structure", type logical}, {"Overall Rating", type number}, {"Rating Accuracy", type number}, {"Checkin Rating", type number}, {"Cleanliness Rating", type number}, {"Commn Rating", type number}, {"Location Rating", type number}, {"Value Rating", type number}, {"TTM Revenue", type number}, {"TTM Avg Rate", type number}, {"TTM Occupancy Rate", Percentage.Type}, {"TTM Adjusted Occupancy Rate", Percentage.Type}, {"TTM Revpar", type number}, {"TTM Adjusted Revpar", type number}, {"TTM Avg Min Nights", type number}, {"TTM Avg Length of Stay", type number}, {"TTM Reserved Days", Int64.Type}, {"TTM Blocked Days", Int64.Type}, {"TTM Available Days", Int64.Type}, {"Revenue in L90D", type number}, {"Avg Rate in L90D", type number}, {"Occupancy in L90D", Percentage.Type}, {"Adjusted Occupancy in L90D", Percentage.Type}, {"Revpar in L90D", type number}, {"Adjusted Revpar in L90D", type number}, {"Avg Min Nights in L90D", type number}, {"Avg Length Of Stay in L90D", type number}, {"Reserved Days in L90D", Int64.Type}, {"Blocked Days in L90D", Int64.Type}, {"Available Days in L90D", Int64.Type}, {"Prof Management", type logical}}),
+				#"Renamed Columns8" = Table.RenameColumns(#"Changed Type2",{{"No of Baths", "No of Bathrooms"}}, MissingField.Ignore),
+				#"Replaced Value4" = Table.ReplaceValue(#"Renamed Columns8","","No Description Available",Replacer.ReplaceValue,{"Description"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Replaced Value4", each true),
+				    #"Removed Errors" = Table.RemoveRowsWithErrors(#"Filtered Rows", {"Listing ID"})
 				in
-				    #"Replaced Value4"
-				```
+				    #"Removed Errors"
 
 	annotation PBI_NavigationStepName = Navigation
 

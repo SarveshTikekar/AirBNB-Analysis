@@ -1,0 +1,36 @@
+table 'AirBNB Specific Metrics'
+	lineageTag: 58eadd39-c227-46e5-a5b5-8758de3d4288
+
+	column 'Metric Name'
+		lineageTag: 0a85a540-2967-4848-a64e-b58c1aabb42d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Metric Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'AirBNB Specific Metrics' = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Metric Name", STRING,
+				    {
+				        {"Average Vacant Days"},
+				        {"Average Reserved Days"},
+				        {"Average Booking Rate"},
+				        {"Average Booking Revenue"},
+				        {"Average Occupancy Percentage"},
+				        {"Median Reserved Days"},
+				        {"Median Vacant Days"},
+				        {"Total Reviews"},
+				        {"Total Revenue"},
+				        {"Average Length of Stay"},
+				        {"Total Reserved Days"},
+				        {"Total Vacant Days"},
+				        {"Average Daily Rate"}
+				    }
+				)
+
+	annotation PBI_Id = 8747e0a25e92431b83292436d272bea2
+

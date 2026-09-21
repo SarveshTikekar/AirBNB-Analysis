@@ -46,7 +46,7 @@ table Selections
 	measure 'Selected AirBNB Listing Type' = LOOKUPVALUE(Listings[Listing Type], Listings[Listing ID], Selections[Selected AirBNB])
 		lineageTag: 31bf56f9-bbe9-406f-94e5-106c1ce16da8
 
-	measure 'Selected Description' = LOOKUPVALUE(Listings[Cleaned Description], Listings[Listing ID], [Selected AirBNB])
+	measure 'Selected Description' = LOOKUPVALUE(Listings[cleaned_description], Listings[Listing ID], [Selected AirBNB])
 		lineageTag: 21300f01-ae5a-4bf2-8dea-e7ad29e04c47
 
 	measure 'Selected AirBNB Beds' = LOOKUPVALUE(Listings[No of Beds], Listings[Listing ID], [Selected AirBNB])
@@ -89,6 +89,309 @@ table Selections
 	measure 'Selected AirBNB Bedrooms' = LOOKUPVALUE(Listings[No of Bedrooms], Listings[Listing ID], [Selected AirBNB])
 		formatString: 0
 		lineageTag: 99a82dce-d986-4bd0-911a-ebddbe9ddbbb
+
+	measure 'Selected Metric Display' =
+			
+			VAR _Metric = SELECTEDVALUE('Main Metrics'[Metric Name], "Select a Metric")
+			VAR _Sym = [Selected Currency Symbol]
+			VAR _Value =
+			    SWITCH(
+			        _Metric,
+			        -- Counts & Quantities
+			        "Median Guests", FORMAT([Median Guests], "#,##0"),
+			        "Mean Guests", FORMAT([Mean Guests], "0.00"),
+			        "Total Reviews", FORMAT([Total Reviews], "#,##0"),
+			        "Total Hosts", FORMAT([Total Hosts], "#,##0"),
+			        "Registered AirBNBs", FORMAT([Registered AirBNBs], "#,##0"),
+			        "Non Registered AirBNBs", FORMAT([Non Registered AirBNBs], "#,##0"),
+			        "Non Superhosted AirBNBs", FORMAT([Non Superhosted AirBNBs], "#,##0"),
+			        "Superhosted AirBNBs", FORMAT([Superhosted AirBNBs], "#,##0"),
+			        "Non Guest Favourite AirBNBs", FORMAT([Non Guest Favourite AirBNBs], "#,##0"),
+			        "Guest Favourite AirBNBs", FORMAT([Guest Favourite AirBNBs], "#,##0"),
+			        "Total Bedrooms", FORMAT([Total Bedrooms], "#,##0"),
+			        "Total Beds", FORMAT([Total Beds], "#,##0"),
+			        "Distinct Listing Types", FORMAT([Distinct Listing Types], "#,##0"),
+			        "Distinct Listing Group Types", FORMAT([Distinct Listing Group Types], "#,##0"),
+			        "Distinct AirBNBs", FORMAT([Distinct AirBNBs], "#,##0"),
+			        "Total Bookings", FORMAT([Total Bookings], "#,##0"),
+			        "Total Listings", FORMAT([Total Listings], "#,##0"),
+			
+			        -- Days & Time Metrics
+			        "Average Vacant Days", FORMAT([Average Vacant Days], "0.00 days"),
+			        "Average Reserved Days", FORMAT([Average Reserved Days], "0.00 days"),
+			        "Median Reserved Days", FORMAT([Median Reserved Days], "0.00 days"),
+			        "Median Vacant Days", FORMAT([Median Vacant Days], "0.00 days"),
+			        "Average Length of Stay", FORMAT([Average Length of Stay], "0.00 days"),
+			        "Total Reserved Days", FORMAT([Total Reserved Days], "#,##0 days"),
+			        "Total Vacant Days", FORMAT([Total Vacant Days], "#,##0 days"),
+			
+			        -- Dynamic Currency Financial Metrics
+			        "Total Cleaning Fee", _Sym & " " & FORMAT([Total Cleaning Fee], "#,##0.00"),
+			        "Average Booking Rate", _Sym & " " & FORMAT([Average Booking Rate], "#,##0.00"),
+			        "Average Booking Revenue", _Sym & " " & FORMAT([Average Booking Revenue], "#,##0.00"),
+			        "Total Guest Fees", _Sym & " " & FORMAT([Total Guest Fees], "#,##0.00"),
+			        "Average Guest Fees", _Sym & " " & FORMAT([Average Guest Fees], "#,##0.00"),
+			        "Total Revenue", _Sym & " " & FORMAT([Total Revenue], "#,##0.00"),
+			        "Average Daily Rate", _Sym & " " & FORMAT([Average Daily Rate], "#,##0.00"),
+			        "Last 90 days Revenue Average", _Sym & " " & FORMAT([Last 90 days Revenue Average], "#,##0.00"),
+			        "TTM Total Average Rate", _Sym & " " & FORMAT([TTM Total Average Rate], "#,##0.00"),
+			        "TTM Average Revenue", _Sym & " " & FORMAT([TTM Average Revenue], "#,##0.00"),
+			        "TTM Average Revpar", _Sym & " " & FORMAT([TTM Average Revpar], "#,##0.00"),
+			
+			        -- Percentages
+			        "Average Occupancy Percentage", FORMAT([Average Occupancy Percentage], "0.00%"),
+			        "SuperHost Percentage", FORMAT([SuperHost Percentage], "0.00%"),
+			        "Guest Favourite Percentage", FORMAT([Guest Favourite Percentage], "0.00%"),
+			        "L90D Avg Occupancy Percentage", FORMAT([L90D Avg Occupancy Percentage], "0.00%"),
+			        "TTM Average Occupancy Rate", FORMAT([TTM Average Occupancy Rate], "0.00%"),
+			
+			        -- Ratings
+			        "Average Rating", FORMAT([Average Rating], "0.00"),
+			        "Average Cleanliness Rating", FORMAT([Average Cleanliness Rating], "0.00"),
+			        "Average Host Communication Rating", FORMAT([Average Host Communication Rating], "0.00"),
+			        "Average Checkin Rating", FORMAT([Average Checkin Rating], "0.00"),
+			        "Average Location Rating", FORMAT([Average Location Rating], "0.00"),
+			        "Average Value Rating", FORMAT([Average Value Rating], "0.00"),
+			        BLANK()
+			    )
+			RETURN
+			    _Metric & ": " & _Value
+		lineageTag: 5b4f26fc-ce01-4956-86e0-980e42fe8b9c
+
+	measure 'Selected Metric' =
+			
+			VAR _Metric = SELECTEDVALUE('Main Metrics'[Metric Name])
+			RETURN
+			    SWITCH(
+			        _Metric,
+			        -- Counts & Quantities
+			        "Median Guests", [Median Guests],
+			        "Mean Guests", [Mean Guests],
+			        "Total Reviews", [Total Reviews],
+			        "Total Hosts", [Total Hosts],
+			        "Registered AirBNBs", [Registered AirBNBs],
+			        "Non Registered AirBNBs", [Non Registered AirBNBs],
+			        "Non Superhosted AirBNBs", [Non Superhosted AirBNBs],
+			        "Superhosted AirBNBs", [Superhosted AirBNBs],
+			        "Non Guest Favourite AirBNBs", [Non Guest Favourite AirBNBs],
+			        "Guest Favourite AirBNBs", [Guest Favourite AirBNBs],
+			        "Total Bedrooms", [Total Bedrooms],
+			        "Total Beds", [Total Beds],
+			        "Distinct Listing Types", [Distinct Listing Types],
+			        "Distinct Listing Group Types", [Distinct Listing Group Types],
+			        "Distinct AirBNBs", [Distinct AirBNBs],
+			        "Total Bookings", [Total Bookings],
+			        "Total Listings", [Total Listings],
+			
+			        -- Days & Time Metrics
+			        "Average Vacant Days", [Average Vacant Days],
+			        "Average Reserved Days", [Average Reserved Days],
+			        "Median Reserved Days", [Median Reserved Days],
+			        "Median Vacant Days", [Median Vacant Days],
+			        "Average Length of Stay", [Average Length of Stay],
+			        "Total Reserved Days", [Total Reserved Days],
+			        "Total Vacant Days", [Total Vacant Days],
+			
+			        -- Financial Metrics
+			        "Total Cleaning Fee", [Total Cleaning Fee],
+			        "Average Booking Rate", [Average Booking Rate],
+			        "Average Booking Revenue", [Average Booking Revenue],
+			        "Total Guest Fees", [Total Guest Fees],
+			        "Average Guest Fees", [Average Guest Fees],
+			        "Total Revenue", [Total Revenue],
+			        "Average Daily Rate", [Average Daily Rate],
+			        "Last 90 days Revenue Average", [Last 90 days Revenue Average],
+			        "TTM Total Average Rate", [TTM Total Average Rate],
+			        "TTM Average Revenue", [TTM Average Revenue],
+			        "TTM Average Revpar", [TTM Average Revpar],
+			
+			        -- Percentages
+			        "Average Occupancy Percentage", [Average Occupancy Percentage],
+			        "SuperHost Percentage", [SuperHost Percentage],
+			        "Guest Favourite Percentage", [Guest Favourite Percentage],
+			        "L90D Avg Occupancy Percentage", [L90D Avg Occupancy Percentage],
+			        "TTM Average Occupancy Rate", [TTM Average Occupancy Rate],
+			
+			        -- Ratings
+			        "Average Rating", [Average Rating],
+			        "Average Cleanliness Rating", [Average Cleanliness Rating],
+			        "Average Host Communication Rating", [Average Host Communication Rating],
+			        "Average Checkin Rating", [Average Checkin Rating],
+			        "Average Location Rating", [Average Location Rating],
+			        "Average Value Rating", [Average Value Rating],
+			
+			        BLANK()
+			    )
+		lineageTag: 6486764d-c2a7-4035-beab-898b277f0c69
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selected AirBNB Specific Metric' =
+			
+			VAR _Metric = SELECTEDVALUE('AirBNB Specific Metrics'[Metric Name])
+			RETURN
+			    SWITCH(
+			        _Metric,
+			
+			        -- Days & Time Metrics
+			        "Average Vacant Days", [Average Vacant Days],
+			        "Average Reserved Days", [Average Reserved Days],
+			        "Median Reserved Days", [Median Reserved Days],
+			        "Median Vacant Days", [Median Vacant Days],
+			        "Average Length of Stay", [Average Length of Stay],
+			        "Total Reserved Days", [Total Reserved Days],
+			        "Total Vacant Days", [Total Vacant Days],
+			
+			        -- Financial Metrics
+			        "Average Booking Rate", [Average Booking Rate],
+			        "Average Booking Revenue", [Average Booking Revenue],
+			        "Total Revenue", [Total Revenue],
+			        "Average Daily Rate", [Average Daily Rate],
+			
+			        -- Other Metrics
+			        "Total Reviews", [Total Reviews],
+			        "Average Occupancy Percentage", [Average Occupancy Percentage],
+			
+			        BLANK()
+			    )
+		lineageTag: f45ee2c3-8474-4dd7-9ec7-51c162934336
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selected AirBNB Specific Metric Display' =
+			
+			VAR _Metric = SELECTEDVALUE('AirBNB Specific Metrics'[Metric Name], "Select a Metric")
+			VAR _Sym = [Selected Currency Symbol]
+			VAR _Value =
+			    SWITCH(
+			        _Metric,
+			
+			        -- Days & Time Metrics
+			        "Average Vacant Days", FORMAT([Average Vacant Days], "0.00 days"),
+			        "Average Reserved Days", FORMAT([Average Reserved Days], "0.00 days"),
+			        "Median Reserved Days", FORMAT([Median Reserved Days], "0.00 days"),
+			        "Median Vacant Days", FORMAT([Median Vacant Days], "0.00 days"),
+			        "Average Length of Stay", FORMAT([Average Length of Stay], "0.00 days"),
+			        "Total Reserved Days", FORMAT([Total Reserved Days], "#,##0 days"),
+			        "Total Vacant Days", FORMAT([Total Vacant Days], "#,##0 days"),
+			
+			        -- Dynamic Currency Financial Metrics
+			        "Average Booking Rate", _Sym & " " & FORMAT([Average Booking Rate], "#,##0.00"),
+			        "Average Booking Revenue", _Sym & " " & FORMAT([Average Booking Revenue], "#,##0.00"),
+			        "Total Revenue", _Sym & " " & FORMAT([Total Revenue], "#,##0.00"),
+			        "Average Daily Rate", _Sym & " " & FORMAT([Average Daily Rate], "#,##0.00"),
+			
+			        -- Other Metrics
+			        "Total Reviews", FORMAT([Total Reviews], "#,##0"),
+			        "Average Occupancy Percentage", FORMAT([Average Occupancy Percentage], "0.00%"),
+			
+			        BLANK()
+			    )
+			RETURN
+			    _Metric & ": " & _Value
+		lineageTag: 6a9db72f-c877-4614-b96a-1ccf95231a75
+
+	measure 'AirBNB Specific Tooltip' =
+			
+			VAR _Metric =
+			    SELECTEDVALUE(
+			        'AirBNB Specific Metrics'[Metric Name],
+			        "Metric"
+			    )
+			
+			VAR _Listing =
+			    SELECTEDVALUE(
+			        'Listings'[Listing Name],
+			        "N/A"
+			    )
+			
+			VAR _City =
+			    SELECTEDVALUE(
+			        'Listings'[City],
+			        "N/A"
+			    )
+			
+			VAR _ListingGroup =
+			    LOOKUPVALUE(
+			        'Listing Types'[Listing Type Group],
+			        'Listing Types'[Listing Type], SELECTEDVALUE(Listings[Listing Type])
+			    )
+			
+			VAR _Checkin =
+			    FORMAT(SELECTEDVALUE(
+			        'Listings'[Checkin Time],
+			        "N/A"
+			    ), "HH:mm")
+			
+			VAR _Checkout =
+			    FORMAT(SELECTEDVALUE(
+			        'Listings'[Checkout Time],
+			        "N/A"
+			    ), "HH:mm")
+			
+			VAR _Sym =
+			    [Selected Currency Symbol]
+			
+			VAR _Value =
+			    SWITCH(
+			        _Metric,
+			
+			        "Average Vacant Days",
+			            FORMAT([Average Vacant Days], "0.00") & " days",
+			
+			        "Average Reserved Days",
+			            FORMAT([Average Reserved Days], "0.00") & " days",
+			
+			        "Average Booking Rate",
+			            _Sym & " " & FORMAT([Average Booking Rate], "#,##0.00"),
+			
+			        "Average Booking Revenue",
+			            _Sym & " " & FORMAT([Average Booking Revenue], "#,##0.00"),
+			
+			        "Average Occupancy Percentage",
+			            FORMAT([Average Occupancy Percentage], "0.00%"),
+			
+			        "Median Reserved Days",
+			            FORMAT([Median Reserved Days], "0.00") & " days",
+			
+			        "Median Vacant Days",
+			            FORMAT([Median Vacant Days], "0.00") & " days",
+			
+			        "Total Reviews",
+			            FORMAT([Total Reviews], "#,##0"),
+			
+			        "Total Revenue",
+			            _Sym & " " & FORMAT([Total Revenue], "#,##0.00"),
+			
+			        "Average Length of Stay",
+			            FORMAT([Average Length of Stay], "0.00") & " days",
+			
+			        "Total Reserved Days",
+			            FORMAT([Total Reserved Days], "#,##0") & " days",
+			
+			        "Total Vacant Days",
+			            FORMAT([Total Vacant Days], "#,##0") & " days",
+			
+			        "Average Daily Rate",
+			            _Sym & " " & FORMAT([Average Daily Rate], "#,##0.00"),
+			
+			        BLANK()
+			    )
+			
+			RETURN
+			    "Listing Name: " & _Listing
+			    & UNICHAR(10)
+			    & "City: " & _City
+			    & UNICHAR(10)
+			    & "Listing Group: " & _ListingGroup
+			    & UNICHAR(10)
+			    & "Checkin: " & _Checkin
+			    & UNICHAR(10)
+			    & "Checkout: " & _Checkout
+			    & UNICHAR(10)
+			    & UNICHAR(10)
+			    & _Metric & ": " & _Value
+		lineageTag: 1beab760-bd0a-452f-93b3-40576520b17d
 
 	column _
 		lineageTag: 7d74e5df-5e39-4736-9ccb-0d6de0749b4b

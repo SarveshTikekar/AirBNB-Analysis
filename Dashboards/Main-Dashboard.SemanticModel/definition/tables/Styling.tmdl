@@ -1102,7 +1102,7 @@ table Styling
 			}
 			
 			.metrics-table tr {
-			    border-bottom: 1px solid #E5E7EB;
+			    border-bottom: 2px solid #E5E7EB;
 			    transition: background 0.1s ease-in-out;
 			}
 			
@@ -1287,6 +1287,699 @@ table Styling
 			"
 			```
 		lineageTag: 70fbd23e-540a-494f-bbec-1e489a9a79f7
+
+	measure 'AirBNB Geographical Map' =
+			
+			
+			VAR _Quote =
+			    UNICHAR(34)
+			
+			VAR _MapData =
+			    CONCATENATEX(
+			        FILTER(
+			            'Listings',
+			            NOT ISBLANK('Listings'[Latitude])
+			                && NOT ISBLANK('Listings'[Longitude])
+			        ),
+			        _Quote
+			            & "lat"
+			            & _Quote
+			            & ":"
+			            & FORMAT(
+			                'Listings'[Latitude],
+			                "0.######"
+			            )
+			            & ","
+			            & _Quote
+			            & "lng"
+			            & _Quote
+			            & ":"
+			            & FORMAT(
+			                'Listings'[Longitude],
+			                "0.######"
+			            )
+			            & ","
+			            & _Quote
+			            & "name"
+			            & _Quote
+			            & ":"
+			            & _Quote
+			            & SUBSTITUTE(
+			                COALESCE(
+			                    'Listings'[Listing Name],
+			                    "AirBNB"
+			                ),
+			                _Quote,
+			                "'"
+			            )
+			            & _Quote,
+			        ","
+			    )
+			
+			VAR _JSON =
+			    "["
+			        & _MapData
+			        & "]"
+			
+			RETURN
+			
+			"
+			<style>
+			
+			html,
+			body {
+			    width: 100%;
+			    height: 100%;
+			    margin: 0;
+			    padding: 0;
+			    overflow: hidden;
+			}
+			
+			.airbnb-map-container {
+			    position: relative;
+			    width: 100%;
+			    height: 100%;
+			    overflow: hidden;
+			    background: #FFFFFF;
+			    font-family: 'Segoe UI', sans-serif;
+			}
+			
+			
+			/* ============================================================
+			   TITLE
+			   ============================================================ */
+			
+			.airbnb-map-title {
+			    position: absolute;
+			
+			    top: 14px;
+			    left: 18px;
+			
+			    z-index: 1000;
+			
+			    padding: 10px 18px;
+			
+			    background: rgba(255, 255, 255, 0.96);
+			
+			    border: 1px solid #F4C2CB;
+			
+			    border-radius: 22px;
+			
+			    color: #8B0000;
+			
+			    font-size: 18px;
+			    font-weight: 700;
+			
+			    box-shadow:
+			        0 3px 10px rgba(139, 0, 0, 0.12);
+			}
+			
+			
+			/* ============================================================
+			   MAP
+			   ============================================================ */
+			
+			#airbnb-map {
+			    position: absolute;
+			
+			    top: 0;
+			    right: 0;
+			    bottom: 0;
+			    left: 0;
+			
+			    width: 100%;
+			    height: 100%;
+			}
+			
+			
+			/* ============================================================
+			   OPENLAYERS CONTROLS
+			   ============================================================ */
+			
+			.airbnb-map-container .ol-control {
+			    background: transparent;
+			}
+			
+			.airbnb-map-container .ol-control button {
+			    width: 34px;
+			    height: 34px;
+			
+			    margin: 3px;
+			
+			    border: 1px solid #F4C2CB;
+			
+			    border-radius: 9px;
+			
+			    background: #FFFFFF;
+			
+			    color: #8B0000;
+			
+			    font-size: 18px;
+			
+			    box-shadow:
+			        0 2px 6px rgba(139, 0, 0, 0.12);
+			}
+			
+			.airbnb-map-container .ol-control button:hover {
+			    background: #FFF0F3;
+			    color: #B81D43;
+			}
+			
+			
+			/* ============================================================
+			   POPUP
+			   ============================================================ */
+			
+			.airbnb-popup {
+			    position: absolute;
+			
+			    min-width: 190px;
+			
+			    padding: 12px 14px;
+			
+			    background: #FFFFFF;
+			
+			    border: 1px solid #F4C2CB;
+			
+			    border-radius: 12px;
+			
+			    box-shadow:
+			        0 5px 18px rgba(139, 0, 0, 0.18);
+			
+			    transform: translate(-50%, -115%);
+			
+			    pointer-events: none;
+			}
+			
+			.airbnb-popup-title {
+			    margin-bottom: 6px;
+			
+			    color: #8B0000;
+			
+			    font-size: 14px;
+			    font-weight: 700;
+			}
+			
+			.airbnb-popup-coordinate {
+			    color: #6B7280;
+			
+			    font-size: 11px;
+			
+			    line-height: 1.5;
+			}
+			
+			
+			/* ============================================================
+			   EMPTY STATE
+			   ============================================================ */
+			
+			.airbnb-empty {
+			    position: absolute;
+			
+			    inset: 0;
+			
+			    z-index: 2000;
+			
+			    display: flex;
+			
+			    align-items: center;
+			    justify-content: center;
+			
+			    background: #FFFFFF;
+			
+			    color: #8B0000;
+			
+			    font-size: 14px;
+			    font-weight: 600;
+			}
+			
+			</style>
+			
+			
+			<!-- ============================================================
+			     MAP HTML
+			     ============================================================ -->
+			
+			<div class='airbnb-map-container'>
+			
+			    <div class='airbnb-map-title'>
+			        AirBNB Geographical distrib
+			    </div>
+			
+			    <div id='airbnb-map'></div>
+			
+			    <div
+			        id='airbnb-empty'
+			        class='airbnb-empty'
+			        style='display:none;'
+			    >
+			        No valid latitude / longitude values available
+			    </div>
+			
+			</div>
+			
+			
+			<!-- ============================================================
+			     OPENLAYERS
+			     ============================================================ -->
+			
+			<link
+			    rel='stylesheet'
+			    href='https://cdn.jsdelivr.net/npm/ol@10.10.0/ol.css'
+			>
+			
+			<script
+			    src='https://cdn.jsdelivr.net/npm/ol@10.10.0/dist/ol.js'>
+			</script>
+			
+			
+			<script>
+			
+			(function () {
+			
+			    /* ============================================================
+			       POWER BI DATA
+			       ============================================================ */
+			
+			    var locations = " & _JSON & ";
+			
+			
+			    /* ============================================================
+			       COLOR PALETTE
+			       ============================================================ */
+			
+			    var COLORS = {
+			        maroon: '#8B0000',
+			        berry: '#B81D43',
+			        highlight: '#D81B60',
+			        bright: '#FF2A5B',
+			        white: '#FFFFFF',
+			        lightPink: '#FFF0F3',
+			        borderPink: '#F4C2CB',
+			        muted: '#6B7280'
+			    };
+			
+			
+			    /* ============================================================
+			       VALIDATE DATA
+			       ============================================================ */
+			
+			    var points = locations.filter(function (item) {
+			
+			        var latitude = Number(item.lat);
+			        var longitude = Number(item.lng);
+			
+			        return (
+			            Number.isFinite(latitude) &&
+			            Number.isFinite(longitude) &&
+			            latitude >= -90 &&
+			            latitude <= 90 &&
+			            longitude >= -180 &&
+			            longitude <= 180
+			        );
+			
+			    });
+			
+			
+			    /* ============================================================
+			       EMPTY STATE
+			       ============================================================ */
+			
+			    if (points.length === 0) {
+			
+			        document
+			            .getElementById('airbnb-empty')
+			            .style.display = 'flex';
+			
+			        return;
+			    }
+			
+			
+			    /* ============================================================
+			       CREATE FEATURES
+			       ============================================================ */
+			
+			    var features = [];
+			
+			
+			    points.forEach(function (point) {
+			
+			        var feature =
+			            new ol.Feature({
+			
+			                geometry:
+			                    new ol.geom.Point(
+			                        ol.proj.fromLonLat([
+			                            Number(point.lng),
+			                            Number(point.lat)
+			                        ])
+			                    ),
+			
+			                name:
+			                    point.name || 'AirBNB',
+			
+			                latitude:
+			                    Number(point.lat),
+			
+			                longitude:
+			                    Number(point.lng)
+			
+			            });
+			
+			
+			        features.push(feature);
+			
+			    });
+			
+			
+			    /* ============================================================
+			       VECTOR SOURCE
+			       ============================================================ */
+			
+			    var vectorSource =
+			        new ol.source.Vector({
+			            features: features
+			        });
+			
+			
+			    /* ============================================================
+			       CUSTOM AIRBNB SVG PIN
+			       ============================================================ */
+			
+			    var pinSvg =
+			        '<svg xmlns=\'http://www.w3.org/2000/svg\' ' +
+			        'viewBox=\'0 0 48 60\'>' +
+			
+			            '<path ' +
+			                'd=\'M24 58 ' +
+			                'C24 58 5 38 5 23 ' +
+			                'C5 10.85 13.5 2 24 2 ' +
+			                'C34.5 2 43 10.85 43 23 ' +
+			                'C43 38 24 58 24 58Z\' ' +
+			                'fill=\'#8B0000\'/>' +
+			
+			            '<path ' +
+			                'd=\'M24 49 ' +
+			                'C24 49 11 35 11 23 ' +
+			                'C11 14.72 16.82 8 24 8 ' +
+			                'C31.18 8 37 14.72 37 23 ' +
+			                'C37 35 24 49 24 49Z\' ' +
+			                'fill=\'#B81D43\'/>' +
+			
+			            '<circle ' +
+			                'cx=\'24\' ' +
+			                'cy=\'22\' ' +
+			                'r=\'8\' ' +
+			                'fill=\'#FFFFFF\'/>' +
+			
+			            '<circle ' +
+			                'cx=\'24\' ' +
+			                'cy=\'22\' ' +
+			                'r=\'4\' ' +
+			                'fill=\'#D81B60\'/>' +
+			
+			        '</svg>';
+			
+			
+			    /* ============================================================
+			       PIN STYLE
+			       ============================================================ */
+			
+			    var pinStyle =
+			        new ol.style.Style({
+			
+			            image:
+			                new ol.style.Icon({
+			
+			                    src:
+			                        'data:image/svg+xml;charset=UTF-8,' +
+			                        encodeURIComponent(pinSvg),
+			
+			                    anchor: [
+			                        0.5,
+			                        1
+			                    ],
+			
+			                    anchorXUnits:
+			                        'fraction',
+			
+			                    anchorYUnits:
+			                        'fraction',
+			
+			                    scale: 0.72
+			
+			                })
+			
+			        });
+			
+			
+			    /* ============================================================
+			       VECTOR LAYER
+			       ============================================================ */
+			
+			    var vectorLayer =
+			        new ol.layer.Vector({
+			
+			            source:
+			                vectorSource,
+			
+			            style:
+			                pinStyle
+			
+			        });
+			
+			
+			    /* ============================================================
+			       BASEMAP
+			       ============================================================ */
+			
+			    var baseLayer =
+			        new ol.layer.Tile({
+			
+			            source:
+			                new ol.source.OSM()
+			
+			        });
+			
+			
+			    /* ============================================================
+			       CREATE MAP
+			       ============================================================ */
+			
+			    var map =
+			        new ol.Map({
+			
+			            target:
+			                'airbnb-map',
+			
+			            layers: [
+			                baseLayer,
+			                vectorLayer
+			            ],
+			
+			            view:
+			                new ol.View({
+			
+			                    center:
+			                        ol.proj.fromLonLat([
+			                            78.9629,
+			                            20.5937
+			                        ]),
+			
+			                    zoom: 4
+			
+			                })
+			
+			        });
+			
+			
+			    /* ============================================================
+			       FIT TO LISTINGS
+			       ============================================================ */
+			
+			    var extent =
+			        vectorSource.getExtent();
+			
+			
+			    if (
+			        extent &&
+			        !ol.extent.isEmpty(extent)
+			    ) {
+			
+			        map.getView().fit(
+			
+			            extent,
+			
+			            {
+			
+			                padding: [
+			                    100,
+			                    60,
+			                    50,
+			                    50
+			                ],
+			
+			                maxZoom: 14,
+			
+			                duration: 700
+			
+			            }
+			
+			        );
+			
+			    }
+			
+			
+			    /* ============================================================
+			       POPUP
+			       ============================================================ */
+			
+			    var popupElement =
+			        document.createElement('div');
+			
+			    popupElement.className =
+			        'airbnb-popup';
+			
+			    popupElement.style.display =
+			        'none';
+			
+			
+			    document
+			        .getElementById('airbnb-map')
+			        .appendChild(
+			            popupElement
+			        );
+			
+			
+			    var popupOverlay =
+			        new ol.Overlay({
+			
+			            element:
+			                popupElement,
+			
+			            positioning:
+			                'bottom-center',
+			
+			            stopEvent:
+			                false,
+			
+			            offset: [
+			                0,
+			                -10
+			            ]
+			
+			        });
+			
+			
+			    map.addOverlay(
+			        popupOverlay
+			    );
+			
+			
+			    /* ============================================================
+			       CLICK HANDLER
+			       ============================================================ */
+			
+			    map.on(
+			        'singleclick',
+			        function (event) {
+			
+			            var feature =
+			                map.forEachFeatureAtPixel(
+			                    event.pixel,
+			                    function (item) {
+			                        return item;
+			                    }
+			                );
+			
+			
+			            if (!feature) {
+			
+			                popupElement.style.display =
+			                    'none';
+			
+			                return;
+			            }
+			
+			
+			            var name =
+			                feature.get('name') ||
+			                'AirBNB';
+			
+			
+			            var latitude =
+			                feature.get('latitude');
+			
+			
+			            var longitude =
+			                feature.get('longitude');
+			
+			
+			            popupElement.innerHTML =
+			
+			                '<div class=\'airbnb-popup-title\'>' +
+			                    name +
+			                '</div>' +
+			
+			                '<div class=\'airbnb-popup-coordinate\'>' +
+			
+			                    'Latitude: ' +
+			                    latitude.toFixed(5) +
+			
+			                    '<br>' +
+			
+			                    'Longitude: ' +
+			                    longitude.toFixed(5) +
+			
+			                '</div>';
+			
+			
+			            popupElement.style.display =
+			                'block';
+			
+			
+			            popupOverlay.setPosition(
+			                event.coordinate
+			            );
+			
+			        }
+			    );
+			
+			
+			    /* ============================================================
+			       HOVER CURSOR
+			       ============================================================ */
+			
+			    map.on(
+			        'pointermove',
+			        function (event) {
+			
+			            if (event.dragging) {
+			                return;
+			            }
+			
+			
+			            var hit =
+			                map.hasFeatureAtPixel(
+			                    event.pixel
+			                );
+			
+			
+			            map.getTargetElement()
+			                .style.cursor =
+			                    hit
+			                        ? 'pointer'
+			                        : '';
+			
+			        }
+			    );
+			
+			
+			})();
+			
+			</script>
+			"
+		lineageTag: 2fb330a9-2b96-4165-b1ec-55d28d6f6e96
 
 	column Col
 		lineageTag: a8c779c6-e732-43b2-886b-073503bc4804

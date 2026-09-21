@@ -19,7 +19,7 @@ MODEL_NAME = "qwen2.5:3b"
 OLLAMA_HOST = "http://localhost:11434"
 
 CONTEXT_SIZE = 4096
-NUM_PREDICT = 140
+NUM_PREDICT = 220
 KEEP_ALIVE = "30m"
 
 client = ollama.Client(host=OLLAMA_HOST)
@@ -36,8 +36,7 @@ polished listing opener suitable for a professional dashboard.
 
 STRICT RULES:
 
-1. Maximum 128 words.
-2. Use English only.
+1. Use English only.
 3. Use ONLY facts explicitly stated in the source.
 4. Never guess, estimate, assume, or infer information.
 5. Never invent guest capacity, amenities, facilities, or rules.
@@ -69,6 +68,19 @@ STRICT RULES:
 """
 
 
+def get_length_instruction(word_count):
+    if word_count < 128:
+        return (
+            "The source is under 128 words. Clean it without intentionally "
+            "expanding it, and keep the final description under 128 words."
+        )
+
+    return (
+        "The source is at least 128 words. Refine the final description to "
+        "between 128 and 160 words, inclusive."
+    )
+
+
 # ============================================================
 # VALIDATION
 # ============================================================
@@ -83,14 +95,18 @@ def is_invalid_description(text):
     )
 
 
-def validate_output(output):
+def validate_output(output, word_count):
     if not output:
         return False
 
     output = output.strip()
 
-    # Maximum 110 words
-    if len(output.split()) > 128:
+    output_word_count = len(output.split())
+
+    if word_count < 128 and output_word_count >= 128:
+        return False
+
+    if word_count >= 128 and not 128 <= output_word_count <= 160:
         return False
 
     # Minimum useful output
@@ -170,6 +186,9 @@ def clean_description(text):
     if not processed:
         return ""
 
+    word_count = len(processed.split())
+    prompt = f"{SYSTEM_PROMPT}\n\nLENGTH REQUIREMENT:\n{get_length_instruction(word_count)}"
+
     try:
 
         response = client.chat(
@@ -177,7 +196,7 @@ def clean_description(text):
             messages=[
                 {
                     "role": "system",
-                    "content": SYSTEM_PROMPT
+                    "content": prompt
                 },
                 {
                     "role": "user",
@@ -194,7 +213,7 @@ def clean_description(text):
 
         output = response["message"]["content"].strip()
 
-        if validate_output(output):
+        if validate_output(output, word_count):
             return output
 
         return None

@@ -1,0 +1,21 @@
+EVALUATE
+  // Select specific columns from the filtered result
+  SELECTCOLUMNS(
+    // Filter columns from the INFO.VIEW.COLUMNS() table
+    FILTER(
+      INFO.VIEW.COLUMNS(),
+      // Exclude rows where DataCategory is "RowNumber" and Table is "xTables"
+      [DataCategory] <> "RowNumber" && [Table] <> "xTables"
+    ),
+    // Show only these selected columns with new names where specified
+    [Table],
+    "Column", [Name],
+    [Description],
+    "DAX formula", [Expression],
+    [DataCategory],
+    [DataType],
+    [IsHidden]
+  )
+  // Order the result by Table and then by Column
+  ORDER BY
+    [Table], [Column]

@@ -2,71 +2,17 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "d81243e818fca85c1fc7",
   "position": {
-    "x": 1002.3416198877304,
-    "y": 140.112269446672,
-    "z": 7,
+    "x": 1012.8141032253341,
+    "y": 125.82185294499331,
+    "z": 6000,
     "height": 143.1916599839615,
     "width": 252.51002405773855,
-    "tabOrder": 22
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "sparklinekpicard12345",
     "query": {
       "queryState": {
-        "dateAxis": {
-          "projections": [
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Dates"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Year"
-                }
-              },
-              "queryRef": "Dates.Date.Variation.Date Hierarchy.Year",
-              "nativeQueryRef": "Date Year"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Dates"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Month"
-                }
-              },
-              "queryRef": "Dates.Date.Variation.Date Hierarchy.Month",
-              "nativeQueryRef": "Date Month"
-            }
-          ]
-        },
         "kpiMeasure": {
           "projections": [
             {
@@ -74,17 +20,35 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Metrics"
+                      "Entity": "Main Metrics"
                     }
                   },
-                  "Property": "Average Reserved Days"
+                  "Property": "Guest Favourite Percentage"
                 }
               },
-              "queryRef": "Metrics.Average Reserved Days",
-              "nativeQueryRef": "Average Reserved Days"
+              "queryRef": "Metrics.Guest Favourite Percentage",
+              "nativeQueryRef": "Guest Favourite Percentage"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Main Metrics"
+                  }
+                },
+                "Property": "Guest Favourite Percentage"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -289,7 +253,7 @@
             "labelMaxLines": {
               "expr": {
                 "Literal": {
-                  "Value": "1D"
+                  "Value": "5D"
                 }
               }
             },
@@ -310,7 +274,7 @@
             "labelFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "20D"
                 }
               }
             },
@@ -342,7 +306,7 @@
             "suffix": {
               "expr": {
                 "Literal": {
-                  "Value": "' days'"
+                  "Value": "''"
                 }
               }
             },
@@ -527,7 +491,7 @@
             "showSentenceFormat": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -544,6 +508,13 @@
                   "Value": "11D"
                 }
               }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -556,7 +527,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FFF0F3'"
+                      "Value": "'#F1D3D7'"
                     }
                   }
                 }
