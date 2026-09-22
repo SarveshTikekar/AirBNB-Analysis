@@ -321,13 +321,13 @@ table Selections
 			    FORMAT(SELECTEDVALUE(
 			        'Listings'[Checkin Time],
 			        "N/A"
-			    ), "HH:mm")
+			    ), "HH")
 			
 			VAR _Checkout =
 			    FORMAT(SELECTEDVALUE(
 			        'Listings'[Checkout Time],
 			        "N/A"
-			    ), "HH:mm")
+			    ), "HH")
 			
 			VAR _Sym =
 			    [Selected Currency Symbol]
@@ -385,13 +385,46 @@ table Selections
 			    & UNICHAR(10)
 			    & "Listing Group: " & _ListingGroup
 			    & UNICHAR(10)
-			    & "Checkin: " & _Checkin
+			    & "Checkin: " & _Checkin &" hours"
 			    & UNICHAR(10)
-			    & "Checkout: " & _Checkout
+			    & "Checkout: " & _Checkout &" hours"
 			    & UNICHAR(10)
 			    & UNICHAR(10)
 			    & _Metric & ": " & _Value
 		lineageTag: 1beab760-bd0a-452f-93b3-40576520b17d
+
+	measure 'Selected AirBNB Specific Metric Display Table' =
+			
+			VAR _Metric = SELECTEDVALUE('AirBNB Specific Metrics'[Metric Name], "Select a Metric")
+			VAR _Sym = [Selected Currency Symbol]
+			VAR _Value =
+			    SWITCH(
+			        _Metric,
+			
+			        -- Days & Time Metrics
+			        "Average Vacant Days", FORMAT([Average Vacant Days], "0.00 days"),
+			        "Average Reserved Days", FORMAT([Average Reserved Days], "0.00 days"),
+			        "Median Reserved Days", FORMAT([Median Reserved Days], "0.00 days"),
+			        "Median Vacant Days", FORMAT([Median Vacant Days], "0.00 days"),
+			        "Average Length of Stay", FORMAT([Average Length of Stay], "0.00 days"),
+			        "Total Reserved Days", FORMAT([Total Reserved Days], "#,##0 days"),
+			        "Total Vacant Days", FORMAT([Total Vacant Days], "#,##0 days"),
+			
+			        -- Dynamic Currency Financial Metrics
+			        "Average Booking Rate", _Sym & " " & FORMAT([Average Booking Rate], "#,##0.00"),
+			        "Average Booking Revenue", _Sym & " " & FORMAT([Average Booking Revenue], "#,##0.00"),
+			        "Total Revenue", _Sym & " " & FORMAT([Total Revenue], "#,##0.00"),
+			        "Average Daily Rate", _Sym & " " & FORMAT([Average Daily Rate], "#,##0.00"),
+			
+			        -- Other Metrics
+			        "Total Reviews", FORMAT([Total Reviews], "#,##0"),
+			        "Average Occupancy Percentage", FORMAT([Average Occupancy Percentage], "0.00%"),
+			
+			        BLANK()
+			    )
+			RETURN
+			    _Value
+		lineageTag: 88d8beb0-5909-458f-81e0-e5d32655cc3e
 
 	column _
 		lineageTag: 7d74e5df-5e39-4736-9ccb-0d6de0749b4b

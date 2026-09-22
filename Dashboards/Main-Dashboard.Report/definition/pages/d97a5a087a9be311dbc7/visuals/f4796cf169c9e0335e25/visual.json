@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "f4796cf169c9e0335e25",
   "position": {
-    "x": 1063.75,
-    "y": 552.5,
-    "z": 11000,
-    "height": 527.5,
-    "width": 856.25,
-    "tabOrder": 7000
+    "x": 1063.8403990024938,
+    "y": 591.17206982543644,
+    "z": 10000,
+    "height": 488.82793017456362,
+    "width": 856.45885286783039,
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "tableEx",
@@ -37,12 +37,12 @@
                       "Entity": "Selections"
                     }
                   },
-                  "Property": "Selected AirBNB Specific Metric"
+                  "Property": "Selected AirBNB Specific Metric Display Table"
                 }
               },
-              "queryRef": "Selections.Selected AirBNB Specific Metric",
-              "nativeQueryRef": "Metric in Use",
-              "displayName": "Metric in Use"
+              "queryRef": "Selections.Selected AirBNB Specific Metric Display Table",
+              "nativeQueryRef": "Metric",
+              "displayName": "Metric"
             }
           ]
         }
@@ -51,16 +51,16 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Selections"
+                    "Entity": "Listings"
                   }
                 },
-                "Property": "Selected AirBNB Specific Metric"
+                "Property": "Listing Name"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ]
       }
@@ -228,31 +228,23 @@
             "metadata": "Listings.Listing Name"
           }
         }
-      ],
-      "columnFormatting": [
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
         {
           "properties": {
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Center'"
-                }
-              }
-            },
-            "backColor": {
+            "color": {
               "solid": {
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#EEDEE0'"
+                      "Value": "'#F1D3D7'"
                     }
                   }
                 }
               }
             }
-          },
-          "selector": {
-            "metadata": "Selections.Selected AirBNB Specific Metric"
           }
         }
       ]

@@ -27,18 +27,9 @@ table Cities
 		mode: import
 		source =
 				let
-				    Source = Table.FromRows(
-				        Json.Document(
-				            Binary.Decompress(
-				                Binary.FromText(
-				                    "i45WckrMS0/MyS9KVdJR8sxLyUxUitWJVnJJzcnIRBHxyS9WcMxLT81JLQaKhwY7gkV9S3OTElEVBiQWZYKUuBUl5iWngoVC8rMr84FCXokFiXlKsbEA",
-				                    BinaryEncoding.Base64
-				                ),
-				                Compression.Deflate
-				            )
-				        ),
-				        let _t = ((type nullable text) meta [Serialized.Text = true])
-				        in type table [City = _t, Country = _t]
+				    Source = #table(
+				        {"City", "Country"},
+				        {}
 				    ),
 				
 				    #"Changed Type" = Table.TransformColumnTypes(
@@ -51,9 +42,9 @@ table Cities
 				        Table.RowCount(#"Changed Type"),
 				        {
 				            // UK
-				            [City = "London", Country = "UK"],
-				            [City = "Edinburgh", Country = "UK"],
-				            [City = "Birmingham", Country = "UK"],
+				            [City = "London", Country = "United Kingdom"],
+				            [City = "Edinburgh", Country = "United Kingdom"],
+				            [City = "Birmingham", Country = "United Kingdom"],
 				
 				            // France
 				            [City = "Lyon", Country = "France"],
@@ -64,8 +55,9 @@ table Cities
 				            [City = "Kyoto", Country = "Japan"],
 				
 				            // USA
-				            [City = "New York", Country = "USA"],
-				            [City = "Miami", Country = "USA"],
+				            [City = "New York", Country = "United States of America"],
+				            [City = "Miami", Country = "United States of America"],
+				            [City = "Los Angeles", Country = "United States of America"],
 				
 				            // Brazil
 				            [City = "Sao Paulo", Country = "Brazil"],
@@ -81,7 +73,28 @@ table Cities
 				            [City = "Adelaide", Country = "Australia"],
 				
 				            // Hong Kong
-				            [City = "Hong Kong", Country = "Hong Kong"]
+				            [City = "Hong Kong", Country = "China"],
+				
+				            // United Arab Emirates
+				            [City = "Abu Dhabi", Country = "United Arab Emirates"],
+				            [City = "Dubai", Country = "United Arab Emirates"],
+				
+				            // Thailand
+				            [City = "Bangkok", Country = "Thailand"],
+				            [City = "Pattaya", Country = "Thailand"],
+				
+				            // Egypt
+				            [City = "Cairo", Country = "Egypt"],
+				            [City = "Hurghada", Country = "Egypt"],
+				
+				            // South Africa
+				            [City = "Cape Town", Country = "South Africa"],
+				            [City = "Johannesburg", Country = "South Africa"],
+				
+				            // India
+				            [City = "Bangalore", Country = "India"],
+				            [City = "Mumbai", Country = "India"],
+				            [City = "Delhi", Country = "India"]
 				        }
 				    ),
 				
@@ -90,12 +103,19 @@ table Cities
 				        "Currency",
 				        each
 				            if [Country] = "India" then "INR"
-				            else if [Country] = "USA" then "USD"
-				            else if [Country] = "UK" then "GBP"
-				            else if [Country] = "France" then "EUR"
+				            else if [Country] = "Australia" then "AUD"
 				            else if [Country] = "Brazil" then "BRL"
-				            else "JPY"
-				    ),
+				            else if [Country] = "China" then "CNY"
+				            else if [Country] = "Egypt" then "EGP"
+				            else if [Country] = "France" then "EUR"
+				            else if [Country] = "Japan" then "JPY"
+				            else if [Country] = "South Africa" then "ZAR"
+				            else if [Country] = "Thailand" then "THB"
+				            else if [Country] = "United Arab Emirates" then "AED"
+				            else if [Country] = "United Kingdom" then "GBP"
+				            else if [Country] = "United States of America" then "USD"
+				            else null
+				        ),
 				
 				    #"Merged Queries" = Table.NestedJoin(
 				        #"Added Custom",

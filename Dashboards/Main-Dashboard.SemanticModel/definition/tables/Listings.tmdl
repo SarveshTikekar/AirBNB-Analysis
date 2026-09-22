@@ -669,9 +669,10 @@ table Listings
 				#"Renamed Columns8" = Table.RenameColumns(#"Changed Type2",{{"No of Baths", "No of Bathrooms"}}, MissingField.Ignore),
 				#"Replaced Value4" = Table.ReplaceValue(#"Renamed Columns8","","No Description Available",Replacer.ReplaceValue,{"Description"}),
 				    #"Filtered Rows" = Table.SelectRows(#"Replaced Value4", each true),
-				    #"Removed Errors" = Table.RemoveRowsWithErrors(#"Filtered Rows", {"Listing ID"})
+				    #"Removed Errors" = Table.RemoveRowsWithErrors(#"Filtered Rows", {"Listing ID"}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Removed Errors", each ([City] <> ""))
 				in
-				    #"Removed Errors"
+				    #"Filtered Rows1"
 
 	annotation PBI_NavigationStepName = Navigation
 
