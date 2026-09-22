@@ -4,9 +4,9 @@
   "position": {
     "x": 1069.2269326683293,
     "y": 125.23690773067332,
-    "z": 6000,
+    "z": 5000,
     "height": 465.93516209476309,
-    "width": 449.77556109725685,
+    "width": 851.072319201995,
     "tabOrder": 5000
   },
   "visual": {
@@ -88,7 +88,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Superhosted AirBNBs'"
+                                "Value": "'Average Vacant Days'"
                               }
                             }
                           ]
@@ -97,6 +97,17 @@
                     }
                   }
                 ]
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E1C8CB'"
+                    }
+                  }
+                }
               }
             }
           }
@@ -119,17 +130,10 @@
                 }
               }
             },
-            "padding": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
             "outlineStyle": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
+                  "Value": "15D"
                 }
               }
             },
@@ -138,8 +142,8 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.2
+                      "ColorId": 1,
+                      "Percent": 0
                     }
                   }
                 }
@@ -148,7 +152,25 @@
             "textSize": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "15D"
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F1D3D7'"
+                    }
+                  }
+                }
+              }
+            },
+            "padding": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }
@@ -302,7 +324,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -359,6 +381,23 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F1D3D7'"
+                    }
+                  }
                 }
               }
             }

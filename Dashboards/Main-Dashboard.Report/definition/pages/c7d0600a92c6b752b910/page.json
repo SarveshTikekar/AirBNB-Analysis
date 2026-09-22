@@ -15,6 +15,17 @@
                 "Value": "0D"
               }
             }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F1D3D7'"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -32,27 +43,5 @@
         }
       }
     ]
-  },
-  "visualInteractions": [
-    {
-      "source": "e83e6c68a9294e30312a",
-      "target": "67a5d0e300b8e03eac94",
-      "type": "NoFilter"
-    },
-    {
-      "source": "c4362d0e63c4a1d8063d",
-      "target": "7c42dd869b00040d71ab",
-      "type": "NoFilter"
-    },
-    {
-      "source": "c4362d0e63c4a1d8063d",
-      "target": "8451a3970b14d0b21b42",
-      "type": "NoFilter"
-    },
-    {
-      "source": "c4362d0e63c4a1d8063d",
-      "target": "9b44019a00deced96bca",
-      "type": "NoFilter"
-    }
-  ]
+  }
 }

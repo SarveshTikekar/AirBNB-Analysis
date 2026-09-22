@@ -14979,16 +14979,6 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "metric title": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
 			          "metric label": {
 			            "Type": "Noun",
 			            "State": "Suggested",
@@ -15263,6 +15253,16 @@ cultureInfo en-US
 			          "selected AirBNB specific metric": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Metric in Use": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -15303,16 +15303,6 @@ cultureInfo en-US
 			        },
 			        {
 			          "metric nickname": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "metric title": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -15368,10 +15358,405 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "main_metrics.max_selected_metric": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Main Metrics",
+			          "ConceptualProperty": "Max Selected Metric"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "max selected metric": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "maximum selected metric": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "main_metrics.min_selected_metric": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Main Metrics",
+			          "ConceptualProperty": "Min Selected Metric"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "min selected metric": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "minimum selected metric": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "main_metrics.selected_max_metric_title": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Main Metrics",
+			          "ConceptualProperty": "Selected Max Metric Title"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected max metric title": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "title": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "metric title": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "max metric title": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "selected max metric designation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "max metric designation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "metric designation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "selected max metric name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected max metric award": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected max metric call": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected max metric heading": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected max metric label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "max metric name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "max metric award": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "main_metrics.selected_min_metric_title": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Main Metrics",
+			          "ConceptualProperty": "Selected Min Metric Title"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected min metric title": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "title": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "metric title": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "min metric title": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "selected min metric designation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "min metric designation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "metric designation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "selected min metric name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected min metric award": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected min metric call": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected min metric heading": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "selected min metric label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "min metric name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "min metric award": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "metrics.max_selected_metric": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Metrics",
+			          "ConceptualProperty": "Max Selected Metric"
+			        }
+			      },
+			      "State": "Generated"
 			    }
 			  },
 			  "Relationships": {
-			    "listing_has_cancellation_policy": {
+			    "rating_has_main_metrics_max_selected_metric": {
+			      "Binding": {
+			        "ConceptualEntity": "Ratings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rating": {
+			          "Target": {
+			            "Entity": "rating"
+			          }
+			        },
+			        "main_metrics.max_selected_metric": {
+			          "Target": {
+			            "Entity": "main_metrics.max_selected_metric"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rating"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.max_selected_metric"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rating_have_max_selected_metric"
+			        }
+			      ]
+			    },
+			    "main_metrics_has_max_selected_metric": {
+			      "Binding": {
+			        "ConceptualEntity": "Main Metrics"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "main_metrics": {
+			          "Target": {
+			            "Entity": "main_metrics"
+			          }
+			        },
+			        "main_metrics.max_selected_metric": {
+			          "Target": {
+			            "Entity": "main_metrics.max_selected_metric"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "main_metrics"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.max_selected_metric"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "main_metrics_have_max_selected_metric"
+			        }
+			      ]
+			    },
+			    "listing_has_main_metrics_max_selected_metric": {
 			      "Binding": {
 			        "ConceptualEntity": "Listings"
 			      },
@@ -15382,9 +15767,9 @@ cultureInfo en-US
 			            "Entity": "listing"
 			          }
 			        },
-			        "cancellation_policy": {
+			        "main_metrics.max_selected_metric": {
 			          "Target": {
-			            "Entity": "cancellation_policy"
+			            "Entity": "main_metrics.max_selected_metric"
 			          }
 			        }
 			      },
@@ -15395,174 +15780,115 @@ cultureInfo en-US
 			              "Role": "listing"
 			            },
 			            "Object": {
-			              "Role": "cancellation_policy"
+			              "Role": "main_metrics.max_selected_metric"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "listing_have_cancellation_policies"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "cancellation_policy"
-			            },
-			            "Object": {
-			              "Role": "listing"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "cancellation_policies_have_listing"
+			          "ID": "listing_have_max_selected_metric"
 			        }
 			      ]
 			    },
-			    "listing_has_city": {
+			    "listing_type_has_main_metrics_max_selected_metric": {
 			      "Binding": {
-			        "ConceptualEntity": "Listings"
+			        "ConceptualEntity": "Listing Types"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "listing": {
+			        "listing_type": {
 			          "Target": {
-			            "Entity": "listing"
+			            "Entity": "listing_type"
 			          }
 			        },
+			        "main_metrics.max_selected_metric": {
+			          "Target": {
+			            "Entity": "main_metrics.max_selected_metric"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing_type"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.max_selected_metric"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_types_have_max_selected_metric"
+			        }
+			      ]
+			    },
+			    "currency_converter_has_main_metrics_max_selected_metric": {
+			      "Binding": {
+			        "ConceptualEntity": "Currency Converter"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "currency_converter": {
+			          "Target": {
+			            "Entity": "currency_converter"
+			          }
+			        },
+			        "main_metrics.max_selected_metric": {
+			          "Target": {
+			            "Entity": "main_metrics.max_selected_metric"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "currency_converter"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.max_selected_metric"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "currency_converters_have_max_selected_metric"
+			        }
+			      ]
+			    },
+			    "city_has_main_metrics_max_selected_metric": {
+			      "Binding": {
+			        "ConceptualEntity": "Cities"
+			      },
+			      "State": "Generated",
+			      "Roles": {
 			        "city": {
 			          "Target": {
 			            "Entity": "city"
 			          }
+			        },
+			        "main_metrics.max_selected_metric": {
+			          "Target": {
+			            "Entity": "main_metrics.max_selected_metric"
+			          }
 			        }
 			      },
 			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "listing"
-			            },
-			            "Object": {
-			              "Role": "city"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "listing_have_cities"
-			        },
 			        {
 			          "Attribute": {
 			            "Subject": {
 			              "Role": "city"
 			            },
 			            "Object": {
-			              "Role": "listing"
+			              "Role": "main_metrics.max_selected_metric"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "cities_have_listing"
+			          "ID": "cities_have_max_selected_metric"
 			        }
 			      ]
 			    },
-			    "rating_has_listing": {
-			      "Binding": {
-			        "ConceptualEntity": "Ratings"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "rating": {
-			          "Target": {
-			            "Entity": "rating"
-			          }
-			        },
-			        "listing": {
-			          "Target": {
-			            "Entity": "listing"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "rating"
-			            },
-			            "Object": {
-			              "Role": "listing"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "rating_have_listing"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "listing"
-			            },
-			            "Object": {
-			              "Role": "rating"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "listing_have_rating"
-			        }
-			      ]
-			    },
-			    "rating_has_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Ratings"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "rating": {
-			          "Target": {
-			            "Entity": "rating"
-			          }
-			        },
-			        "date": {
-			          "Target": {
-			            "Entity": "date"
-			          },
-			          "Nouns": [
-			            {
-			              "month": {
-			                "State": "Generated"
-			              }
-			            }
-			          ]
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "rating"
-			            },
-			            "Object": {
-			              "Role": "date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "rating_have_dates"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date"
-			            },
-			            "Object": {
-			              "Role": "rating"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dates_have_rating"
-			        }
-			      ]
-			    },
-			    "calendar_rate_has_listing": {
+			    "calendar_rate_has_main_metrics_max_selected_metric": {
 			      "Binding": {
 			        "ConceptualEntity": "Calendar Rates"
 			      },
@@ -15573,9 +15899,9 @@ cultureInfo en-US
 			            "Entity": "calendar_rate"
 			          }
 			        },
-			        "listing": {
+			        "main_metrics.max_selected_metric": {
 			          "Target": {
-			            "Entity": "listing"
+			            "Entity": "main_metrics.max_selected_metric"
 			          }
 			        }
 			      },
@@ -15586,78 +15912,12 @@ cultureInfo en-US
 			              "Role": "calendar_rate"
 			            },
 			            "Object": {
-			              "Role": "listing"
+			              "Role": "main_metrics.max_selected_metric"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "calendar_rates_have_listing"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "listing"
-			            },
-			            "Object": {
-			              "Role": "calendar_rate"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "listing_have_calendar_rates"
-			        }
-			      ]
-			    },
-			    "calendar_rate_has_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Calendar Rates"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "calendar_rate": {
-			          "Target": {
-			            "Entity": "calendar_rate"
-			          }
-			        },
-			        "date": {
-			          "Target": {
-			            "Entity": "date"
-			          },
-			          "Nouns": [
-			            {
-			              "month": {
-			                "State": "Generated"
-			              }
-			            }
-			          ]
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "calendar_rate"
-			            },
-			            "Object": {
-			              "Role": "date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "calendar_rates_have_dates"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date"
-			            },
-			            "Object": {
-			              "Role": "calendar_rate"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dates_have_calendar_rates"
+			          "ID": "calendar_rates_have_max_selected_metric"
 			        }
 			      ]
 			    },
@@ -22627,6 +22887,593 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.75,
 			          "ID": "currency_converters_convert"
+			        }
+			      ]
+			    },
+			    "calendar_rate_has_main_metrics_min_selected_metric": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendar Rates"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendar_rate": {
+			          "Target": {
+			            "Entity": "calendar_rate"
+			          }
+			        },
+			        "main_metrics.min_selected_metric": {
+			          "Target": {
+			            "Entity": "main_metrics.min_selected_metric"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendar_rate"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.min_selected_metric"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendar_rates_have_min_selected_metric"
+			        }
+			      ]
+			    },
+			    "city_has_main_metrics_min_selected_metric": {
+			      "Binding": {
+			        "ConceptualEntity": "Cities"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "city": {
+			          "Target": {
+			            "Entity": "city"
+			          }
+			        },
+			        "main_metrics.min_selected_metric": {
+			          "Target": {
+			            "Entity": "main_metrics.min_selected_metric"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "city"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.min_selected_metric"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cities_have_min_selected_metric"
+			        }
+			      ]
+			    },
+			    "currency_converter_has_main_metrics_min_selected_metric": {
+			      "Binding": {
+			        "ConceptualEntity": "Currency Converter"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "currency_converter": {
+			          "Target": {
+			            "Entity": "currency_converter"
+			          }
+			        },
+			        "main_metrics.min_selected_metric": {
+			          "Target": {
+			            "Entity": "main_metrics.min_selected_metric"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "currency_converter"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.min_selected_metric"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "currency_converters_have_min_selected_metric"
+			        }
+			      ]
+			    },
+			    "listing_type_has_main_metrics_min_selected_metric": {
+			      "Binding": {
+			        "ConceptualEntity": "Listing Types"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing_type": {
+			          "Target": {
+			            "Entity": "listing_type"
+			          }
+			        },
+			        "main_metrics.min_selected_metric": {
+			          "Target": {
+			            "Entity": "main_metrics.min_selected_metric"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing_type"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.min_selected_metric"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_types_have_min_selected_metric"
+			        }
+			      ]
+			    },
+			    "listing_has_main_metrics_min_selected_metric": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "main_metrics.min_selected_metric": {
+			          "Target": {
+			            "Entity": "main_metrics.min_selected_metric"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.min_selected_metric"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_min_selected_metric"
+			        }
+			      ]
+			    },
+			    "main_metrics_has_min_selected_metric": {
+			      "Binding": {
+			        "ConceptualEntity": "Main Metrics"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "main_metrics": {
+			          "Target": {
+			            "Entity": "main_metrics"
+			          }
+			        },
+			        "main_metrics.min_selected_metric": {
+			          "Target": {
+			            "Entity": "main_metrics.min_selected_metric"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "main_metrics"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.min_selected_metric"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "main_metrics_have_min_selected_metric"
+			        }
+			      ]
+			    },
+			    "rating_has_main_metrics_min_selected_metric": {
+			      "Binding": {
+			        "ConceptualEntity": "Ratings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rating": {
+			          "Target": {
+			            "Entity": "rating"
+			          }
+			        },
+			        "main_metrics.min_selected_metric": {
+			          "Target": {
+			            "Entity": "main_metrics.min_selected_metric"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rating"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.min_selected_metric"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rating_have_min_selected_metric"
+			        }
+			      ]
+			    },
+			    "main_metrics_has_selected_max_metric_title": {
+			      "Binding": {
+			        "ConceptualEntity": "Main Metrics"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "main_metrics": {
+			          "Target": {
+			            "Entity": "main_metrics"
+			          }
+			        },
+			        "main_metrics.selected_max_metric_title": {
+			          "Target": {
+			            "Entity": "main_metrics.selected_max_metric_title"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "main_metrics"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.selected_max_metric_title"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "main_metrics_have_selected_max_metric_title"
+			        }
+			      ]
+			    },
+			    "main_metrics_has_selected_min_metric_title": {
+			      "Binding": {
+			        "ConceptualEntity": "Main Metrics"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "main_metrics": {
+			          "Target": {
+			            "Entity": "main_metrics"
+			          }
+			        },
+			        "main_metrics.selected_min_metric_title": {
+			          "Target": {
+			            "Entity": "main_metrics.selected_min_metric_title"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "main_metrics"
+			            },
+			            "Object": {
+			              "Role": "main_metrics.selected_min_metric_title"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "main_metrics_have_selected_min_metric_title"
+			        }
+			      ]
+			    },
+			    "calendar_rate_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendar Rates"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendar_rate": {
+			          "Target": {
+			            "Entity": "calendar_rate"
+			          }
+			        },
+			        "date": {
+			          "Target": {
+			            "Entity": "date"
+			          },
+			          "Nouns": [
+			            {
+			              "month": {
+			                "State": "Generated"
+			              }
+			            }
+			          ]
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendar_rate"
+			            },
+			            "Object": {
+			              "Role": "date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendar_rates_have_dates"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date"
+			            },
+			            "Object": {
+			              "Role": "calendar_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dates_have_calendar_rates"
+			        }
+			      ]
+			    },
+			    "calendar_rate_has_listing": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendar Rates"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendar_rate": {
+			          "Target": {
+			            "Entity": "calendar_rate"
+			          }
+			        },
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendar_rate"
+			            },
+			            "Object": {
+			              "Role": "listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendar_rates_have_listing"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "calendar_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_calendar_rates"
+			        }
+			      ]
+			    },
+			    "rating_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Ratings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rating": {
+			          "Target": {
+			            "Entity": "rating"
+			          }
+			        },
+			        "date": {
+			          "Target": {
+			            "Entity": "date"
+			          },
+			          "Nouns": [
+			            {
+			              "month": {
+			                "State": "Generated"
+			              }
+			            }
+			          ]
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rating"
+			            },
+			            "Object": {
+			              "Role": "date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rating_have_dates"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date"
+			            },
+			            "Object": {
+			              "Role": "rating"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dates_have_rating"
+			        }
+			      ]
+			    },
+			    "rating_has_listing": {
+			      "Binding": {
+			        "ConceptualEntity": "Ratings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rating": {
+			          "Target": {
+			            "Entity": "rating"
+			          }
+			        },
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rating"
+			            },
+			            "Object": {
+			              "Role": "listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rating_have_listing"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "rating"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_rating"
+			        }
+			      ]
+			    },
+			    "listing_has_city": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "city": {
+			          "Target": {
+			            "Entity": "city"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "city"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_cities"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "city"
+			            },
+			            "Object": {
+			              "Role": "listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cities_have_listing"
+			        }
+			      ]
+			    },
+			    "listing_has_cancellation_policy": {
+			      "Binding": {
+			        "ConceptualEntity": "Listings"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "listing": {
+			          "Target": {
+			            "Entity": "listing"
+			          }
+			        },
+			        "cancellation_policy": {
+			          "Target": {
+			            "Entity": "cancellation_policy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "listing"
+			            },
+			            "Object": {
+			              "Role": "cancellation_policy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "listing_have_cancellation_policies"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cancellation_policy"
+			            },
+			            "Object": {
+			              "Role": "listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cancellation_policies_have_listing"
 			        }
 			      ]
 			    },

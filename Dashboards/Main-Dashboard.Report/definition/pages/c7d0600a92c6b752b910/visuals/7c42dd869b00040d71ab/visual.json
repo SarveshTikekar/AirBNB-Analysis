@@ -3,11 +3,11 @@
   "name": "7c42dd869b00040d71ab",
   "position": {
     "x": 0,
-    "y": 126.58354114713217,
-    "z": 9000,
-    "height": 465.93516209476309,
-    "width": 1069.2269326683293,
-    "tabOrder": 8000
+    "y": 127.14285714285715,
+    "z": 6000,
+    "height": 952.85714285714289,
+    "width": 1061.4285714285716,
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "shapeMap",
@@ -201,7 +201,7 @@
             "projectionEnum": {
               "expr": {
                 "Literal": {
-                  "Value": "'equirectangular'"
+                  "Value": "'mercator'"
                 }
               }
             }
@@ -302,7 +302,7 @@
             "width": {
               "expr": {
                 "Literal": {
-                  "Value": "1.5D"
+                  "Value": "2D"
                 }
               }
             },
@@ -310,6 +310,23 @@
               "expr": {
                 "Literal": {
                   "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F8DBDE'"
+                    }
+                  }
                 }
               }
             }
