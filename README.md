@@ -43,7 +43,6 @@ The dashboard incorporates short-term rental data across the following cities an
 ---
 
 ## Key Achievements & Features
-
 The project delivers a developer-friendly, interactive dashboard system built with the PBIP version control standard and TMDL model architecture.
 
 ### Implementation Summary
@@ -74,7 +73,7 @@ The project delivers a developer-friendly, interactive dashboard system built wi
     </tr>
     <tr>
       <td><b>Star Schema Tables</b></td>
-      <td align="center"><b>18</b></td>
+      <td align="center"><b>16</b></td>
       <td>Dimension and fact tables spanning Listings, Calendar Rates, Ratings, Cities, Amenities, Cancellation Policies, and more.</td>
     </tr>
     <tr>
@@ -97,41 +96,42 @@ The project delivers a developer-friendly, interactive dashboard system built wi
 The data model uses a clean **Star Schema** centered around the `Listings` fact table, with `Calendar Rates` and `Ratings` as supporting fact tables. Dimension tables are linked via `1:*` relationships, enabling seamless cross-filtering and high-performance DAX evaluations.
 
 <!-- Add Star Schema diagram image here -->
-
+<img width="1303" height="761" alt="image" src="https://github.com/user-attachments/assets/5be8b1cc-442e-41dd-b1df-b9f70bf22127"/>
 ---
 
 ## Dashboards
 
 ### 1. AirBNB Host Dashboard
-
 <!-- Add AirBNB Host Dashboard image here -->
+<img width="1528" height="858" alt="AirBNB_Implementation_I2" src="https://github.com/user-attachments/assets/f7901e13-43bc-4e98-9ecd-a85d32e48635" />
 
 ---
 
 ### 2. Listings Dashboard
-
 <!-- Add Listings Dashboard image here -->
+<img width="1527" height="856" alt="AirBNB_Implementation_I1" src="https://github.com/user-attachments/assets/70cf57c7-25da-44ac-a529-bcb0bee7e988" />
 
 ---
 
 ### 3. Geographical Dashboard
-
 <!-- Add Geographical Dashboard image here -->
+<img width="1523" height="856" alt="AirBNB_Implementation_I3" src="https://github.com/user-attachments/assets/f7ce30da-a3a4-4551-86e4-23a9a512b852" />
 
 ---
 
 ### 4. AirBNB Specific Dashboard
-
 <!-- Add AirBNB Specific Dashboard image here -->
+<img width="1512" height="858" alt="AirBNB_Implementation_I4" src="https://github.com/user-attachments/assets/a8ffceaa-d72c-4b71-8bf8-a6adc860c4a9" />
 
 ---
 
-## Implementation Videos
-
+## Implementation Video
 <!-- Add implementation video links here -->
+[**Dashboard Implementation**](https://drive.google.com/file/d/1TfySe-wQTjHNxnREHVrdJY0TKRUMJqjz/view?usp=drive_link)
 
 ---
 
 ## References & Links
 
-*   **Data Source:** [AIRROI Data Portal](https://www.airroi.com) — up-to-date, comprehensive Airbnb short-term rental market data.
+*   **Data Source:** [AIRROI Data Portal](https://www.airroi.com) — For up-to-date, comprehensive Airbnb rental market data (**Data available both for Free and Paid Tiers**).
+*   **Implementation Drive:** [Drive Repo](https://drive.google.com/drive/folders/1ln8PCKZApKG8ln423a_IswvbUgtqI8Pj?usp=drive_link)
