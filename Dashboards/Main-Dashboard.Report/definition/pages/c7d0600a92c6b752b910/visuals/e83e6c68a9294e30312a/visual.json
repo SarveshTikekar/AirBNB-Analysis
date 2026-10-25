@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "e83e6c68a9294e30312a",
   "position": {
     "x": 1069.2269326683293,
@@ -88,7 +88,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Average Vacant Days'"
+                                "Value": "'Registered AirBNBs'"
                               }
                             }
                           ]

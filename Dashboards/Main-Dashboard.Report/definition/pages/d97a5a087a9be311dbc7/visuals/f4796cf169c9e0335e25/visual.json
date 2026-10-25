@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "f4796cf169c9e0335e25",
   "position": {
     "x": 1063.8403990024938,
@@ -51,16 +51,16 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Listings"
+                    "Entity": "Selections"
                   }
                 },
-                "Property": "Listing Name"
+                "Property": "Selected AirBNB Specific Metric Display Table"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ]
       }

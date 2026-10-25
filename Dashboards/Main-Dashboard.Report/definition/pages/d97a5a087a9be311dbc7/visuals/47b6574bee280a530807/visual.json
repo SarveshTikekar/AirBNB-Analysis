@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "47b6574bee280a530807",
   "position": {
     "x": 1069.5495495495495,
@@ -99,7 +99,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Average Reserved Days'"
+                                "Value": "'Average Occupancy Percentage'"
                               }
                             }
                           ]
@@ -523,6 +523,20 @@
             }
           ]
         }
+      },
+      {
+        "name": "7e18805fe78494472e19",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AirBNB Specific Metrics"
+              }
+            },
+            "Property": "Metric Name"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }
